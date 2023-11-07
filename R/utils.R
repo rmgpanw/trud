@@ -29,7 +29,7 @@ get_trud_api_key <- function(TRUD_API_KEY, call = rlang::caller_env()) {
 
 trud_error_message <- function(resp) {
   resp <- resp %>%
-    resp_body_json()
+    httr2::resp_body_json()
 
   switch(
     as.character(resp$httpStatus),
