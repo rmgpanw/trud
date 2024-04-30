@@ -47,8 +47,9 @@ get_item_metadata <- function(item,
     httr2::req_perform() %>%
     httr2::resp_body_json()
 
-  # name list of releases, using release ids
-  names(result$releases) <- purrr::map_chr(result$releases, \(x) x$id)
+  # convert list of releases to a tibble
+  result$releases <- result$releases |>
+    dplyr::bind_rows()
 
   return(result)
 }
