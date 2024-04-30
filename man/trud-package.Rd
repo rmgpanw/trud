@@ -4,12 +4,23 @@
 \name{trud-package}
 \alias{trud}
 \alias{trud-package}
-\title{trud: What the Package Does (One Line, Title Case)}
+\title{trud: Query the NHS TRUD API}
 \description{
-What the package does (one paragraph).
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+A convenient R interface to the NHS TRUD API.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://rmgpanw.github.io/trud/}
+  \item \url{https://github.com/rmgpanw/trud}
+  \item Report bugs at \url{https://github.com/rmgpanw/trud/issues}
+}
+
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Alasdair Warwick \email{alasdair.warwick06@gmail.com} (\href{https://orcid.org/0000-0002-0800-2890}{ORCID}) [copyright holder]
 
 }
 \keyword{internal}

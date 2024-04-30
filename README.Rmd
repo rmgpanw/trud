@@ -1,0 +1,56 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# trud <a href="https://rmgpanw.github.io/trud/"><img src="man/figures/logo.png" align="right" height="138"/></a>
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of trud is to provide a convenient R interface to the [NHS TRUD API](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api).
+
+## Installation
+
+You can install the development version of trud from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("rmgpanw/trud")
+```
+
+## Examples
+
+Retrieve available endpoints:
+
+```{r trud-items}
+library(trud)
+
+trud_items()
+```
+
+Get metadata for an item:
+
+```{r get-item-metadata}
+# default is to retrieve metadata for the latest release only
+get_item_metadata(1799)
+```
+
+Download an item:
+
+```{r download-item}
+# by default this will be downloaded to the current working directory
+if (FALSE) {
+  download_item(1799)
+}
+```
