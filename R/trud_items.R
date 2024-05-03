@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' trud_items()
+#'  trud_items()
 #' }
 trud_items <- function() {
 

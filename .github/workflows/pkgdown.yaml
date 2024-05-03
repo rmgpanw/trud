@@ -19,6 +19,7 @@ jobs:
       group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      TRUD_API_KEY: ${{ secrets.TRUD_API_KEY }}
     permissions:
       contents: write
     steps:
@@ -36,7 +37,7 @@ jobs:
           needs: website
 
       - name: Build site
-        run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
+        run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE, run_dont_run = TRUE)
         shell: Rscript {0}
 
       - name: Deploy to GitHub pages 🚀

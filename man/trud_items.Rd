@@ -15,6 +15,6 @@ from the NHS TRUD website for all available items.
 }
 \examples{
 \dontrun{
-trud_items()
+ trud_items()
 }
 }

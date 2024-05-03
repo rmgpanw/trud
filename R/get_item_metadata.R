@@ -12,7 +12,8 @@
 #'
 #' @examples
 #' \dontrun{
-#'  get_item_metadata(1799, latest_only = TRUE)
+#'  # Get metadata for NHS Continuing Health Care (CHC) Data Set - JSON Schema
+#'  get_item_metadata(1760, latest_only = TRUE)
 #' }
 get_item_metadata <- function(item,
                               TRUD_API_KEY = NULL,

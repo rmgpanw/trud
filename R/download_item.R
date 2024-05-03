@@ -23,7 +23,11 @@
 #'
 #' @examples
 #' \dontrun{
-#'  download_item(1799)
+#'  # Download NHS Continuing Health Care (CHC) Data Set - JSON Schema
+#'  x <- download_item(1760)
+#'
+#'  # List downloaded files
+#'  unzip(x, list = TRUE)
 #' }
 download_item <- function(item,
                           directory = tempdir(),
