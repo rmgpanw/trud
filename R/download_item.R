@@ -5,7 +5,7 @@
 #'
 #' @param item An integer, the item to be downloaded.
 #' @param directory Path to the directory to which this item will be downloaded
-#'   to. This is set to the current working directory by default.
+#'   to. This is set to the current session's temporary directory by default.
 #' @param download_file The item file to be downloaded. Valid values:
 #'   - `"archive"` (the release item)
 #'   - `"checksum"`
@@ -26,7 +26,7 @@
 #'  download_item(1799)
 #' }
 download_item <- function(item,
-                          directory = ".",
+                          directory = tempdir(),
                           download_file = "archive",
                           TRUD_API_KEY = NULL,
                           release = NULL) {
@@ -71,11 +71,12 @@ download_item <- function(item,
               file_name)
 
   if (file.exists(file_path)) {
-    cli::cli_abort(
-      stringr::str_glue(
-        "File {{.code {file_name}}} already exists in directory {{.code {directory}}}"
+    cli::cli_warn(
+        c("!" = "File {.code {file_name}} already exists in directory {.code {directory}}",
+          "i" = "Returning file path {.path {file_path}}")
       )
-    )
+
+    return(file_path)
   }
 
   url <- purrr::pluck(item_metadata,
@@ -83,11 +84,13 @@ download_item <- function(item,
                       release,
                       paste0(download_file, "FileUrl"))
 
+  cli::cli_progress_step("Downloading {download_file} file for TRUD item {item}...", spinner = TRUE)
+
   resp <- httr2::request(url) %>%
     req_user_agent_trud() %>%
     httr2::req_perform(path = file_path)
 
-  cli::cli_alert_success(stringr::str_glue("Successfully downloaded {{.code {file_name}}} to {{.code {file_path}}}."))
+  cli::cli_progress_step("Successfully downloaded {.code {file_name}} to {.path {file_path}}.")
 
   # return path to downloaded file invisibly
   invisible(file_path)
