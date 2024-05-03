@@ -29,6 +29,11 @@ You can install the development version of trud from [GitHub](https://github.com
 devtools::install_github("rmgpanw/trud")
 ```
 
+You will also need to:
+
+- [Sign up for an account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form) with NHS TRUD
+- Set your API key (shown on your account information page) as an environmental variable named `TRUD_API_KEY`. The best way to do this is by placing your API key in a [`.Renviron` file](https://rstats.wtf/r-startup.html#renviron).
+
 ## Examples
 
 Retrieve available endpoints:
@@ -43,14 +48,14 @@ Get metadata for an item:
 
 ```{r get-item-metadata}
 # default is to retrieve metadata for the latest release only
-get_item_metadata(1799)
+get_item_metadata(1760) |>
+  lobstr::tree()
 ```
 
 Download an item:
 
 ```{r download-item}
-# by default this will be downloaded to the current working directory
-if (FALSE) {
-  download_item(1799)
-}
+# by default this will be downloaded to `tempdir()`
+x <- download_item(1760)
+unzip(x, list = TRUE)
 ```

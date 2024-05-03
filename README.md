@@ -19,6 +19,16 @@ You can install the development version of trud from
 devtools::install_github("rmgpanw/trud")
 ```
 
+You will also need to:
+
+- [Sign up for an
+  account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form)
+  with NHS TRUD
+- Set your API key (shown on your account information page) as an
+  environmental variable named `TRUD_API_KEY`. The best way to do this
+  is by placing your API key in a [`.Renviron`
+  file](https://rstats.wtf/r-startup.html#renviron).
+
 ## Examples
 
 Retrieve available endpoints:
@@ -47,44 +57,50 @@ Get metadata for an item:
 
 ``` r
 # default is to retrieve metadata for the latest release only
-get_item_metadata(1799)
-#> $apiVersion
-#> [1] "1"
-#> 
-#> $releases
-#> # A tibble: 28 × 20
-#>    id      name  releaseDate archiveFileUrl archiveFileName archiveFileSizeBytes
-#>    <chr>   <chr> <chr>       <chr>          <chr>                          <int>
-#>  1 uk_sct… Rele… 2024-04-17  https://isd.d… uk_sct2mo_38.0…            547373910
-#>  2 uk_sct… Rele… 2024-03-20  https://isd.d… uk_sct2mo_37.6…            541961449
-#>  3 uk_sct… Rele… 2024-02-21  https://isd.d… uk_sct2mo_37.5…            541678075
-#>  4 uk_sct… Rele… 2024-01-24  https://isd.d… uk_sct2mo_37.4…            541270677
-#>  5 uk_sct… Rele… 2023-12-22  https://isd.d… uk_sct2mo_37.3…            541060019
-#>  6 uk_sct… Rele… 2023-11-29  https://isd.d… uk_sct2mo_37.2…            539925981
-#>  7 uk_sct… Rele… 2023-11-01  https://isd.d… uk_sct2mo_37.1…            539238944
-#>  8 uk_sct… Rele… 2023-10-04  https://isd.d… uk_sct2mo_37.0…            538818704
-#>  9 uk_sct… Rele… 2023-09-06  https://isd.d… uk_sct2mo_36.5…            533585124
-#> 10 uk_sct… Rele… 2023-08-09  https://isd.d… uk_sct2mo_36.4…            533079368
-#> # ℹ 18 more rows
-#> # ℹ 14 more variables: archiveFileSha256 <chr>,
-#> #   archiveFileLastModifiedTimestamp <chr>, checksumFileUrl <chr>,
-#> #   checksumFileName <chr>, checksumFileSizeBytes <int>,
-#> #   checksumFileLastModifiedTimestamp <chr>, signatureFileUrl <chr>,
-#> #   signatureFileName <chr>, signatureFileSizeBytes <int>,
-#> #   signatureFileLastModifiedTimestamp <chr>, publicKeyFileUrl <chr>, …
-#> 
-#> $httpStatus
-#> [1] 200
-#> 
-#> $message
-#> [1] "OK"
+get_item_metadata(1760) |>
+  lobstr::tree()
+#> <list>
+#> ├─apiVersion: "1"
+#> ├─releases: <list>
+#> │ └─CHC_JSON_v1.0.2.zip: <list>
+#> │   ├─id: "CHC_JSON_v1.0.2.zip"
+#> │   ├─name: "Release 1.0.2 preview 1"
+#> │   ├─releaseDate: "2022-02-02"
+#> │   ├─archiveFileUrl: "https://isd.digital.nhs.uk/downl..."
+#> │   ├─archiveFileName: "CHC_JSON_v1.0.2.zip"
+#> │   ├─archiveFileSizeBytes: 22107
+#> │   ├─archiveFileSha256: "B2801BA1944157CA63F0FE82802FD862..."
+#> │   ├─archiveFileLastModifiedTimestamp: "2022-02-02T09:13:27.000Z"
+#> │   ├─checksumFileUrl: "https://isd.digital.nhs.uk/downl..."
+#> │   ├─checksumFileName: "trud_CHC_JSON_v1.0.2.xml"
+#> │   ├─checksumFileSizeBytes: 160
+#> │   ├─checksumFileLastModifiedTimestamp: "2022-02-02T09:21:58.000Z"
+#> │   ├─signatureFileUrl: "https://isd.digital.nhs.uk/downl..."
+#> │   ├─signatureFileName: "trud_CHC_JSON_v1.0.2.sig"
+#> │   ├─signatureFileSizeBytes: 488
+#> │   ├─signatureFileLastModifiedTimestamp: "2022-02-02T09:21:58.000Z"
+#> │   ├─publicKeyFileUrl: "https://isd.digital.nhs.uk/downl..."
+#> │   ├─publicKeyFileName: "trud-public-key-2013-04-01.pgp"
+#> │   ├─publicKeyFileSizeBytes: 1736
+#> │   └─publicKeyId: 6
+#> ├─httpStatus: 200
+#> └─message: "OK"
 ```
 
 Download an item:
 
 ``` r
-# by default this will be downloaded to the current working directory
-if (FALSE) {
-  download_item(1799)
-}
+# by default this will be downloaded to `tempdir()`
+x <- download_item(1760)
+#> ⠙ Downloading archive file for TRUD item 1760...
+#> ✔ Downloading archive file for TRUD item 1760... [260ms]
+#> 
+#> ℹ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/zt/jltqykf54y3…
+#> ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/zt/jltqykf54y3…
+#> 
+unzip(x, list = TRUE)
+#>                                             Name Length                Date
+#> 1        JSON_CHC_V1_0_2_Simple_Schema_v1.1.json  14224 2022-01-27 12:01:00
+#> 2 JSON_CHC_V1_0_2_Simple_Schema_SAMPLE_DATA.json   5492 2022-01-27 14:23:00
+#> 3          CHC Production Log - JSON SIMPLE.xlsx  21520 2022-01-27 14:33:00
 ```
