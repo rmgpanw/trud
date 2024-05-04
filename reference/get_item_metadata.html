@@ -83,79 +83,9 @@ release will be retrieved. By default this is set to <code>FALSE</code>.</p></dd
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span> <span class="co"># Get metadata for NHS Continuing Health Care (CHC) Data Set - JSON Schema</span></span></span>
 <span class="r-in"><span> <span class="fu">get_item_metadata</span><span class="op">(</span><span class="fl">1760</span>, latest_only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $apiVersion</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CHC_JSON_v1.0.2.zip"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Release 1.0.2 preview 1"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$releaseDate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2022-02-02"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$archiveFileUrl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://isd.digital.nhs.uk/download/api/v1/keys/e963cc518cc41500e1a8940a93ffc3c0915e2983/content/items/1760/CHC_JSON_v1.0.2.zip"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$archiveFileName</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "CHC_JSON_v1.0.2.zip"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$archiveFileSizeBytes</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 22107</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$archiveFileSha256</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "B2801BA1944157CA63F0FE82802FD8625BCB68EED5DF19CE72B7330E94737E4A"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$archiveFileLastModifiedTimestamp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2022-02-02T09:13:27.000Z"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$checksumFileUrl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://isd.digital.nhs.uk/download/api/v1/keys/e963cc518cc41500e1a8940a93ffc3c0915e2983/content/items/1760/trud_CHC_JSON_v1.0.2.xml"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$checksumFileName</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "trud_CHC_JSON_v1.0.2.xml"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$checksumFileSizeBytes</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 160</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$checksumFileLastModifiedTimestamp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2022-02-02T09:21:58.000Z"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$signatureFileUrl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://isd.digital.nhs.uk/download/api/v1/keys/e963cc518cc41500e1a8940a93ffc3c0915e2983/content/items/1760/trud_CHC_JSON_v1.0.2.xml.asc"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$signatureFileName</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "trud_CHC_JSON_v1.0.2.sig"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$signatureFileSizeBytes</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 488</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$signatureFileLastModifiedTimestamp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2022-02-02T09:21:58.000Z"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$publicKeyFileUrl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://isd.digital.nhs.uk/download/api/v1/keys/e963cc518cc41500e1a8940a93ffc3c0915e2983/content/public-keys/trud-public-key-2013-04-01.pgp"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$publicKeyFileName</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "trud-public-key-2013-04-01.pgp"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$publicKeyFileSizeBytes</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1736</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $releases$CHC_JSON_v1.0.2.zip$publicKeyId</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $httpStatus</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $message</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "OK"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in httr2::req_perform(.):</span> HTTP 404 Not Found.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> HTTP Status 404: Not Found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Unexpected error. Is the TRUD website down?</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
