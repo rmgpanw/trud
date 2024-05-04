@@ -28,16 +28,30 @@ get_trud_api_key <- function(TRUD_API_KEY, call = rlang::caller_env()) {
 }
 
 trud_error_message <- function(resp) {
-  resp <- resp %>%
-    httr2::resp_body_json()
+  resp <- tryCatch(
+    resp %>%
+      httr2::resp_body_json(),
+    error = function(cnd) {
+      c(
+        "x" = stringr::str_glue(
+          "HTTP Status {httr2::resp_status(resp)}: {httr2::resp_status_desc(resp)}"
+        ),
+        "!" = "Unexpected error. Is the TRUD website down?"
+      )
+    }
+  )
+
+  if (inherits(resp, "character")) {
+    return(resp)
+  }
 
   switch(
     as.character(resp$httpStatus),
-    "404" = c("x" = stringr::str_replace(resp$message,
-                                 "API key .*,",
-                                 "supplied API key,"),
-              "i" = "Either this item number does not exist, or you are not subscribed to it",
-              "i" = "For further information, see https://isd.digital.nhs.uk/trud/users/guest/filters/0/api"),
+    "404" = c(
+      "x" = stringr::str_replace(resp$message, "API key .*,", "supplied API key,"),
+      "i" = "Either this item number does not exist, or you are not subscribed to it",
+      "i" = "For further information, see https://isd.digital.nhs.uk/trud/users/guest/filters/0/api"
+    ),
     "400" = c("x" = "BAD REQUEST: invalid API key")
   )
 }
