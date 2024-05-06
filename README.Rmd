@@ -16,7 +16,9 @@ knitr::opts_chunk$set(
 # trud <a href="https://rmgpanw.github.io/trud/"><img src="man/figures/logo.png" align="right" height="138"/></a>
 
 <!-- badges: start -->
-[![Codecov test coverage](https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rmgpanw/trud?branch=main)
+
+[![pkgdown](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml) [![Codecov test coverage](https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rmgpanw/trud?branch=main)
+
 <!-- badges: end -->
 
 The goal of trud is to provide a convenient R interface to the [NHS TRUD API](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api).

@@ -4,6 +4,10 @@
 # trud <a href="https://rmgpanw.github.io/trud/"><img src="man/figures/logo.png" align="right" height="138"/></a>
 
 <!-- badges: start -->
+
+[![pkgdown](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml) [![Codecov test
+coverage](https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rmgpanw/trud?branch=main)
+
 <!-- badges: end -->
 
 The goal of trud is to provide a convenient R interface to the [NHS TRUD
@@ -93,10 +97,10 @@ Download an item:
 # by default this will be downloaded to `tempdir()`
 x <- download_item(1760)
 #> ⠙ Downloading archive file for TRUD item 1760...
-#> ✔ Downloading archive file for TRUD item 1760... [260ms]
+#> ✔ Downloading archive file for TRUD item 1760... [137ms]
 #> 
-#> ℹ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/zt/jltqykf54y3…
-#> ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/zt/jltqykf54y3…
+#> ℹ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/3_/pbrb8ydn6_q…
+#> ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/3_/pbrb8ydn6_q…
 #> 
 unzip(x, list = TRUE)
 #>                                             Name Length                Date
