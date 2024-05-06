@@ -71,6 +71,7 @@
 </h1>
 </div>
 <!-- badges: start -->
+
 <!-- badges: end -->
 <p>The goal of trud is to provide a convenient R interface to the <a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/api" class="external-link">NHS TRUD API</a>.</p>
 <div class="section level2">
@@ -145,10 +146,10 @@
 <code class="sourceCode R"><span><span class="co"># by default this will be downloaded to `tempdir()`</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/download_item.html">download_item</a></span><span class="op">(</span><span class="fl">1760</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ⠙ Downloading archive file for TRUD item 1760...</span></span>
-<span><span class="co">#&gt; ✔ Downloading archive file for TRUD item 1760... [260ms]</span></span>
+<span><span class="co">#&gt; ✔ Downloading archive file for TRUD item 1760... [137ms]</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ℹ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/zt/jltqykf54y3…</span></span>
-<span><span class="co">#&gt; ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/zt/jltqykf54y3…</span></span>
+<span><span class="co">#&gt; ℹ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/3_/pbrb8ydn6_q…</span></span>
+<span><span class="co">#&gt; ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/3_/pbrb8ydn6_q…</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">x</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                                             Name Length                Date</span></span>
@@ -188,7 +189,13 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml" class="external-link"><img src="https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a></li>
+<li><a href="https://app.codecov.io/gh/rmgpanw/trud?branch=main" class="external-link"><img src="https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>
