@@ -112,41 +112,36 @@
 <span><span class="co">#&gt; # ℹ 58 more rows</span></span></code></pre></div>
 <p>Get metadata for an item:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># default is to retrieve metadata for the latest release only</span></span>
-<span><span class="fu"><a href="reference/get_item_metadata.html">get_item_metadata</a></span><span class="op">(</span><span class="fl">1760</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">lobstr</span><span class="fu">::</span><span class="fu">tree</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;list&gt;</span></span>
-<span><span class="co">#&gt; ├─apiVersion: "1"</span></span>
-<span><span class="co">#&gt; ├─releases: &lt;list&gt;</span></span>
-<span><span class="co">#&gt; │ └─CHC_JSON_v1.0.2.zip: &lt;list&gt;</span></span>
-<span><span class="co">#&gt; │   ├─id: "CHC_JSON_v1.0.2.zip"</span></span>
-<span><span class="co">#&gt; │   ├─name: "Release 1.0.2 preview 1"</span></span>
-<span><span class="co">#&gt; │   ├─releaseDate: "2022-02-02"</span></span>
-<span><span class="co">#&gt; │   ├─archiveFileUrl: "https://isd.digital.nhs.uk/downl..."</span></span>
-<span><span class="co">#&gt; │   ├─archiveFileName: "CHC_JSON_v1.0.2.zip"</span></span>
-<span><span class="co">#&gt; │   ├─archiveFileSizeBytes: 22107</span></span>
-<span><span class="co">#&gt; │   ├─archiveFileSha256: "B2801BA1944157CA63F0FE82802FD862..."</span></span>
-<span><span class="co">#&gt; │   ├─archiveFileLastModifiedTimestamp: "2022-02-02T09:13:27.000Z"</span></span>
-<span><span class="co">#&gt; │   ├─checksumFileUrl: "https://isd.digital.nhs.uk/downl..."</span></span>
-<span><span class="co">#&gt; │   ├─checksumFileName: "trud_CHC_JSON_v1.0.2.xml"</span></span>
-<span><span class="co">#&gt; │   ├─checksumFileSizeBytes: 160</span></span>
-<span><span class="co">#&gt; │   ├─checksumFileLastModifiedTimestamp: "2022-02-02T09:21:58.000Z"</span></span>
-<span><span class="co">#&gt; │   ├─signatureFileUrl: "https://isd.digital.nhs.uk/downl..."</span></span>
-<span><span class="co">#&gt; │   ├─signatureFileName: "trud_CHC_JSON_v1.0.2.sig"</span></span>
-<span><span class="co">#&gt; │   ├─signatureFileSizeBytes: 488</span></span>
-<span><span class="co">#&gt; │   ├─signatureFileLastModifiedTimestamp: "2022-02-02T09:21:58.000Z"</span></span>
-<span><span class="co">#&gt; │   ├─publicKeyFileUrl: "https://isd.digital.nhs.uk/downl..."</span></span>
-<span><span class="co">#&gt; │   ├─publicKeyFileName: "trud-public-key-2013-04-01.pgp"</span></span>
-<span><span class="co">#&gt; │   ├─publicKeyFileSizeBytes: 1736</span></span>
-<span><span class="co">#&gt; │   └─publicKeyId: 6</span></span>
-<span><span class="co">#&gt; ├─httpStatus: 200</span></span>
-<span><span class="co">#&gt; └─message: "OK"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/get_item_metadata.html">get_item_metadata</a></span><span class="op">(</span><span class="fl">1760</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">map_at</a></span><span class="op">(</span><span class="st">"releases"</span>, \<span class="op">(</span><span class="va">release</span><span class="op">)</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">release</span>, <span class="va">names</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $apiVersion</span></span>
+<span><span class="co">#&gt; [1] "1"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $releases</span></span>
+<span><span class="co">#&gt; $releases$CHC_JSON_v1.0.2.zip</span></span>
+<span><span class="co">#&gt;  [1] "id"                                 "name"                              </span></span>
+<span><span class="co">#&gt;  [3] "releaseDate"                        "archiveFileUrl"                    </span></span>
+<span><span class="co">#&gt;  [5] "archiveFileName"                    "archiveFileSizeBytes"              </span></span>
+<span><span class="co">#&gt;  [7] "archiveFileSha256"                  "archiveFileLastModifiedTimestamp"  </span></span>
+<span><span class="co">#&gt;  [9] "checksumFileUrl"                    "checksumFileName"                  </span></span>
+<span><span class="co">#&gt; [11] "checksumFileSizeBytes"              "checksumFileLastModifiedTimestamp" </span></span>
+<span><span class="co">#&gt; [13] "signatureFileUrl"                   "signatureFileName"                 </span></span>
+<span><span class="co">#&gt; [15] "signatureFileSizeBytes"             "signatureFileLastModifiedTimestamp"</span></span>
+<span><span class="co">#&gt; [17] "publicKeyFileUrl"                   "publicKeyFileName"                 </span></span>
+<span><span class="co">#&gt; [19] "publicKeyFileSizeBytes"             "publicKeyId"                       </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $httpStatus</span></span>
+<span><span class="co">#&gt; [1] 200</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $message</span></span>
+<span><span class="co">#&gt; [1] "OK"</span></span></code></pre></div>
 <p>Download an item:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># by default this will be downloaded to `tempdir()`</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/download_item.html">download_item</a></span><span class="op">(</span><span class="fl">1760</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ⠙ Downloading archive file for TRUD item 1760...</span></span>
-<span><span class="co">#&gt; ✔ Downloading archive file for TRUD item 1760... [137ms]</span></span>
+<span><span class="co">#&gt; ✔ Downloading archive file for TRUD item 1760... [126ms]</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ℹ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/3_/pbrb8ydn6_q…</span></span>
 <span><span class="co">#&gt; ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/3_/pbrb8ydn6_q…</span></span>
