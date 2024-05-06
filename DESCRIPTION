@@ -26,3 +26,6 @@ Imports:
 URL: https://rmgpanw.github.io/trud/,
     https://github.com/rmgpanw/trud
 BugReports: https://github.com/rmgpanw/trud/issues
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
