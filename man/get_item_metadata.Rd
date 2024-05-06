@@ -26,6 +26,7 @@ pertaining to the specified NHS TRUD item.
 \examples{
 \dontrun{
  # Get metadata for NHS Continuing Health Care (CHC) Data Set - JSON Schema
- get_item_metadata(1760, latest_only = TRUE)
+ get_item_metadata(1760) |>
+   purrr::map_at("releases", \(release) purrr::map(release, names))
 }
 }

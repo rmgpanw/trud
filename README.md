@@ -5,7 +5,8 @@
 
 <!-- badges: start -->
 
-[![pkgdown](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml) [![Codecov test
+[![pkgdown](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml)
+[![Codecov test
 coverage](https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rmgpanw/trud?branch=main)
 
 <!-- badges: end -->
@@ -60,35 +61,30 @@ trud_items()
 Get metadata for an item:
 
 ``` r
-# default is to retrieve metadata for the latest release only
 get_item_metadata(1760) |>
-  lobstr::tree()
-#> <list>
-#> ├─apiVersion: "1"
-#> ├─releases: <list>
-#> │ └─CHC_JSON_v1.0.2.zip: <list>
-#> │   ├─id: "CHC_JSON_v1.0.2.zip"
-#> │   ├─name: "Release 1.0.2 preview 1"
-#> │   ├─releaseDate: "2022-02-02"
-#> │   ├─archiveFileUrl: "https://isd.digital.nhs.uk/downl..."
-#> │   ├─archiveFileName: "CHC_JSON_v1.0.2.zip"
-#> │   ├─archiveFileSizeBytes: 22107
-#> │   ├─archiveFileSha256: "B2801BA1944157CA63F0FE82802FD862..."
-#> │   ├─archiveFileLastModifiedTimestamp: "2022-02-02T09:13:27.000Z"
-#> │   ├─checksumFileUrl: "https://isd.digital.nhs.uk/downl..."
-#> │   ├─checksumFileName: "trud_CHC_JSON_v1.0.2.xml"
-#> │   ├─checksumFileSizeBytes: 160
-#> │   ├─checksumFileLastModifiedTimestamp: "2022-02-02T09:21:58.000Z"
-#> │   ├─signatureFileUrl: "https://isd.digital.nhs.uk/downl..."
-#> │   ├─signatureFileName: "trud_CHC_JSON_v1.0.2.sig"
-#> │   ├─signatureFileSizeBytes: 488
-#> │   ├─signatureFileLastModifiedTimestamp: "2022-02-02T09:21:58.000Z"
-#> │   ├─publicKeyFileUrl: "https://isd.digital.nhs.uk/downl..."
-#> │   ├─publicKeyFileName: "trud-public-key-2013-04-01.pgp"
-#> │   ├─publicKeyFileSizeBytes: 1736
-#> │   └─publicKeyId: 6
-#> ├─httpStatus: 200
-#> └─message: "OK"
+  purrr::map_at("releases", \(release) purrr::map(release, names))
+#> $apiVersion
+#> [1] "1"
+#> 
+#> $releases
+#> $releases$CHC_JSON_v1.0.2.zip
+#>  [1] "id"                                 "name"                              
+#>  [3] "releaseDate"                        "archiveFileUrl"                    
+#>  [5] "archiveFileName"                    "archiveFileSizeBytes"              
+#>  [7] "archiveFileSha256"                  "archiveFileLastModifiedTimestamp"  
+#>  [9] "checksumFileUrl"                    "checksumFileName"                  
+#> [11] "checksumFileSizeBytes"              "checksumFileLastModifiedTimestamp" 
+#> [13] "signatureFileUrl"                   "signatureFileName"                 
+#> [15] "signatureFileSizeBytes"             "signatureFileLastModifiedTimestamp"
+#> [17] "publicKeyFileUrl"                   "publicKeyFileName"                 
+#> [19] "publicKeyFileSizeBytes"             "publicKeyId"                       
+#> 
+#> 
+#> $httpStatus
+#> [1] 200
+#> 
+#> $message
+#> [1] "OK"
 ```
 
 Download an item:
@@ -97,7 +93,7 @@ Download an item:
 # by default this will be downloaded to `tempdir()`
 x <- download_item(1760)
 #> ⠙ Downloading archive file for TRUD item 1760...
-#> ✔ Downloading archive file for TRUD item 1760... [137ms]
+#> ✔ Downloading archive file for TRUD item 1760... [126ms]
 #> 
 #> ℹ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/3_/pbrb8ydn6_q…
 #> ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/3_/pbrb8ydn6_q…

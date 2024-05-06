@@ -50,9 +50,8 @@ trud_items()
 Get metadata for an item:
 
 ```{r get-item-metadata}
-# default is to retrieve metadata for the latest release only
 get_item_metadata(1760) |>
-  lobstr::tree()
+  purrr::map_at("releases", \(release) purrr::map(release, names))
 ```
 
 Download an item:
