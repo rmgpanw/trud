@@ -88,13 +88,13 @@ download_item <- function(item,
                       release,
                       paste0(download_file, "FileUrl"))
 
-  cli::cli_progress_step("Downloading {download_file} file for TRUD item {item}...", spinner = TRUE)
+  cli::cli_progress_step("Downloading {download_file} file for TRUD item {item}...",
+                         msg_done = "Successfully downloaded {.code {file_name}} to {.path {file_path}}.",
+                         spinner = TRUE)
 
   resp <- httr2::request(url) %>%
     req_user_agent_trud() %>%
     httr2::req_perform(path = file_path)
-
-  cli::cli_progress_step("Successfully downloaded {.code {file_name}} to {.path {file_path}}.")
 
   # return path to downloaded file invisibly
   invisible(file_path)
