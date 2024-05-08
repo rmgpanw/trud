@@ -52,7 +52,11 @@ trud_error_message <- function(resp) {
       "i" = "Either this item number does not exist, or you are not subscribed to it",
       "i" = "For further information, see https://isd.digital.nhs.uk/trud/users/guest/filters/0/api"
     ),
-    "400" = c("x" = "BAD REQUEST: invalid API key")
+    "400" = c("x" = "BAD REQUEST: invalid API key"),
+    "401" = c(
+      "x" = resp$message,
+      "i" = "Have you changed your NHS TRUD account password? If so, your API key will have also updated"
+    )
   )
 }
 
