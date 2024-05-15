@@ -5,7 +5,7 @@
 #'
 #' @param item An integer, the item to be downloaded.
 #' @param directory Path to the directory to which this item will be downloaded
-#'   to. This is set to the current session's temporary directory by default.
+#'   to. This is set to the current working directory by default.
 #' @param download_file The item file to be downloaded. Valid values:
 #'   - `"archive"` (the release item)
 #'   - `"checksum"`
@@ -24,13 +24,13 @@
 #' @examples
 #' \dontrun{
 #'  # Download NHS Continuing Health Care (CHC) Data Set - JSON Schema
-#'  x <- download_item(1760)
+#'  x <- download_item(1760, directory = tempdir())
 #'
 #'  # List downloaded files
 #'  unzip(x, list = TRUE)
 #' }
 download_item <- function(item,
-                          directory = tempdir(),
+                          directory = ".",
                           download_file = "archive",
                           TRUD_API_KEY = NULL,
                           release = NULL) {

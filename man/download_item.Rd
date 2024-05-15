@@ -6,7 +6,7 @@
 \usage{
 download_item(
   item,
-  directory = tempdir(),
+  directory = ".",
   download_file = "archive",
   TRUD_API_KEY = NULL,
   release = NULL
@@ -16,7 +16,7 @@ download_item(
 \item{item}{An integer, the item to be downloaded.}
 
 \item{directory}{Path to the directory to which this item will be downloaded
-to. This is set to the current session's temporary directory by default.}
+to. This is set to the current working directory by default.}
 
 \item{download_file}{The item file to be downloaded. Valid values:
 \itemize{
@@ -44,7 +44,7 @@ default this is the latest release.
 \examples{
 \dontrun{
  # Download NHS Continuing Health Care (CHC) Data Set - JSON Schema
- x <- download_item(1760)
+ x <- download_item(1760, directory = tempdir())
 
  # List downloaded files
  unzip(x, list = TRUE)

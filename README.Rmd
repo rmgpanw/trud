@@ -57,7 +57,7 @@ get_item_metadata(1760) |>
 Download an item:
 
 ```{r download-item}
-# by default this will be downloaded to `tempdir()`
-x <- download_item(1760)
+# by default this will be downloaded to the current working directory
+x <- download_item(1760, directory = tempdir())
 unzip(x, list = TRUE)
 ```

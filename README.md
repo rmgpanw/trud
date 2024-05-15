@@ -42,7 +42,7 @@ Retrieve available endpoints:
 library(trud)
 
 trud_items()
-#> # A tibble: 68 × 2
+#> # A tibble: 70 × 2
 #>    item_number item_name                                                   
 #>          <int> <chr>                                                       
 #>  1         246 Cancer Outcomes and Services Data Set XML Schema            
@@ -55,7 +55,7 @@ trud_items()
 #>  8         239 dm+d XML transformation tool                                
 #>  9        1819 Emergency Care Data Set XML Schema                          
 #> 10         263 eViewer application                                         
-#> # ℹ 58 more rows
+#> # ℹ 60 more rows
 ```
 
 Get metadata for an item:
@@ -90,13 +90,10 @@ get_item_metadata(1760) |>
 Download an item:
 
 ``` r
-# by default this will be downloaded to `tempdir()`
-x <- download_item(1760)
+# by default this will be downloaded to the current working directory
+x <- download_item(1760, directory = tempdir())
 #> ⠙ Downloading archive file for TRUD item 1760...
-#> ✔ Downloading archive file for TRUD item 1760... [126ms]
-#> 
-#> ℹ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/3_/pbrb8ydn6_q…
-#> ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/3_/pbrb8ydn6_q…
+#> ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/zt/jltqykf54y3…
 #> 
 unzip(x, list = TRUE)
 #>                                             Name Length                Date
