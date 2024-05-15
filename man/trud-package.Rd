@@ -20,7 +20,14 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Alasdair Warwick \email{alasdair.warwick06@gmail.com} (\href{https://orcid.org/0000-0002-0800-2890}{ORCID}) [copyright holder]
+\strong{Maintainer}: Alasdair Warwick \email{alasdair.warwick.19@ucl.ac.uk} (\href{https://orcid.org/0000-0002-0800-2890}{ORCID}) [copyright holder]
+
+Authors:
+\itemize{
+  \item Robert Luben (\href{https://orcid.org/0000-0002-5088-6343}{ORCID})
+  \item Abraham Olvera-Barrios (\href{https://orcid.org/0000-0002-3305-4465}{ORCID})
+  \item Chuin Ying Ung (\href{https://orcid.org/0000-0001-8487-4589}{ORCID})
+}
 
 }
 \keyword{internal}
