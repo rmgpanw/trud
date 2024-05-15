@@ -101,18 +101,36 @@ latest item release will be downloaded.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span> <span class="co"># Download NHS Continuing Health Care (CHC) Data Set - JSON Schema</span></span></span>
-<span class="r-in"><span> <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">download_item</span><span class="op">(</span><span class="fl">1760</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ⠙ Downloading archive file for TRUD item 1760...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Successfully downloaded `CHC_JSON_v1.0.2.zip` to <span style="color: #0000BB;">/tmp/RtmpcFUwwz/CHC_JSON_v1.</span>…</span>
+<span class="r-in"><span> <span class="co"># Download Community Services Data Set pre-deadline extract XML Schema</span></span></span>
+<span class="r-in"><span> <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">download_item</span><span class="op">(</span><span class="fl">394</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ⠙ Downloading archive file for TRUD item 394...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Successfully downloaded `CSDS_Provpredextract_1.6.6_20221115000001.zip` to <span style="color: #0000BB;">/t</span>…</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span> <span class="co"># List downloaded files</span></span></span>
 <span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">x</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                             Name Length                Date</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        JSON_CHC_V1_0_2_Simple_Schema_v1.1.json  14224 2022-01-27 12:01:00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 JSON_CHC_V1_0_2_Simple_Schema_SAMPLE_DATA.json   5492 2022-01-27 14:23:00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3          CHC Production Log - JSON SIMPLE.xlsx  21520 2022-01-27 14:33:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   Name Length</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1           CSDS_ProvPreExtract__V1_6_6_SAMPLE_XML.xml   7887</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2              CSDS_ProvPreExtract__V1_6_6_FinalV1.XSD  75650</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 CSDS ProvPreDExtract v1.6.6 Production Log v0.1.xlsx  32216</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                  Date</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 2022-11-15 12:48:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2022-10-31 11:36:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2022-11-15 11:57:00</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="co"># Download a previous release</span></span></span>
+<span class="r-in"><span> <span class="va">release</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_item_metadata.html">get_item_metadata</a></span><span class="op">(</span><span class="fl">394</span><span class="op">)</span><span class="op">$</span><span class="va">releases</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">id</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">download_item</span><span class="op">(</span><span class="fl">394</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, release <span class="op">=</span> <span class="va">release</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ⠙ Downloading archive file for TRUD item 394...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Successfully downloaded `csds_provpredextract_1.5.21_20200805000001.zip` to <span style="color: #0000BB;">/</span>…</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">y</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            Name Length                Date</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      CSDS_ProvPreExtract__V1.5.21_FinalV1.XSD  58918 2020-07-14 17:41:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   CSDS_ProvPreExtract__V1.5.21_SAMPLE_XML.xml   7799 2020-07-23 17:03:00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 CSDS ProvPreDExtract Production Log v0.1.xlsx  32645 2020-07-15 16:20:00</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
@@ -121,7 +139,7 @@ latest item release will be downloaded.</p></dd>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Alasdair Warwick.</p>
+  <p>Developed by Alasdair Warwick, Robert Luben, Abraham Olvera-Barrios, Chuin Ying Ung.</p>
 </div>
 
 <div class="pkgdown-footer-right">

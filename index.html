@@ -91,7 +91,7 @@
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
-<p>Retrieve available endpoints:</p>
+<p>Retrieve available endpoints<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Item numbers can also be found in the URLs of releases pages, between &lt;code&gt;items&lt;/code&gt; and &lt;code&gt;releases&lt;/code&gt;. For example, the URL for the &lt;a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases" class="external-link"&gt;Community Services Data Set pre-deadline extract XML Schema&lt;/a&gt; releases page is &lt;code&gt;https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases&lt;/code&gt; and the item number is &lt;code&gt;394&lt;/code&gt;.&lt;/p&gt;'><sup>1</sup></a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rmgpanw.github.io/trud/">trud</a></span><span class="op">)</span></span>
 <span></span>
@@ -112,13 +112,25 @@
 <span><span class="co">#&gt; # ℹ 60 more rows</span></span></code></pre></div>
 <p>Get metadata for an item:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/get_item_metadata.html">get_item_metadata</a></span><span class="op">(</span><span class="fl">1760</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/get_item_metadata.html">get_item_metadata</a></span><span class="op">(</span><span class="fl">394</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">map_at</a></span><span class="op">(</span><span class="st">"releases"</span>, \<span class="op">(</span><span class="va">release</span><span class="op">)</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">release</span>, <span class="va">names</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $apiVersion</span></span>
 <span><span class="co">#&gt; [1] "1"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $releases</span></span>
-<span><span class="co">#&gt; $releases$CHC_JSON_v1.0.2.zip</span></span>
+<span><span class="co">#&gt; $releases$CSDS_Provpredextract_1.6.6_20221115000001.zip</span></span>
+<span><span class="co">#&gt;  [1] "id"                                 "name"                              </span></span>
+<span><span class="co">#&gt;  [3] "releaseDate"                        "archiveFileUrl"                    </span></span>
+<span><span class="co">#&gt;  [5] "archiveFileName"                    "archiveFileSizeBytes"              </span></span>
+<span><span class="co">#&gt;  [7] "archiveFileSha256"                  "archiveFileLastModifiedTimestamp"  </span></span>
+<span><span class="co">#&gt;  [9] "checksumFileUrl"                    "checksumFileName"                  </span></span>
+<span><span class="co">#&gt; [11] "checksumFileSizeBytes"              "checksumFileLastModifiedTimestamp" </span></span>
+<span><span class="co">#&gt; [13] "signatureFileUrl"                   "signatureFileName"                 </span></span>
+<span><span class="co">#&gt; [15] "signatureFileSizeBytes"             "signatureFileLastModifiedTimestamp"</span></span>
+<span><span class="co">#&gt; [17] "publicKeyFileUrl"                   "publicKeyFileName"                 </span></span>
+<span><span class="co">#&gt; [19] "publicKeyFileSizeBytes"             "publicKeyId"                       </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $releases$DMDSSCHEMAS_1.5.21_20200805000001</span></span>
 <span><span class="co">#&gt;  [1] "id"                                 "name"                              </span></span>
 <span><span class="co">#&gt;  [3] "releaseDate"                        "archiveFileUrl"                    </span></span>
 <span><span class="co">#&gt;  [5] "archiveFileName"                    "archiveFileSizeBytes"              </span></span>
@@ -138,18 +150,24 @@
 <span><span class="co">#&gt; [1] "OK"</span></span></code></pre></div>
 <p>Download an item:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># by default this will be downloaded to the current working directory</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/download_item.html">download_item</a></span><span class="op">(</span><span class="fl">1760</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ⠙ Downloading archive file for TRUD item 1760...</span></span>
-<span><span class="co">#&gt; ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/zt/jltqykf54y3…</span></span>
+<code class="sourceCode R"><span><span class="co"># by default the latest release will be downloaded to the current working directory</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/download_item.html">download_item</a></span><span class="op">(</span><span class="fl">394</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ⠙ Downloading archive file for TRUD item 394...</span></span>
+<span><span class="co">#&gt; ✔ Successfully downloaded `CSDS_Provpredextract_1.6.6_20221115000001.zip` to '/…</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">x</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                                             Name Length                Date</span></span>
-<span><span class="co">#&gt; 1        JSON_CHC_V1_0_2_Simple_Schema_v1.1.json  14224 2022-01-27 12:01:00</span></span>
-<span><span class="co">#&gt; 2 JSON_CHC_V1_0_2_Simple_Schema_SAMPLE_DATA.json   5492 2022-01-27 14:23:00</span></span>
-<span><span class="co">#&gt; 3          CHC Production Log - JSON SIMPLE.xlsx  21520 2022-01-27 14:33:00</span></span></code></pre></div>
+<span><span class="co">#&gt;                                                   Name Length</span></span>
+<span><span class="co">#&gt; 1           CSDS_ProvPreExtract__V1_6_6_SAMPLE_XML.xml   7887</span></span>
+<span><span class="co">#&gt; 2              CSDS_ProvPreExtract__V1_6_6_FinalV1.XSD  75650</span></span>
+<span><span class="co">#&gt; 3 CSDS ProvPreDExtract v1.6.6 Production Log v0.1.xlsx  32216</span></span>
+<span><span class="co">#&gt;                  Date</span></span>
+<span><span class="co">#&gt; 1 2022-11-15 12:48:00</span></span>
+<span><span class="co">#&gt; 2 2022-10-31 11:36:00</span></span>
+<span><span class="co">#&gt; 3 2022-11-15 11:57:00</span></span></code></pre></div>
 </div>
 </div>
+
+
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -178,6 +196,9 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Alasdair Warwick <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-0800-2890" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Robert Luben <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5088-6343" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Abraham Olvera-Barrios <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-3305-4465" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Chuin Ying Ung <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-8487-4589" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
@@ -194,7 +215,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Alasdair Warwick.</p>
+  <p>Developed by Alasdair Warwick, Robert Luben, Abraham Olvera-Barrios, Chuin Ying Ung.</p>
 </div>
 
 <div class="pkgdown-footer-right">
