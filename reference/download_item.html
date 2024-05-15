@@ -53,7 +53,7 @@ default this is the latest release.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">download_item</span><span class="op">(</span></span>
 <span>  <span class="va">item</span>,</span>
-<span>  directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  directory <span class="op">=</span> <span class="st">"."</span>,</span>
 <span>  download_file <span class="op">=</span> <span class="st">"archive"</span>,</span>
 <span>  TRUD_API_KEY <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  release <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -68,7 +68,7 @@ default this is the latest release.</p>
 
 <dt>directory</dt>
 <dd><p>Path to the directory to which this item will be downloaded
-to. This is set to the current session's temporary directory by default.</p></dd>
+to. This is set to the current working directory by default.</p></dd>
 
 
 <dt>download_file</dt>
@@ -102,9 +102,9 @@ latest item release will be downloaded.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span> <span class="co"># Download NHS Continuing Health Care (CHC) Data Set - JSON Schema</span></span></span>
-<span class="r-in"><span> <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">download_item</span><span class="op">(</span><span class="fl">1760</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">download_item</span><span class="op">(</span><span class="fl">1760</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ⠙ Downloading archive file for TRUD item 1760...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Successfully downloaded `CHC_JSON_v1.0.2.zip` to <span style="color: #0000BB;">/tmp/RtmpTL1Fyp/CHC_JSON_v1.</span>…</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Successfully downloaded `CHC_JSON_v1.0.2.zip` to <span style="color: #0000BB;">/tmp/RtmpcFUwwz/CHC_JSON_v1.</span>…</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span> <span class="co"># List downloaded files</span></span></span>

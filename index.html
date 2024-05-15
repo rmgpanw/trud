@@ -96,7 +96,7 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rmgpanw.github.io/trud/">trud</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/trud_items.html">trud_items</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 68 × 2</span></span>
+<span><span class="co">#&gt; # A tibble: 70 × 2</span></span>
 <span><span class="co">#&gt;    item_number item_name                                                   </span></span>
 <span><span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;                                                       </span></span>
 <span><span class="co">#&gt;  1         246 Cancer Outcomes and Services Data Set XML Schema            </span></span>
@@ -109,7 +109,7 @@
 <span><span class="co">#&gt;  8         239 dm+d XML transformation tool                                </span></span>
 <span><span class="co">#&gt;  9        1819 Emergency Care Data Set XML Schema                          </span></span>
 <span><span class="co">#&gt; 10         263 eViewer application                                         </span></span>
-<span><span class="co">#&gt; # ℹ 58 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 60 more rows</span></span></code></pre></div>
 <p>Get metadata for an item:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_item_metadata.html">get_item_metadata</a></span><span class="op">(</span><span class="fl">1760</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -138,13 +138,10 @@
 <span><span class="co">#&gt; [1] "OK"</span></span></code></pre></div>
 <p>Download an item:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># by default this will be downloaded to `tempdir()`</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/download_item.html">download_item</a></span><span class="op">(</span><span class="fl">1760</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># by default this will be downloaded to the current working directory</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/download_item.html">download_item</a></span><span class="op">(</span><span class="fl">1760</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ⠙ Downloading archive file for TRUD item 1760...</span></span>
-<span><span class="co">#&gt; ✔ Downloading archive file for TRUD item 1760... [126ms]</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ℹ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/3_/pbrb8ydn6_q…</span></span>
-<span><span class="co">#&gt; ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/3_/pbrb8ydn6_q…</span></span>
+<span><span class="co">#&gt; ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/zt/jltqykf54y3…</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">x</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                                             Name Length                Date</span></span>
