@@ -1,7 +1,8 @@
 get_trud_api_key <- function(TRUD_API_KEY, call = rlang::caller_env()) {
   error_guidance_messages <-
-    c("i" = "Set NHS TRUD API key as an environment variable using {.code Sys.setenv(TRUD_API_KEY='<<your-key>>')}, or set in {.code .Renviron}",
-      "i" = "See {.url Getting Started vignette} for further guidance")
+    c("i" = "Set your NHS TRUD API key as an environment variable using {.code Sys.setenv(TRUD_API_KEY='<<your-key>>')}, or preferably use a {.code .Renviron} file",
+      "i" = "To get an API key, first sign up for a NHS TRUD account at {.url https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form}",
+      "i" = "To find Your API key, log in and visit your account profile page ({.url https://isd.digital.nhs.uk/trud/users/authenticated/filters/0/account/manage}).")
 
   if (is.null(TRUD_API_KEY)) {
     TRUD_API_KEY <- "TRUD_API_KEY"
