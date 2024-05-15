@@ -43,10 +43,17 @@ default this is the latest release.
 }
 \examples{
 \dontrun{
- # Download NHS Continuing Health Care (CHC) Data Set - JSON Schema
- x <- download_item(1760, directory = tempdir())
+ # Download Community Services Data Set pre-deadline extract XML Schema
+ x <- download_item(394, directory = tempdir())
 
  # List downloaded files
  unzip(x, list = TRUE)
+
+ # Download a previous release
+ release <- get_item_metadata(394)$releases[[2]]$id
+
+ y <- download_item(394, directory = tempdir(), release = release)
+
+ unzip(y, list = TRUE)
 }
 }

@@ -36,7 +36,7 @@ You will also need to:
 
 ## Examples
 
-Retrieve available endpoints:
+Retrieve available endpoints[^1]:
 
 ``` r
 library(trud)
@@ -61,13 +61,25 @@ trud_items()
 Get metadata for an item:
 
 ``` r
-get_item_metadata(1760) |>
+get_item_metadata(394) |>
   purrr::map_at("releases", \(release) purrr::map(release, names))
 #> $apiVersion
 #> [1] "1"
 #> 
 #> $releases
-#> $releases$CHC_JSON_v1.0.2.zip
+#> $releases$CSDS_Provpredextract_1.6.6_20221115000001.zip
+#>  [1] "id"                                 "name"                              
+#>  [3] "releaseDate"                        "archiveFileUrl"                    
+#>  [5] "archiveFileName"                    "archiveFileSizeBytes"              
+#>  [7] "archiveFileSha256"                  "archiveFileLastModifiedTimestamp"  
+#>  [9] "checksumFileUrl"                    "checksumFileName"                  
+#> [11] "checksumFileSizeBytes"              "checksumFileLastModifiedTimestamp" 
+#> [13] "signatureFileUrl"                   "signatureFileName"                 
+#> [15] "signatureFileSizeBytes"             "signatureFileLastModifiedTimestamp"
+#> [17] "publicKeyFileUrl"                   "publicKeyFileName"                 
+#> [19] "publicKeyFileSizeBytes"             "publicKeyId"                       
+#> 
+#> $releases$DMDSSCHEMAS_1.5.21_20200805000001
 #>  [1] "id"                                 "name"                              
 #>  [3] "releaseDate"                        "archiveFileUrl"                    
 #>  [5] "archiveFileName"                    "archiveFileSizeBytes"              
@@ -90,14 +102,26 @@ get_item_metadata(1760) |>
 Download an item:
 
 ``` r
-# by default this will be downloaded to the current working directory
-x <- download_item(1760, directory = tempdir())
-#> ⠙ Downloading archive file for TRUD item 1760...
-#> ✔ Successfully downloaded `CHC_JSON_v1.0.2.zip` to '/var/folders/zt/jltqykf54y3…
+# by default the latest release will be downloaded to the current working directory
+x <- download_item(394, directory = tempdir())
+#> ⠙ Downloading archive file for TRUD item 394...
+#> ✔ Successfully downloaded `CSDS_Provpredextract_1.6.6_20221115000001.zip` to '/…
 #> 
 unzip(x, list = TRUE)
-#>                                             Name Length                Date
-#> 1        JSON_CHC_V1_0_2_Simple_Schema_v1.1.json  14224 2022-01-27 12:01:00
-#> 2 JSON_CHC_V1_0_2_Simple_Schema_SAMPLE_DATA.json   5492 2022-01-27 14:23:00
-#> 3          CHC Production Log - JSON SIMPLE.xlsx  21520 2022-01-27 14:33:00
+#>                                                   Name Length
+#> 1           CSDS_ProvPreExtract__V1_6_6_SAMPLE_XML.xml   7887
+#> 2              CSDS_ProvPreExtract__V1_6_6_FinalV1.XSD  75650
+#> 3 CSDS ProvPreDExtract v1.6.6 Production Log v0.1.xlsx  32216
+#>                  Date
+#> 1 2022-11-15 12:48:00
+#> 2 2022-10-31 11:36:00
+#> 3 2022-11-15 11:57:00
 ```
+
+[^1]: Item numbers can also be found in the URLs of releases pages,
+    between `items` and `releases`. For example, the URL for the
+    [Community Services Data Set pre-deadline extract XML
+    Schema](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases)
+    releases page is
+    `https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases`
+    and the item number is `394`.

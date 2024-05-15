@@ -12,8 +12,12 @@
 #'
 #' @examples
 #' \dontrun{
-#'  # Get metadata for NHS Continuing Health Care (CHC) Data Set - JSON Schema
-#'  get_item_metadata(1760) |>
+#'  # Get metadata for Community Services Data Set pre-deadline extract XML Schema
+#'  get_item_metadata(394) |>
+#'    purrr::map_at("releases", \(release) purrr::map(release, names))
+#'
+#' # Include metadata for any previous releases using `latest_only = FALSE`
+#' get_item_metadata(394, latest_only = FALSE) |>
 #'    purrr::map_at("releases", \(release) purrr::map(release, names))
 #' }
 get_item_metadata <- function(item,

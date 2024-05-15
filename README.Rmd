@@ -34,12 +34,14 @@ devtools::install_github("rmgpanw/trud")
 
 You will also need to:
 
-- [Sign up for an account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form) with NHS TRUD
-- Set your API key (shown on your account information page) as an environmental variable named `TRUD_API_KEY`. The best way to do this is by placing your API key in a [`.Renviron` file](https://rstats.wtf/r-startup.html#renviron).
+-   [Sign up for an account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form) with NHS TRUD
+-   Set your API key (shown on your account information page) as an environmental variable named `TRUD_API_KEY`. The best way to do this is by placing your API key in a [`.Renviron` file](https://rstats.wtf/r-startup.html#renviron).
 
 ## Examples
 
-Retrieve available endpoints:
+Retrieve available endpoints[^1]:
+
+[^1]: Item numbers can also be found in the URLs of releases pages, between `items` and `releases`. For example, the URL for the [Community Services Data Set pre-deadline extract XML Schema](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases) releases page is `https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases` and the item number is `394`.
 
 ```{r trud-items}
 library(trud)
@@ -50,14 +52,14 @@ trud_items()
 Get metadata for an item:
 
 ```{r get-item-metadata}
-get_item_metadata(1760) |>
+get_item_metadata(394) |>
   purrr::map_at("releases", \(release) purrr::map(release, names))
 ```
 
 Download an item:
 
 ```{r download-item}
-# by default this will be downloaded to the current working directory
-x <- download_item(1760, directory = tempdir())
+# by default the latest release will be downloaded to the current working directory
+x <- download_item(394, directory = tempdir())
 unzip(x, list = TRUE)
 ```
