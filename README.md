@@ -8,7 +8,7 @@
 [![pkgdown](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rmgpanw/trud?branch=main)
-
+[![R-CMD-check](https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of trud is to provide a convenient R interface to the [NHS TRUD
@@ -107,6 +107,9 @@ x <- download_item(394, directory = tempdir())
 #> ⠙ Downloading archive file for TRUD item 394...
 #> ✔ Successfully downloaded `CSDS_Provpredextract_1.6.6_20221115000001.zip` to '/…
 #> 
+```
+
+``` r
 unzip(x, list = TRUE)
 #>                                                   Name Length
 #> 1           CSDS_ProvPreExtract__V1_6_6_SAMPLE_XML.xml   7887
