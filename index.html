@@ -72,7 +72,6 @@
 </div>
 <!-- badges: start -->
 
-<!-- badges: end -->
 <p>The goal of trud is to provide a convenient R interface to the <a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/api" class="external-link">NHS TRUD API</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -154,8 +153,9 @@
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/download_item.html">download_item</a></span><span class="op">(</span><span class="fl">394</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ⠙ Downloading archive file for TRUD item 394...</span></span>
 <span><span class="co">#&gt; ✔ Successfully downloaded `CSDS_Provpredextract_1.6.6_20221115000001.zip` to '/…</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">x</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">x</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                                                   Name Length</span></span>
 <span><span class="co">#&gt; 1           CSDS_ProvPreExtract__V1_6_6_SAMPLE_XML.xml   7887</span></span>
 <span><span class="co">#&gt; 2              CSDS_ProvPreExtract__V1_6_6_FinalV1.XSD  75650</span></span>
@@ -207,6 +207,7 @@
 <ul class="list-unstyled">
 <li><a href="https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml" class="external-link"><img src="https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a></li>
 <li><a href="https://app.codecov.io/gh/rmgpanw/trud?branch=main" class="external-link"><img src="https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 
