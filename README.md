@@ -5,19 +5,27 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/trud)](https://CRAN.R-project.org/package=trud)
 [![pkgdown](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rmgpanw/trud?branch=main)
 [![R-CMD-check](https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of trud is to provide a convenient R interface to the [NHS TRUD
-API](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api).
+The goal of `trud` is to provide a convenient R interface to the [NHS
+TRUD API](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api).
 
 ## Installation
 
-You can install the development version of trud from
-[GitHub](https://github.com/) with:
+You can install this package from CRAN:
+
+``` r
+install.packages("trud")
+```
+
+Or you can install the development version of `trud` from
+[GitHub](https://github.com/rmgpanw/trud) with:
 
 ``` r
 # install.packages("devtools")
@@ -107,9 +115,6 @@ x <- download_item(394, directory = tempdir())
 #> ⠙ Downloading archive file for TRUD item 394...
 #> ✔ Successfully downloaded `CSDS_Provpredextract_1.6.6_20221115000001.zip` to '/…
 #> 
-```
-
-``` r
 unzip(x, list = TRUE)
 #>                                                   Name Length
 #> 1           CSDS_ProvPreExtract__V1_6_6_SAMPLE_XML.xml   7887
