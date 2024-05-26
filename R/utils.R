@@ -10,7 +10,7 @@ get_trud_api_key <- function(TRUD_API_KEY, call = rlang::caller_env()) {
     if (!rlang::is_string(TRUD_API_KEY)) {
       cli::cli_abort(
         message = c(
-          "Argument {.code TRUD_API_KEY} must either be a string or {.code NULL}",
+          "x" = "Argument {.code TRUD_API_KEY} must either be a string or {.code NULL}",
           error_guidance_messages
         ),
         call = call
@@ -20,7 +20,7 @@ get_trud_api_key <- function(TRUD_API_KEY, call = rlang::caller_env()) {
 
   TRUD_API_KEY <- Sys.getenv(TRUD_API_KEY)
   if (identical(TRUD_API_KEY, "")) {
-    cli::cli_abort(message = c("Can't find NHS TRUD API key",
+    cli::cli_abort(message = c("x" = "Can't find NHS TRUD API key",
                                error_guidance_messages),
                    call = call)
   }
@@ -63,7 +63,7 @@ trud_error_message <- function(resp) {
 
 validate_arg_item <- function(item, call = rlang::caller_env()) {
   if (!rlang::is_scalar_integerish(item)) {
-    cli::cli_abort(c("Argument {.code item} must be an integer.",
+    cli::cli_abort(c("x" = "Argument {.code item} must be an integer.",
                      "i" = "Use {.code trud_items()} to see available items."),
                    call = call)
   }
@@ -80,7 +80,7 @@ validate_arg_directory <- function(directory, call = rlang::caller_env()) {
     )
 
   if (!rlang::is_string(directory)) {
-    cli::cli_abort(c("Argument {.code directory} must be a string.",
+    cli::cli_abort(c("x" = "Argument {.code directory} must be a string.",
                      directory_arg_example),
                    call = call)
   }
@@ -88,8 +88,8 @@ validate_arg_directory <- function(directory, call = rlang::caller_env()) {
   if (!dir.exists(directory)) {
     cli::cli_abort(
       message = c(
-        "Argument {.code directory} must be a valid file path.",
-        "x" = stringr::str_glue("Directory does not exist: {{.code {directory}}}."),
+        "x" = "Argument {.code directory} must be a valid file path.",
+        "!" = stringr::str_glue("Directory does not exist: {{.code {directory}}}."),
         directory_arg_example
       ),
       call = call
@@ -102,7 +102,7 @@ validate_arg_download_file <- function(download_file, call = rlang::caller_env()
 
   if (!rlang::is_string(download_file)) {
     cli::cli_abort(c(
-      "Argument {.code download_file} must be a string.",
+      "x" = "Argument {.code download_file} must be a string.",
       "i" = paste0(
         "Valid values: '",
         paste(valid_download_file_values, sep = "", collapse = "', '"),
