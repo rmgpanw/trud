@@ -72,6 +72,16 @@ download_item <- function(item,
                                      TRUD_API_KEY = TRUD_API_KEY,
                                      latest_only = latest_only)
 
+  # validate `release`
+  if (!is.null(release)) {
+    if (!release %in% names(item_metadata$releases)) {
+      cli::cli_abort(
+        c("x" = "Unrecognised {.code release} supplied for item {item}.",
+          "i" = "See available releases with {.code get_item_metadata(item = {item}, latest_only = FALSE)}.")
+      )
+    }
+  }
+
   # download file
   file_name <- purrr::pluck(
     item_metadata,
