@@ -4,11 +4,11 @@
 \name{trud-package}
 \alias{trud}
 \alias{trud-package}
-\title{trud: Query the NHS TRUD API}
+\title{trud: Query the 'NHS TRUD API'}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-A convenient R interface to the NHS TRUD API.
+A convenient R interface to the 'National Health Service (NHS) Technology Reference Update Distribution (TRUD) API'. Retrieve available releases for items that you are subscribed to and download these with ease.
 }
 \seealso{
 Useful links:

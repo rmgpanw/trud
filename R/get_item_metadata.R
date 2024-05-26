@@ -20,6 +20,9 @@
 #' get_item_metadata(394, latest_only = FALSE) |>
 #'    purrr::map_at("releases", \(release) purrr::map(release, names))
 #' }
+#'
+#' # An informative error is raised if your API key is invalid or missing
+#' try(download_item(394, TRUD_API_KEY = "INVALID_API_KEY"))
 get_item_metadata <- function(item,
                               TRUD_API_KEY = NULL,
                               latest_only = FALSE) {

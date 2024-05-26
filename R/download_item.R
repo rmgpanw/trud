@@ -36,6 +36,9 @@
 #'
 #'  unzip(y, list = TRUE)
 #' }
+#'
+#' # An informative error is raised if your API key is invalid or missing
+#' try(download_item(394, TRUD_API_KEY = "INVALID_API_KEY"))
 download_item <- function(item,
                           directory = ".",
                           download_file = "archive",
