@@ -1,6 +1,6 @@
 Package: trud
-Title: Query the NHS TRUD API
-Version: 0.0.0.9000
+Title: Query the 'NHS TRUD API'
+Version: 0.1.0
 Authors@R: c(
     person(given = "Alasdair",
            family = "Warwick",
@@ -14,7 +14,9 @@ Authors@R: c(
     person("Chuin Ying", "Ung", role = "aut",
            comment = c(ORCID = "0000-0001-8487-4589"))
     )
-Description: A convenient R interface to the NHS TRUD API.
+Description: A convenient R interface to the 'National Health Service (NHS) 
+    Technology Reference Update Distribution (TRUD) API'. Retrieve available
+    releases for items that you are subscribed to and download these with ease.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
