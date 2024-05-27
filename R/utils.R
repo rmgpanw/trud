@@ -29,18 +29,7 @@ get_trud_api_key <- function(TRUD_API_KEY, call = rlang::caller_env()) {
 }
 
 trud_error_message <- function(resp) {
-  resp <- tryCatch(
-    resp %>%
-      httr2::resp_body_json(),
-    error = function(cnd) {
-      c(
-        "x" = stringr::str_glue(
-          "HTTP Status {httr2::resp_status(resp)}: {httr2::resp_status_desc(resp)}"
-        ),
-        "!" = "Unexpected error. Is the TRUD website down?"
-      )
-    }
-  )
+  resp <- try_resp_body_json(resp)
 
   if (inherits(resp, "character")) {
     return(resp)
@@ -58,6 +47,21 @@ trud_error_message <- function(resp) {
       "x" = resp$message,
       "i" = "Have you changed your NHS TRUD account password? If so, your API key will have also updated"
     )
+  )
+}
+
+try_resp_body_json <- function(resp) {
+  tryCatch(
+    resp %>%
+      httr2::resp_body_json(),
+    error = function(cnd) {
+      c(
+        "x" = stringr::str_glue(
+          "HTTP Status {httr2::resp_status(resp)}: {httr2::resp_status_desc(resp)}"
+        ),
+        "!" = "Unexpected error. Is the TRUD website down?"
+      )
+    }
   )
 }
 
