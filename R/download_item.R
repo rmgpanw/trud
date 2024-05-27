@@ -65,7 +65,6 @@ download_item <- function(item,
 
   if (is.null(release)) {
     latest_only <- TRUE
-    release <- 1
   }
 
   item_metadata <- get_item_metadata(item = item,
@@ -80,6 +79,8 @@ download_item <- function(item,
           "i" = "See available releases with {.code get_item_metadata(item = {item}, latest_only = FALSE)}.")
       )
     }
+  } else {
+    release <- 1
   }
 
   # download file
