@@ -29,6 +29,7 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
+      TRUD_API_KEY: ${{ secrets.TRUD_API_KEY }}
 
     steps:
       - uses: actions/checkout@v4
