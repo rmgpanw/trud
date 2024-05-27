@@ -1,0 +1,29 @@
+{
+    "apiVersion": "1",
+    "releases": [
+        {
+            "id": "CSDS_Provpredextract_1.6.6_20221115000001.zip",
+            "name": "CSDS v1.6 pre-deadline extract XML Schema release 1.6.6",
+            "releaseDate": "2022-11-21",
+            "archiveFileUrl": "https://isd.digital.nhs.uk/download/api/v1/keys/8a8b4c7d953684d0e492d409f31b3496eeefa55a/content/items/394/CSDS_Provpredextract_1.6.6_20221115000001.zip",
+            "archiveFileName": "CSDS_Provpredextract_1.6.6_20221115000001.zip",
+            "archiveFileSizeBytes": 35156,
+            "archiveFileSha256": "6004AFA0D230DE47AEEAC14787C86A3742147A334A4DC14E9E4FBE664C3344EF",
+            "archiveFileLastModifiedTimestamp": "2022-11-21T09:55:45.000Z",
+            "checksumFileUrl": "https://isd.digital.nhs.uk/download/api/v1/keys/8a8b4c7d953684d0e492d409f31b3496eeefa55a/content/items/394/trud_CSDS_Provpredextract_1.6.6_20221115000001.xml",
+            "checksumFileName": "trud_CSDS_Provpredextract_1.6.6_20221115000001.xml",
+            "checksumFileSizeBytes": 186,
+            "checksumFileLastModifiedTimestamp": "2022-11-21T09:59:45.000Z",
+            "signatureFileUrl": "https://isd.digital.nhs.uk/download/api/v1/keys/8a8b4c7d953684d0e492d409f31b3496eeefa55a/content/items/394/trud_CSDS_Provpredextract_1.6.6_20221115000001.xml.asc",
+            "signatureFileName": "trud_CSDS_Provpredextract_1.6.6_20221115000001.sig",
+            "signatureFileSizeBytes": 488,
+            "signatureFileLastModifiedTimestamp": "2022-11-21T09:59:45.000Z",
+            "publicKeyFileUrl": "https://isd.digital.nhs.uk/download/api/v1/keys/8a8b4c7d953684d0e492d409f31b3496eeefa55a/content/public-keys/trud-public-key-2013-04-01.pgp",
+            "publicKeyFileName": "trud-public-key-2013-04-01.pgp",
+            "publicKeyFileSizeBytes": 1736,
+            "publicKeyId": 6
+        }
+    ],
+    "httpStatus": 200,
+    "message": "OK"
+}

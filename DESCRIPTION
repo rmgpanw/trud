@@ -36,6 +36,9 @@ URL: https://rmgpanw.github.io/trud/,
     https://github.com/rmgpanw/trud
 BugReports: https://github.com/rmgpanw/trud/issues
 Suggests: 
+    httptest2,
     testthat (>= 3.0.0),
     withr
 Config/testthat/edition: 3
+Depends: 
+    R (>= 2.10)
