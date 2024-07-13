@@ -5,14 +5,17 @@
 #' page](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1)
 #' from the NHS TRUD website for all available items.
 #'
+#' @param subscriptions Search and list current subscriptions only
+#'
 #' @return A tibble, with columns `item_number` and `item_name`.
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #'  trud_items()
+#'  trud_items(substriptions=TRUE)
 #' }
-trud_items <- function() {
+trud_items <- function(subscriptions=FALSE) {
 
   # Read web page
   page <-
@@ -39,10 +42,17 @@ trud_items <- function() {
                        item_number = as.integer(items_number))
 
   # Filter for items
-  df %>%
+  items_list <- df %>%
     dplyr::filter(stringr::str_detect(.data[["item_link"]],
                                       "trud/users/guest/filters/0/categories/1/items")) %>%
     dplyr::filter(!.data[["item_name"]] %in% c("Releases", "Licences", "Future releases")) %>%
     dplyr::select(tidyselect::all_of(c("item_number", "item_name")))
-
+      
+  if(subscriptions) {
+       items_list |> 
+       dplyr::mutate("subscribed" = purrr::map(item_number, \(item_number) tryCatch(get_item_metadata(item_number)[[1]], error = function(cnd) NA)), subscribed=as.numeric(subscribed)) |> 
+       dplyr::filter(!is.na(subscribed))
+  } else {
+      items_list
+  }
 }
