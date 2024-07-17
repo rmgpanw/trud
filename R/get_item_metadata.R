@@ -31,9 +31,7 @@ get_item_metadata <- function(item,
 
   validate_arg_item(item = item)
 
-  if (!rlang::is_logical(latest_only)) {
-    cli::cli_abort(c("Argument {.code latest_only} must be either {.code TRUE} or {.code FALSE}."))
-  }
+  validate_arg_latest_only(latest_only)
 
   # Construct the URL with the API key and the item number
   url <-
@@ -60,4 +58,12 @@ get_item_metadata <- function(item,
   names(result$releases) <- purrr::map_chr(result$releases, \(x) x$id)
 
   return(result)
+}
+
+validate_arg_latest_only <- function(latest_only) {
+  if (!rlang::is_logical(latest_only)) {
+    cli::cli_abort(c(
+      "Argument {.code latest_only} must be either {.code TRUE} or {.code FALSE}."
+    ))
+  }
 }
