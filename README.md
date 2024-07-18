@@ -50,20 +50,20 @@ Retrieve available endpoints[^1]:
 library(trud)
 
 trud_items()
-#> # A tibble: 70 × 2
-#>    item_number item_name                                                   
-#>          <int> <chr>                                                       
-#>  1         246 Cancer Outcomes and Services Data Set XML Schema            
-#>  2         245 Commissioning Data Set XML Schema                           
-#>  3         599 Community Services Data Set Intermediate Database           
-#>  4         393 Community Services Data Set post-deadline extract XML Schema
-#>  5         394 Community Services Data Set pre-deadline extract XML Schema 
-#>  6         391 Community Services Data Set XML Schema                      
-#>  7         248 Diagnostic Imaging Data Set XML Schema                      
-#>  8         239 dm+d XML transformation tool                                
-#>  9        1819 Emergency Care Data Set XML Schema                          
-#> 10         263 eViewer application                                         
-#> # ℹ 60 more rows
+#> # A tibble: 71 × 2
+#>    item_number item_name                                                        
+#>          <int> <chr>                                                            
+#>  1         246 Cancer Outcomes and Services Data Set XML Schema                 
+#>  2         245 Commissioning Data Set XML Schema                                
+#>  3         599 Community Services Data Set Intermediate Database                
+#>  4         393 Community Services Data Set post-deadline extract XML Schema     
+#>  5         394 Community Services Data Set pre-deadline extract XML Schema      
+#>  6         391 Community Services Data Set XML Schema                           
+#>  7         248 Diagnostic Imaging Data Set XML Schema                           
+#>  8         239 dm+d XML transformation tool                                     
+#>  9        1859 Electronic Prescribing and Medicines Administration Data Sets XM…
+#> 10        1819 Emergency Care Data Set XML Schema                               
+#> # ℹ 61 more rows
 ```
 
 Get metadata for an item:
@@ -105,6 +105,32 @@ get_item_metadata(394) |>
 #> 
 #> $message
 #> [1] "OK"
+```
+
+Get metadata for all subscribed items:
+
+``` r
+get_subscribed_metadata()
+#>  ■■■■■■■■■■■■■■■■                  49% |  ETA:  2s
+#> # A tibble: 16 × 3
+#>    item_number item_name                                            metadata    
+#>          <int> <chr>                                                <list>      
+#>  1         394 Community Services Data Set pre-deadline extract XM… <named list>
+#>  2         239 dm+d XML transformation tool                         <named list>
+#>  3         263 eViewer application                                  <named list>
+#>  4         398 Global Trade Item Number to OPCS-4 code cross refer… <named list>
+#>  5        1760 NHS Continuing Health Care (CHC) Data Set - JSON Sc… <named list>
+#>  6         719 NHS Continuing Health Care (CHC) Data Set - XML Sch… <named list>
+#>  7           9 NHS Data Migration                                   <named list>
+#>  8         258 NHS ICD-10 5th Edition data files                    <named list>
+#>  9           8 NHS Read Browser                                     <named list>
+#> 10          19 NHS UK Read Codes Clinical Terms Version 3           <named list>
+#> 11         255 NHS UK Read Codes Clinical Terms Version 3, Cross M… <named list>
+#> 12          24 NHSBSA dm+d                                          <named list>
+#> 13         264 OPCS-4 eVersion book                                 <named list>
+#> 14         101 SNOMED CT UK Clinical Edition, RF2: Full, Snapshot … <named list>
+#> 15          98 SNOMED CT UK Data Migration Workbench                <named list>
+#> 16        1799 SNOMED CT UK Monolith Edition, RF2: Snapshot         <named list>
 ```
 
 Download an item:

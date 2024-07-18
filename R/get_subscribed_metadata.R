@@ -16,7 +16,7 @@
 get_subscribed_metadata <- function(TRUD_API_KEY = NULL,
                                     latest_only = FALSE) {
   # validate args
-  TRUD_API_KEY <- get_trud_api_key(TRUD_API_KEY)
+  get_trud_api_key(TRUD_API_KEY)
 
   validate_arg_latest_only(latest_only)
 
@@ -26,12 +26,13 @@ get_subscribed_metadata <- function(TRUD_API_KEY = NULL,
   all_items %>%
     dplyr::mutate("metadata" = purrr::map(.data[["item_number"]], \(item_number) tryCatch(
       get_item_metadata(
-        item_number,
+        item = item_number,
         TRUD_API_KEY = TRUD_API_KEY,
         latest_only = latest_only
       ),
-      error = function(cnd)
+      httr2_http_404 = function(cnd) {
         NA
+      }
     ), .progress = TRUE)) |>
     dplyr::filter(!is.na(.data[["metadata"]]))
 }
