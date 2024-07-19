@@ -1,5 +1,6 @@
 test_that("Error raised with invalid `latest_only` arg value for `get_item_metadata()`",
           {
+            skip_if_offline()
             expect_error(
               get_item_metadata(394, latest_only = "TRUE"),
               "Argument `latest_only` must be either `TRUE` or `FALSE`"
