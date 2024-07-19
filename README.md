@@ -5,8 +5,6 @@
 
 <!-- badges: start -->
 
-[![CRAN
-status](https://www.r-pkg.org/badges/version/trud)](https://CRAN.R-project.org/package=trud)
 [![pkgdown](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rmgpanw/trud?branch=main)
@@ -111,7 +109,7 @@ Get metadata for all subscribed items:
 
 ``` r
 get_subscribed_metadata()
-#>  ■■■■■■■■■■■■■■■■                  49% |  ETA:  2s
+#>  ■■■■■■■■■■■■                      37% |  ETA:  3s
 #> # A tibble: 16 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      
