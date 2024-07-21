@@ -17,6 +17,7 @@ Authors@R: c(
 Description: A convenient R interface to the 'National Health Service (NHS) 
     Technology Reference Update Distribution (TRUD) API'. Retrieve available
     releases for items that you are subscribed to and download these with ease.
+    For more information on the API, see <https://isd.digital.nhs.uk/trud/users/guest/filters/0/api>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

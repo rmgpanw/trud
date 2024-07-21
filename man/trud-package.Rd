@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-A convenient R interface to the 'National Health Service (NHS) Technology Reference Update Distribution (TRUD) API'. Retrieve available releases for items that you are subscribed to and download these with ease.
+A convenient R interface to the 'National Health Service (NHS) Technology Reference Update Distribution (TRUD) API'. Retrieve available releases for items that you are subscribed to and download these with ease. For more information on the API, see \url{https://isd.digital.nhs.uk/trud/users/guest/filters/0/api}.
 }
 \seealso{
 Useful links:
