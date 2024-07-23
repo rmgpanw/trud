@@ -30,7 +30,7 @@ retrieving metadata for only items that the user is subscribed to."><meta proper
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get metadata for subscribed NHS TRUD items</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rmgpanw/trud/blob/main/R/get_subscribed_metadata.R" class="external-link"><code>R/get_subscribed_metadata.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rmgpanw/trud/blob/v0.1.0/R/get_subscribed_metadata.R" class="external-link"><code>R/get_subscribed_metadata.R</code></a></small>
       <div class="d-none name"><code>get_subscribed_metadata.Rd</code></div>
     </div>
 
@@ -72,9 +72,10 @@ release will be retrieved. By default this is set to <code>FALSE</code>.</p></dd
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="fu">get_subscribed_metadata</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■                       </span>  27% |  ETA:  7s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■             </span>  59% |  ETA:  4s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■    </span>  92% |  ETA:  1s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■                            </span>  11% |  ETA: 11s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■                    </span>  35% |  ETA:  8s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■             </span>  59% |  ETA:  5s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■      </span>  82% |  ETA:  2s</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    item_number item_name                                            metadata    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span>
