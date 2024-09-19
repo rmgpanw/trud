@@ -11,6 +11,7 @@ coverage](https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg)](https
 [![R-CMD-check](https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/trud)](https://CRAN.R-project.org/package=trud)
+[![](https://cranlogs.r-pkg.org/badges/last-month/trud)](https://cran.r-project.org/package=trud)
 <!-- badges: end -->
 
 The goal of `trud` is to provide a convenient R interface to the [NHS
@@ -111,8 +112,7 @@ Get metadata for all subscribed items:
 
 ``` r
 get_subscribed_metadata()
-#>  ■■■■■■■■■■                        31% |  ETA:  4s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  0s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  1s
 #> # A tibble: 16 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      
