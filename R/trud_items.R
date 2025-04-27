@@ -42,5 +42,5 @@ trud_items <- function() {
   df |>
     dplyr::filter(stringr::str_detect(.data[["item_link"]], "trud/users/guest/filters/0/categories/1/items")) |>
     dplyr::filter(!.data[["item_name"]] %in% c("Releases", "Licences", "Future releases")) |>
-    dplyr::select(tidyselect::all_of(c("item_number", "item_name")))
+    dplyr::select(dplyr::all_of(c("item_number", "item_name")))
 }

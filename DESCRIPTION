@@ -31,8 +31,7 @@ Imports:
     rlang,
     rvest,
     stringr,
-    tibble,
-    tidyselect
+    tibble
 URL: https://rmgpanw.github.io/trud/,
     https://github.com/rmgpanw/trud
 BugReports: https://github.com/rmgpanw/trud/issues
