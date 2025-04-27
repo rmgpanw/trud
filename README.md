@@ -16,16 +16,17 @@ status](https://www.r-pkg.org/badges/version/trud)](https://CRAN.R-project.org/p
 Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
-The goal of `trud` is to provide a convenient R interface to the [NHS
-TRUD API](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api).
+The goal of `trud` is to provide a convenient R interface to the
+[National Health Service (NHS) England Technology Reference data Update
+Distribution
+(TRUD)](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api).
 
-The National Health Service (NHS) England Technology Reference data
-Update Distribution (TRUD) service provides essential reference files
-that underpin a wide range of electronic health record (EHR) research,
-both in the UK and internationally. These files include clinical coding
-systems such as ICD, Read codes, prescription codes, and the SNOMED CT
-ontology, with regular updates to reflect new knowledge and changes in
-clinical practice. NHS TRUD content supports key areas like disease
+The NHS TRUD service provides essential reference files that underpin a
+wide range of electronic health record (EHR) areas, both in the UK and
+internationally. These files include clinical coding systems such as
+ICD, Read codes, prescription codes, and the SNOMED CT ontology, with
+regular updates to reflect new knowledge and changes in clinical
+practice. NHS TRUD content supports key research areas like disease
 phenotyping, cohort selection, epidemiology, health services research,
 and the development of risk prediction models.
 
@@ -54,126 +55,15 @@ Or you can install the development version of `trud` from
 pak::pak("rmgpanw/trud")
 ```
 
-You will also need to:
+You will also need to [sign up for a free
+account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form)
+with NHS TRUD
 
-- [Sign up for an
-  account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form)
-  with NHS TRUD
-- Set your API key (shown on your account information page) as an
-  environmental variable named `TRUD_API_KEY`. The best way to do this
-  is by placing your API key in a [`.Renviron`
-  file](https://rstats.wtf/r-startup.html#renviron).
+## Available functionality
 
-## Examples
-
-Retrieve available endpoints[^1]:
-
-``` r
-library(trud)
-
-trud_items()
-#> # A tibble: 73 × 2
-#>    item_number item_name                                                        
-#>          <int> <chr>                                                            
-#>  1         246 Cancer Outcomes and Services Data Set XML Schema                 
-#>  2         245 Commissioning Data Set XML Schema                                
-#>  3         599 Community Services Data Set Intermediate Database                
-#>  4         393 Community Services Data Set post-deadline extract XML Schema     
-#>  5         394 Community Services Data Set pre-deadline extract XML Schema      
-#>  6         391 Community Services Data Set XML Schema                           
-#>  7         248 Diagnostic Imaging Data Set XML Schema                           
-#>  8         239 dm+d XML transformation tool                                     
-#>  9        1859 Electronic Prescribing and Medicines Administration Data Sets XM…
-#> 10        1819 Emergency Care Data Set XML Schema                               
-#> # ℹ 63 more rows
-```
-
-Get metadata for an item:
-
-``` r
-get_item_metadata(394) |>
-  purrr::map_at("releases", \(release) purrr::map(release, names))
-#> $apiVersion
-#> [1] "1"
-#> 
-#> $releases
-#> $releases$CSDS_Provpredextract_1.6.6_20221115000001.zip
-#>  [1] "id"                                 "name"                              
-#>  [3] "releaseDate"                        "archiveFileUrl"                    
-#>  [5] "archiveFileName"                    "archiveFileSizeBytes"              
-#>  [7] "archiveFileSha256"                  "archiveFileLastModifiedTimestamp"  
-#>  [9] "checksumFileUrl"                    "checksumFileName"                  
-#> [11] "checksumFileSizeBytes"              "checksumFileLastModifiedTimestamp" 
-#> [13] "signatureFileUrl"                   "signatureFileName"                 
-#> [15] "signatureFileSizeBytes"             "signatureFileLastModifiedTimestamp"
-#> [17] "publicKeyFileUrl"                   "publicKeyFileName"                 
-#> [19] "publicKeyFileSizeBytes"             "publicKeyId"                       
-#> 
-#> $releases$DMDSSCHEMAS_1.5.21_20200805000001
-#>  [1] "id"                                 "name"                              
-#>  [3] "releaseDate"                        "archiveFileUrl"                    
-#>  [5] "archiveFileName"                    "archiveFileSizeBytes"              
-#>  [7] "archiveFileSha256"                  "archiveFileLastModifiedTimestamp"  
-#>  [9] "checksumFileUrl"                    "checksumFileName"                  
-#> [11] "checksumFileSizeBytes"              "checksumFileLastModifiedTimestamp" 
-#> [13] "signatureFileUrl"                   "signatureFileName"                 
-#> [15] "signatureFileSizeBytes"             "signatureFileLastModifiedTimestamp"
-#> [17] "publicKeyFileUrl"                   "publicKeyFileName"                 
-#> [19] "publicKeyFileSizeBytes"             "publicKeyId"                       
-#> 
-#> 
-#> $httpStatus
-#> [1] 200
-#> 
-#> $message
-#> [1] "OK"
-```
-
-Get metadata for all subscribed items:
-
-``` r
-get_subscribed_metadata()
-#>  ■■■■■■■■■■■■■                     41% |  ETA:  2s
-#> # A tibble: 17 × 3
-#>    item_number item_name                                            metadata    
-#>          <int> <chr>                                                <list>      
-#>  1         394 Community Services Data Set pre-deadline extract XM… <named list>
-#>  2         239 dm+d XML transformation tool                         <named list>
-#>  3         263 eViewer application                                  <named list>
-#>  4         398 Global Trade Item Number to OPCS-4 code cross refer… <named list>
-#>  5        1760 NHS Continuing Health Care (CHC) Data Set - JSON Sc… <named list>
-#>  6         719 NHS Continuing Health Care (CHC) Data Set - XML Sch… <named list>
-#>  7           9 NHS Data Migration                                   <named list>
-#>  8         258 NHS ICD-10 5th Edition data files                    <named list>
-#>  9           8 NHS Read Browser                                     <named list>
-#> 10          19 NHS UK Read Codes Clinical Terms Version 3           <named list>
-#> 11         255 NHS UK Read Codes Clinical Terms Version 3, Cross M… <named list>
-#> 12          24 NHSBSA dm+d                                          <named list>
-#> 13         264 OPCS-4 eVersion book                                 <named list>
-#> 14         659 Primary Care Domain reference sets                   <named list>
-#> 15         101 SNOMED CT UK Clinical Edition, RF2: Full, Snapshot … <named list>
-#> 16          98 SNOMED CT UK Data Migration Workbench                <named list>
-#> 17        1799 SNOMED CT UK Monolith Edition, RF2: Snapshot         <named list>
-```
-
-Download an item:
-
-``` r
-# by default the latest release will be downloaded to the current working directory
-x <- download_item(394, directory = tempdir())
-#> ⠙ Downloading archive file for TRUD item 394...
-#> ✔ Successfully downloaded `CSDS_Provpredextract_1.6.6_20221115000001.zip` to '/…
-#> 
-unzip(x, list = TRUE)
-#>                                                   Name Length
-#> 1           CSDS_ProvPreExtract__V1_6_6_SAMPLE_XML.xml   7887
-#> 2              CSDS_ProvPreExtract__V1_6_6_FinalV1.XSD  75650
-#> 3 CSDS ProvPreDExtract v1.6.6 Production Log v0.1.xlsx  32216
-#>                  Date
-#> 1 2022-11-15 12:48:00
-#> 2 2022-10-31 11:36:00
-#> 3 2022-11-15 11:57:00
-```
+The main functions provided by trud are `get_item_metadata()` and
+`download_item()`. Please see `vignette("trud")` for further information
+and getting started.
 
 ## Citing trud
 
@@ -190,11 +80,3 @@ guidelines](https://rmgpanw.github.io/trud/CONTRIBUTING.html).
 Please note that this package is released with a [Contributor Code of
 Conduct](https://rmgpanw.github.io/trud/CODE_OF_CONDUCT.html). By
 contributing to this project, you agree to abide by its terms.
-
-[^1]: Item numbers can also be found in the URLs of releases pages,
-    between `items` and `releases`. For example, the URL for the
-    [Community Services Data Set pre-deadline extract XML
-    Schema](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases)
-    releases page is
-    `https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases`
-    and the item number is `394`.

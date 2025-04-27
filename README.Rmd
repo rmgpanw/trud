@@ -23,9 +23,9 @@ knitr::opts_chunk$set(
 [![Repo Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
-The goal of `trud` is to provide a convenient R interface to the [NHS TRUD API](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api).
+The goal of `trud` is to provide a convenient R interface to the [National Health Service (NHS) England Technology Reference data Update Distribution (TRUD)](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api).
 
-The National Health Service (NHS) England Technology Reference data Update Distribution (TRUD) service provides essential reference files that underpin a wide range of electronic health record (EHR) research, both in the UK and internationally. These files include clinical coding systems such as ICD, Read codes, prescription codes, and the SNOMED CT ontology, with regular updates to reflect new knowledge and changes in clinical practice. NHS TRUD content supports key areas like disease phenotyping, cohort selection, epidemiology, health services research, and the development of risk prediction models.
+The NHS TRUD service provides essential reference files that underpin a wide range of electronic health record (EHR) areas, both in the UK and internationally. These files include clinical coding systems such as ICD, Read codes, prescription codes, and the SNOMED CT ontology, with regular updates to reflect new knowledge and changes in clinical practice. NHS TRUD content supports key research areas like disease phenotyping, cohort selection, epidemiology, health services research, and the development of risk prediction models.
 
 trud enables seamless, programmatic retrieval and updating of NHS TRUD release items, removing the need for manual downloads and reducing the risk of errors or version drift. This helps researchers maintain reproducible, up-to-date analyses — whether as part of ad-hoc studies or automated pipelines.
 
@@ -46,43 +46,11 @@ Or you can install the development version  of `trud` from [GitHub](https://gith
 pak::pak("rmgpanw/trud")
 ```
 
-You will also need to:
+You will also need to [sign up for a free account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form) with NHS TRUD
 
--   [Sign up for an account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form) with NHS TRUD
--   Set your API key (shown on your account information page) as an environmental variable named `TRUD_API_KEY`. The best way to do this is by placing your API key in a [`.Renviron` file](https://rstats.wtf/r-startup.html#renviron).
+## Available functionality
 
-## Examples
-
-Retrieve available endpoints[^1]:
-
-[^1]: Item numbers can also be found in the URLs of releases pages, between `items` and `releases`. For example, the URL for the [Community Services Data Set pre-deadline extract XML Schema](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases) releases page is `https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases` and the item number is `394`.
-
-```{r trud-items}
-library(trud)
-
-trud_items()
-```
-
-Get metadata for an item:
-
-```{r get-item-metadata}
-get_item_metadata(394) |>
-  purrr::map_at("releases", \(release) purrr::map(release, names))
-```
-
-Get metadata for all subscribed items:
-
-```{r get-subscribed_metadata}
-get_subscribed_metadata()
-```
-
-Download an item:
-
-```{r download-item}
-# by default the latest release will be downloaded to the current working directory
-x <- download_item(394, directory = tempdir())
-unzip(x, list = TRUE)
-```
+The main functions provided by trud are `get_item_metadata()` and `download_item()`. Please see `vignette("trud")` for further information and getting started.
 
 ## Citing trud
 

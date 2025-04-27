@@ -1,0 +1,62 @@
+---
+title: "trud"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{trud}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = Sys.getenv("IN_PKGDOWN") == "true"
+)
+```
+
+```{r setup}
+library(trud)
+```
+
+The [National Health Service (NHS) England Technology Reference data Update Distribution (TRUD)](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api) enables programmatic access to retrieve metadata for and download NHS TRUD release items. The trud package wraps this API, facilitating programmatic retrieval and updating of NHS TRUD resources:
+
+Having installed trud, you will also need to:
+
+-   [Sign up for a free account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form) with NHS TRUD
+-   Set your API key (shown on your account information page) as an environmental variable named `TRUD_API_KEY`. The best way to do this is by placing your API key in a [`.Renviron` file](https://rstats.wtf/r-startup.html#renviron). For example, create or edit your project `.Renviron` file with `usethis::edit_r_environ()`, then populate as follows (replacing `e963cc518cc41500e1a8940a93ffc3c0915e2983` with your own API key):
+
+```
+TRUD_API_KEY=e963cc518cc41500e1a8940a93ffc3c0915e2983
+```
+
+## Examples
+
+### Retrieve available item endpoints
+
+```{r trud-items}
+trud_items()
+```
+
+> Note that item numbers can also be found in the URLs of releases pages, between `items` and `releases`. For example, the URL for the [Community Services Data Set pre-deadline extract XML Schema](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases) releases page is `https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases` and the item number is `394`.
+
+### Get metadata for an item
+
+```{r get-item-metadata}
+get_item_metadata(394) |>
+  purrr::map_at("releases", \(release) purrr::map(release, names))
+```
+
+### Get metadata for all subscribed items
+
+```{r get-subscribed_metadata}
+get_subscribed_metadata()
+```
+
+### Download an item
+
+```{r download-item}
+# by default the latest release will be downloaded to the current working directory
+x <- download_item(394, directory = tempdir())
+unzip(x, list = TRUE)
+```
