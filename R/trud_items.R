@@ -4,13 +4,11 @@
 #' page](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1)
 #' from the NHS TRUD website for all available items.
 #'
-#' @return A tibble, with columns `item_number` and `item_name`.
+#' @returns A tibble, with columns `item_number` and `item_name`.
 #' @export
 #'
-#' @examples
-#' \dontrun{
-#'  trud_items()
-#' }
+#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
+#' trud_items()
 trud_items <- function() {
   # Read web page
   page <-

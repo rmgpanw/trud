@@ -14,7 +14,7 @@ Scrapes \href{https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1
 from the NHS TRUD website for all available items.
 }
 \examples{
-\dontrun{
- trud_items()
-}
+\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+trud_items()
+\dontshow{\}) # examplesIf}
 }

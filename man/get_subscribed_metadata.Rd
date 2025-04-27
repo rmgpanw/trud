@@ -22,9 +22,9 @@ A convenience wrapper around \code{\link[=trud_items]{trud_items()}} and \code{\
 retrieving metadata for only items that the user is subscribed to.
 }
 \examples{
-\dontrun{
+\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 get_subscribed_metadata()
-}
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=trud_items]{trud_items()}}, \code{\link[=get_item_metadata]{get_item_metadata()}}

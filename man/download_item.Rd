@@ -42,21 +42,20 @@ Downloads files for a specified NHS TRUD item (requires a subscription). By
 default this is the latest release.
 }
 \examples{
-\dontrun{
- # Download Community Services Data Set pre-deadline extract XML Schema
- x <- download_item(394, directory = tempdir())
+\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Download Community Services Data Set pre-deadline extract XML Schema
+x <- download_item(394, directory = tempdir())
 
- # List downloaded files
- unzip(x, list = TRUE)
+# List downloaded files
+unzip(x, list = TRUE)
 
- # Download a previous release
- release <- get_item_metadata(394)$releases[[2]]$id
+# Download a previous release
+release <- get_item_metadata(394)$releases[[2]]$id
 
- y <- download_item(394, directory = tempdir(), release = release)
+y <- download_item(394, directory = tempdir(), release = release)
 
- unzip(y, list = TRUE)
-}
-
+unzip(y, list = TRUE)
+\dontshow{\}) # examplesIf}
 # An informative error is raised if your API key is invalid or missing
 try(download_item(394, TRUD_API_KEY = "INVALID_API_KEY"))
 }

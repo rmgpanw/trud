@@ -24,16 +24,15 @@ Sends a request to the release list endpoint, returning a list of metadata
 pertaining to the specified NHS TRUD item.
 }
 \examples{
-\dontrun{
- # Get metadata for Community Services Data Set pre-deadline extract XML Schema
- get_item_metadata(394) |>
-   purrr::map_at("releases", \(release) purrr::map(release, names))
+\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Get metadata for Community Services Data Set pre-deadline extract XML Schema
+get_item_metadata(394) |>
+  purrr::map_at("releases", \(release) purrr::map(release, names))
 
 # Include metadata for any previous releases using `latest_only = FALSE`
 get_item_metadata(394, latest_only = FALSE) |>
-   purrr::map_at("releases", \(release) purrr::map(release, names))
-}
-
+  purrr::map_at("releases", \(release) purrr::map(release, names))
+\dontshow{\}) # examplesIf}
 # An informative error is raised if your API key is invalid or missing
 try(download_item(394, TRUD_API_KEY = "INVALID_API_KEY"))
 }

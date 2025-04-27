@@ -18,25 +18,24 @@
 #'   be ascertained using [get_item_metadata()]). If `NULL` (default), then the
 #'   latest item release will be downloaded.
 #'
-#' @return The file path to the downloaded file, returned invisibly.
+#' @returns The file path to the downloaded file, returned invisibly.
 #' @export
 #'
+#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
+#' # Download Community Services Data Set pre-deadline extract XML Schema
+#' x <- download_item(394, directory = tempdir())
+#'
+#' # List downloaded files
+#' unzip(x, list = TRUE)
+#'
+#' # Download a previous release
+#' release <- get_item_metadata(394)$releases[[2]]$id
+#'
+#' y <- download_item(394, directory = tempdir(), release = release)
+#'
+#' unzip(y, list = TRUE)
+#'
 #' @examples
-#' \dontrun{
-#'  # Download Community Services Data Set pre-deadline extract XML Schema
-#'  x <- download_item(394, directory = tempdir())
-#'
-#'  # List downloaded files
-#'  unzip(x, list = TRUE)
-#'
-#'  # Download a previous release
-#'  release <- get_item_metadata(394)$releases[[2]]$id
-#'
-#'  y <- download_item(394, directory = tempdir(), release = release)
-#'
-#'  unzip(y, list = TRUE)
-#' }
-#'
 #' # An informative error is raised if your API key is invalid or missing
 #' try(download_item(394, TRUD_API_KEY = "INVALID_API_KEY"))
 download_item <- function(item,

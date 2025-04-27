@@ -5,14 +5,12 @@
 #'
 #' @inheritParams get_item_metadata
 #'
-#' @return A tibble, with item metadata stored in the list column `metadata`.
+#' @returns A tibble, with item metadata stored in the list column `metadata`.
 #' @export
 #' @seealso  [trud_items()], [get_item_metadata()]
 #'
-#' @examples
-#' \dontrun{
+#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #' get_subscribed_metadata()
-#' }
 get_subscribed_metadata <- function(TRUD_API_KEY = NULL,
                                     latest_only = FALSE) {
   # validate args
