@@ -50,8 +50,8 @@ Or you can install the development version of `trud` from
 [GitHub](https://github.com/rmgpanw/trud) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("rmgpanw/trud")
+# install.packages("pak")
+pak::pak("rmgpanw/trud")
 ```
 
 You will also need to:
@@ -133,7 +133,7 @@ Get metadata for all subscribed items:
 
 ``` r
 get_subscribed_metadata()
-#>  ■■■■■■■■■■■■■■                    42% |  ETA:  3s
+#>  ■■■■■■■■■■■■■                     41% |  ETA:  2s
 #> # A tibble: 17 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      
@@ -174,6 +174,22 @@ unzip(x, list = TRUE)
 #> 2 2022-10-31 11:36:00
 #> 3 2022-11-15 11:57:00
 ```
+
+## Citing trud
+
+If you find trud useful, please consider citing it. Citation details are
+available [here](https://rmgpanw.github.io/trud/authors.html#citation).
+
+## Community guidelines
+
+Feedback, bug reports, and feature requests are welcome; file issues or
+seek support [here](https://github.com/rmgpanw/trud/issues). If you
+would like to contribute to the package, please see our [contributing
+guidelines](https://rmgpanw.github.io/trud/CONTRIBUTING.html).
+
+Please note that this package is released with a [Contributor Code of
+Conduct](https://rmgpanw.github.io/trud/CODE_OF_CONDUCT.html). By
+contributing to this project, you agree to abide by its terms.
 
 [^1]: Item numbers can also be found in the URLs of releases pages,
     between `items` and `releases`. For example, the URL for the

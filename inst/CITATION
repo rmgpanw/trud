@@ -1,0 +1,22 @@
+citHeader("To cite gtexr in publications use:")
+
+bibentry(
+  key = "trud",
+  bibtype  = "Manual",
+  title    = "Query the NHS TRUD API",
+  author = c(
+    person(given = "Alasdair",
+           family = "Warwick",
+           role = c("aut", "cre", "cph"),
+           email = "alasdair.warwick.19@ucl.ac.uk",
+           comment = c(ORCID = "0000-0002-0800-2890")),
+    person("Robert", "Luben", role = "aut",
+           comment = c(ORCID = "0000-0002-5088-6343")),
+    person("Abraham", "Olvera-Barrios", role = "aut",
+           comment = c(ORCID = "0000-0002-3305-4465")),
+    person("Chuin Ying", "Ung", role = "aut",
+           comment = c(ORCID = "0000-0001-8487-4589"))
+    ),
+  year     = "2024",
+  url      = "https://github.com/rmgpanw/trud/"
+)

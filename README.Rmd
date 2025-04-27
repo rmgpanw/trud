@@ -42,8 +42,8 @@ install.packages("trud")
 Or you can install the development version  of `trud` from [GitHub](https://github.com/rmgpanw/trud) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("rmgpanw/trud")
+# install.packages("pak")
+pak::pak("rmgpanw/trud")
 ```
 
 You will also need to:
@@ -83,3 +83,13 @@ Download an item:
 x <- download_item(394, directory = tempdir())
 unzip(x, list = TRUE)
 ```
+
+## Citing trud
+
+If you find trud useful, please consider citing it. Citation details are available [here](https://rmgpanw.github.io/trud/authors.html#citation).
+
+## Community guidelines
+
+Feedback, bug reports, and feature requests are welcome; file issues or seek support [here](https://github.com/rmgpanw/trud/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://rmgpanw.github.io/trud/CONTRIBUTING.html).
+  
+Please note that this package is released with a [Contributor Code of Conduct](https://rmgpanw.github.io/trud/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
