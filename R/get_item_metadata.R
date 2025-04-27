@@ -48,10 +48,10 @@ get_item_metadata <- function(item,
   }
 
   # Make a GET request and parse the JSON response
-  result <- httr2::request(url) %>%
-    httr2::req_error(body = trud_error_message) %>%
-    req_user_agent_trud() %>%
-    httr2::req_perform() %>%
+  result <- httr2::request(url) |>
+    httr2::req_error(body = trud_error_message) |>
+    req_user_agent_trud() |>
+    httr2::req_perform() |>
     httr2::resp_body_json()
 
   # name list of releases, using release ids

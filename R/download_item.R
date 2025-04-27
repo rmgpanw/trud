@@ -113,8 +113,8 @@ download_item <- function(item,
                          msg_done = "Successfully downloaded {.code {file_name}} to {.path {file_path}}.",
                          spinner = TRUE)
 
-  resp <- httr2::request(url) %>%
-    req_user_agent_trud() %>%
+  resp <- httr2::request(url) |>
+    req_user_agent_trud() |>
     httr2::req_perform(path = file_path)
 
   # return path to downloaded file invisibly

@@ -23,7 +23,7 @@ get_subscribed_metadata <- function(TRUD_API_KEY = NULL,
   # get metadata for subscribed items
   all_items <- trud_items()
 
-  all_items %>%
+  all_items |>
     dplyr::mutate("metadata" = purrr::map(.data[["item_number"]], \(item_number) tryCatch(
       get_item_metadata(
         item = item_number,

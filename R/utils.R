@@ -52,7 +52,7 @@ trud_error_message <- function(resp) {
 
 try_resp_body_json <- function(resp) {
   tryCatch(
-    resp %>%
+    resp |>
       httr2::resp_body_json(),
     error = function(cnd) {
       c(
@@ -122,6 +122,6 @@ validate_arg_download_file <- function(download_file, call = rlang::caller_env()
 }
 
 req_user_agent_trud <- function(req) {
-  req %>%
+  req |>
     httr2::req_user_agent("trud (http://github.com/rmgpanw/trud)")
 }

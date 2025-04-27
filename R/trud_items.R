@@ -17,18 +17,18 @@ trud_items <- function() {
     rvest::read_html("https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1")
 
   # Find all hyperlinks
-  items <- page %>%
+  items <- page |>
     rvest::html_elements(css = ".content , a")
 
   # Extract text from each element
-  items_text <- items %>%  rvest::html_text()
+  items_text <- items |> rvest::html_text()
 
   # Extract the hyperlinks from each element using html_attr()
-  items_link <- items %>%  rvest::html_attr("href")
+  items_link <- items |> rvest::html_attr("href")
 
   # Extract item numbers from hyperlinks
-  items_number <- items_link %>%
-    stringr::str_extract("/items/\\d+") %>%
+  items_number <- items_link |>
+    stringr::str_extract("/items/\\d+") |>
     stringr::str_remove("/items/")
 
   # Create a dataframe with the item names and their links/numbers
@@ -39,8 +39,8 @@ trud_items <- function() {
   )
 
   # Filter for items
-  df %>%
-    dplyr::filter(stringr::str_detect(.data[["item_link"]], "trud/users/guest/filters/0/categories/1/items")) %>%
-    dplyr::filter(!.data[["item_name"]] %in% c("Releases", "Licences", "Future releases")) %>%
+  df |>
+    dplyr::filter(stringr::str_detect(.data[["item_link"]], "trud/users/guest/filters/0/categories/1/items")) |>
+    dplyr::filter(!.data[["item_name"]] %in% c("Releases", "Licences", "Future releases")) |>
     dplyr::select(tidyselect::all_of(c("item_number", "item_name")))
 }
