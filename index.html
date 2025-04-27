@@ -38,6 +38,7 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="nav-item"><a class="nav-link" href="articles/trud.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
@@ -61,8 +62,8 @@
 </div>
 <!-- badges: start -->
 
-<p>The goal of <code>trud</code> is to provide a convenient R interface to the <a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/api" class="external-link">NHS TRUD API</a>.</p>
-<p>The National Health Service (NHS) England Technology Reference data Update Distribution (TRUD) service provides essential reference files that underpin a wide range of electronic health record (EHR) research, both in the UK and internationally. These files include clinical coding systems such as ICD, Read codes, prescription codes, and the SNOMED CT ontology, with regular updates to reflect new knowledge and changes in clinical practice. NHS TRUD content supports key areas like disease phenotyping, cohort selection, epidemiology, health services research, and the development of risk prediction models.</p>
+<p>The goal of <code>trud</code> is to provide a convenient R interface to the <a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/api" class="external-link">National Health Service (NHS) England Technology Reference data Update Distribution (TRUD)</a>.</p>
+<p>The NHS TRUD service provides essential reference files that underpin a wide range of electronic health record (EHR) areas, both in the UK and internationally. These files include clinical coding systems such as ICD, Read codes, prescription codes, and the SNOMED CT ontology, with regular updates to reflect new knowledge and changes in clinical practice. NHS TRUD content supports key research areas like disease phenotyping, cohort selection, epidemiology, health services research, and the development of risk prediction models.</p>
 <p>trud enables seamless, programmatic retrieval and updating of NHS TRUD release items, removing the need for manual downloads and reducing the risk of errors or version drift. This helps researchers maintain reproducible, up-to-date analyses — whether as part of ad-hoc studies or automated pipelines.</p>
 <p>To learn more about NHS TRUD and its available resources, visit the <a href="https://isd.digital.nhs.uk/trud" class="external-link">NHS TRUD website</a>.</p>
 <div class="section level2">
@@ -73,119 +74,27 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"trud"</span><span class="op">)</span></span></code></pre></div>
 <p>Or you can install the development version of <code>trud</code> from <a href="https://github.com/rmgpanw/trud" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"rmgpanw/trud"</span><span class="op">)</span></span></code></pre></div>
-<p>You will also need to:</p>
-<ul>
-<li>
-<a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form" class="external-link">Sign up for an account</a> with NHS TRUD</li>
-<li>Set your API key (shown on your account information page) as an environmental variable named <code>TRUD_API_KEY</code>. The best way to do this is by placing your API key in a <a href="https://rstats.wtf/r-startup.html#renviron" class="external-link"><code>.Renviron</code> file</a>.</li>
-</ul>
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"rmgpanw/trud"</span><span class="op">)</span></span></code></pre></div>
+<p>You will also need to <a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form" class="external-link">sign up for a free account</a> with NHS TRUD</p>
 </div>
 <div class="section level2">
-<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+<h2 id="available-functionality">Available functionality<a class="anchor" aria-label="anchor" href="#available-functionality"></a>
 </h2>
-<p>Retrieve available endpoints<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Item numbers can also be found in the URLs of releases pages, between &lt;code&gt;items&lt;/code&gt; and &lt;code&gt;releases&lt;/code&gt;. For example, the URL for the &lt;a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases" class="external-link"&gt;Community Services Data Set pre-deadline extract XML Schema&lt;/a&gt; releases page is &lt;code&gt;https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases&lt;/code&gt; and the item number is &lt;code&gt;394&lt;/code&gt;.&lt;/p&gt;'><sup>1</sup></a>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rmgpanw.github.io/trud/">trud</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/trud_items.html">trud_items</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 73 × 2</span></span>
-<span><span class="co">#&gt;    item_number item_name                                                        </span></span>
-<span><span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;                                                            </span></span>
-<span><span class="co">#&gt;  1         246 Cancer Outcomes and Services Data Set XML Schema                 </span></span>
-<span><span class="co">#&gt;  2         245 Commissioning Data Set XML Schema                                </span></span>
-<span><span class="co">#&gt;  3         599 Community Services Data Set Intermediate Database                </span></span>
-<span><span class="co">#&gt;  4         393 Community Services Data Set post-deadline extract XML Schema     </span></span>
-<span><span class="co">#&gt;  5         394 Community Services Data Set pre-deadline extract XML Schema      </span></span>
-<span><span class="co">#&gt;  6         391 Community Services Data Set XML Schema                           </span></span>
-<span><span class="co">#&gt;  7         248 Diagnostic Imaging Data Set XML Schema                           </span></span>
-<span><span class="co">#&gt;  8         239 dm+d XML transformation tool                                     </span></span>
-<span><span class="co">#&gt;  9        1859 Electronic Prescribing and Medicines Administration Data Sets XM…</span></span>
-<span><span class="co">#&gt; 10        1819 Emergency Care Data Set XML Schema                               </span></span>
-<span><span class="co">#&gt; # ℹ 63 more rows</span></span></code></pre></div>
-<p>Get metadata for an item:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/get_item_metadata.html">get_item_metadata</a></span><span class="op">(</span><span class="fl">394</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">map_at</a></span><span class="op">(</span><span class="st">"releases"</span>, \<span class="op">(</span><span class="va">release</span><span class="op">)</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">release</span>, <span class="va">names</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $apiVersion</span></span>
-<span><span class="co">#&gt; [1] "1"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $releases</span></span>
-<span><span class="co">#&gt; $releases$CSDS_Provpredextract_1.6.6_20221115000001.zip</span></span>
-<span><span class="co">#&gt;  [1] "id"                                 "name"                              </span></span>
-<span><span class="co">#&gt;  [3] "releaseDate"                        "archiveFileUrl"                    </span></span>
-<span><span class="co">#&gt;  [5] "archiveFileName"                    "archiveFileSizeBytes"              </span></span>
-<span><span class="co">#&gt;  [7] "archiveFileSha256"                  "archiveFileLastModifiedTimestamp"  </span></span>
-<span><span class="co">#&gt;  [9] "checksumFileUrl"                    "checksumFileName"                  </span></span>
-<span><span class="co">#&gt; [11] "checksumFileSizeBytes"              "checksumFileLastModifiedTimestamp" </span></span>
-<span><span class="co">#&gt; [13] "signatureFileUrl"                   "signatureFileName"                 </span></span>
-<span><span class="co">#&gt; [15] "signatureFileSizeBytes"             "signatureFileLastModifiedTimestamp"</span></span>
-<span><span class="co">#&gt; [17] "publicKeyFileUrl"                   "publicKeyFileName"                 </span></span>
-<span><span class="co">#&gt; [19] "publicKeyFileSizeBytes"             "publicKeyId"                       </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $releases$DMDSSCHEMAS_1.5.21_20200805000001</span></span>
-<span><span class="co">#&gt;  [1] "id"                                 "name"                              </span></span>
-<span><span class="co">#&gt;  [3] "releaseDate"                        "archiveFileUrl"                    </span></span>
-<span><span class="co">#&gt;  [5] "archiveFileName"                    "archiveFileSizeBytes"              </span></span>
-<span><span class="co">#&gt;  [7] "archiveFileSha256"                  "archiveFileLastModifiedTimestamp"  </span></span>
-<span><span class="co">#&gt;  [9] "checksumFileUrl"                    "checksumFileName"                  </span></span>
-<span><span class="co">#&gt; [11] "checksumFileSizeBytes"              "checksumFileLastModifiedTimestamp" </span></span>
-<span><span class="co">#&gt; [13] "signatureFileUrl"                   "signatureFileName"                 </span></span>
-<span><span class="co">#&gt; [15] "signatureFileSizeBytes"             "signatureFileLastModifiedTimestamp"</span></span>
-<span><span class="co">#&gt; [17] "publicKeyFileUrl"                   "publicKeyFileName"                 </span></span>
-<span><span class="co">#&gt; [19] "publicKeyFileSizeBytes"             "publicKeyId"                       </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $httpStatus</span></span>
-<span><span class="co">#&gt; [1] 200</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $message</span></span>
-<span><span class="co">#&gt; [1] "OK"</span></span></code></pre></div>
-<p>Get metadata for all subscribed items:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/get_subscribed_metadata.html">get_subscribed_metadata</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  ■■■■■■■■■■■■■■                    42% |  ETA:  3s</span></span>
-<span><span class="co">#&gt; # A tibble: 17 × 3</span></span>
-<span><span class="co">#&gt;    item_number item_name                                            metadata    </span></span>
-<span><span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;                                                &lt;list&gt;      </span></span>
-<span><span class="co">#&gt;  1         394 Community Services Data Set pre-deadline extract XM… &lt;named list&gt;</span></span>
-<span><span class="co">#&gt;  2         239 dm+d XML transformation tool                         &lt;named list&gt;</span></span>
-<span><span class="co">#&gt;  3         263 eViewer application                                  &lt;named list&gt;</span></span>
-<span><span class="co">#&gt;  4         398 Global Trade Item Number to OPCS-4 code cross refer… &lt;named list&gt;</span></span>
-<span><span class="co">#&gt;  5        1760 NHS Continuing Health Care (CHC) Data Set - JSON Sc… &lt;named list&gt;</span></span>
-<span><span class="co">#&gt;  6         719 NHS Continuing Health Care (CHC) Data Set - XML Sch… &lt;named list&gt;</span></span>
-<span><span class="co">#&gt;  7           9 NHS Data Migration                                   &lt;named list&gt;</span></span>
-<span><span class="co">#&gt;  8         258 NHS ICD-10 5th Edition data files                    &lt;named list&gt;</span></span>
-<span><span class="co">#&gt;  9           8 NHS Read Browser                                     &lt;named list&gt;</span></span>
-<span><span class="co">#&gt; 10          19 NHS UK Read Codes Clinical Terms Version 3           &lt;named list&gt;</span></span>
-<span><span class="co">#&gt; 11         255 NHS UK Read Codes Clinical Terms Version 3, Cross M… &lt;named list&gt;</span></span>
-<span><span class="co">#&gt; 12          24 NHSBSA dm+d                                          &lt;named list&gt;</span></span>
-<span><span class="co">#&gt; 13         264 OPCS-4 eVersion book                                 &lt;named list&gt;</span></span>
-<span><span class="co">#&gt; 14         659 Primary Care Domain reference sets                   &lt;named list&gt;</span></span>
-<span><span class="co">#&gt; 15         101 SNOMED CT UK Clinical Edition, RF2: Full, Snapshot … &lt;named list&gt;</span></span>
-<span><span class="co">#&gt; 16          98 SNOMED CT UK Data Migration Workbench                &lt;named list&gt;</span></span>
-<span><span class="co">#&gt; 17        1799 SNOMED CT UK Monolith Edition, RF2: Snapshot         &lt;named list&gt;</span></span></code></pre></div>
-<p>Download an item:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># by default the latest release will be downloaded to the current working directory</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/download_item.html">download_item</a></span><span class="op">(</span><span class="fl">394</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; ⠙ Downloading archive file for TRUD item 394...</span></span>
-<span><span class="co">#&gt; ✔ Successfully downloaded `CSDS_Provpredextract_1.6.6_20221115000001.zip` to '/…</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">x</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                                                   Name Length</span></span>
-<span><span class="co">#&gt; 1           CSDS_ProvPreExtract__V1_6_6_SAMPLE_XML.xml   7887</span></span>
-<span><span class="co">#&gt; 2              CSDS_ProvPreExtract__V1_6_6_FinalV1.XSD  75650</span></span>
-<span><span class="co">#&gt; 3 CSDS ProvPreDExtract v1.6.6 Production Log v0.1.xlsx  32216</span></span>
-<span><span class="co">#&gt;                  Date</span></span>
-<span><span class="co">#&gt; 1 2022-11-15 12:48:00</span></span>
-<span><span class="co">#&gt; 2 2022-10-31 11:36:00</span></span>
-<span><span class="co">#&gt; 3 2022-11-15 11:57:00</span></span></code></pre></div>
+<p>The main functions provided by trud are <code><a href="reference/get_item_metadata.html">get_item_metadata()</a></code> and <code><a href="reference/download_item.html">download_item()</a></code>. Please see <code><a href="articles/trud.html">vignette("trud")</a></code> for further information and getting started.</p>
+</div>
+<div class="section level2">
+<h2 id="citing-trud">Citing trud<a class="anchor" aria-label="anchor" href="#citing-trud"></a>
+</h2>
+<p>If you find trud useful, please consider citing it. Citation details are available <a href="https://rmgpanw.github.io/trud/authors.html#citation">here</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="community-guidelines">Community guidelines<a class="anchor" aria-label="anchor" href="#community-guidelines"></a>
+</h2>
+<p>Feedback, bug reports, and feature requests are welcome; file issues or seek support <a href="https://github.com/rmgpanw/trud/issues" class="external-link">here</a>. If you would like to contribute to the package, please see our <a href="https://rmgpanw.github.io/trud/CONTRIBUTING.html">contributing guidelines</a>.</p>
+<p>Please note that this package is released with a <a href="https://rmgpanw.github.io/trud/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
-
-
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -203,6 +112,13 @@
 </ul>
 </div>
 
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+</ul>
+</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
