@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   trud: trud.html
-last_built: 2025-04-27T10:55Z
+last_built: 2025-04-27T18:15Z
 urls:
   reference: https://rmgpanw.github.io/trud/reference
   article: https://rmgpanw.github.io/trud/articles
