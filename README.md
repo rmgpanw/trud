@@ -17,6 +17,25 @@ status](https://www.r-pkg.org/badges/version/trud)](https://CRAN.R-project.org/p
 The goal of `trud` is to provide a convenient R interface to the [NHS
 TRUD API](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api).
 
+The National Health Service (NHS) England Technology Reference data
+Update Distribution (TRUD) service provides essential reference files
+that underpin a wide range of electronic health record (EHR) research,
+both in the UK and internationally. These files include clinical coding
+systems such as ICD, Read codes, prescription codes, and the SNOMED CT
+ontology, with regular updates to reflect new knowledge and changes in
+clinical practice. NHS TRUD content supports key areas like disease
+phenotyping, cohort selection, epidemiology, health services research,
+and the development of risk prediction models.
+
+trud enables seamless, programmatic retrieval and updating of NHS TRUD
+release items, removing the need for manual downloads and reducing the
+risk of errors or version drift. This helps researchers maintain
+reproducible, up-to-date analyses — whether as part of ad-hoc studies or
+automated pipelines.
+
+To learn more about NHS TRUD and its available resources, visit the [NHS
+TRUD website](https://isd.digital.nhs.uk/trud).
+
 ## Installation
 
 You can install this package from CRAN:
@@ -51,7 +70,7 @@ Retrieve available endpoints[^1]:
 library(trud)
 
 trud_items()
-#> # A tibble: 71 × 2
+#> # A tibble: 73 × 2
 #>    item_number item_name                                                        
 #>          <int> <chr>                                                            
 #>  1         246 Cancer Outcomes and Services Data Set XML Schema                 
@@ -64,7 +83,7 @@ trud_items()
 #>  8         239 dm+d XML transformation tool                                     
 #>  9        1859 Electronic Prescribing and Medicines Administration Data Sets XM…
 #> 10        1819 Emergency Care Data Set XML Schema                               
-#> # ℹ 61 more rows
+#> # ℹ 63 more rows
 ```
 
 Get metadata for an item:
@@ -112,8 +131,8 @@ Get metadata for all subscribed items:
 
 ``` r
 get_subscribed_metadata()
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  1s
-#> # A tibble: 16 × 3
+#>  ■■■■■■■■■■■■■                     38% |  ETA:  3s
+#> # A tibble: 17 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      
 #>  1         394 Community Services Data Set pre-deadline extract XM… <named list>
@@ -129,9 +148,10 @@ get_subscribed_metadata()
 #> 11         255 NHS UK Read Codes Clinical Terms Version 3, Cross M… <named list>
 #> 12          24 NHSBSA dm+d                                          <named list>
 #> 13         264 OPCS-4 eVersion book                                 <named list>
-#> 14         101 SNOMED CT UK Clinical Edition, RF2: Full, Snapshot … <named list>
-#> 15          98 SNOMED CT UK Data Migration Workbench                <named list>
-#> 16        1799 SNOMED CT UK Monolith Edition, RF2: Snapshot         <named list>
+#> 14         659 Primary Care Domain reference sets                   <named list>
+#> 15         101 SNOMED CT UK Clinical Edition, RF2: Full, Snapshot … <named list>
+#> 16          98 SNOMED CT UK Data Migration Workbench                <named list>
+#> 17        1799 SNOMED CT UK Monolith Edition, RF2: Snapshot         <named list>
 ```
 
 Download an item:

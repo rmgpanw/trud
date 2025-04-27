@@ -14,10 +14,11 @@ Authors@R: c(
     person("Chuin Ying", "Ung", role = "aut",
            comment = c(ORCID = "0000-0001-8487-4589"))
     )
-Description: A convenient R interface to the 'National Health Service (NHS) 
-    Technology Reference Update Distribution (TRUD) API'. Retrieve available
-    releases for items that you are subscribed to and download these with ease.
-    For more information on the API, see <https://isd.digital.nhs.uk/trud/users/guest/filters/0/api>.
+Description: Provides a convenient R interface to the 'National Health Service 
+    NHS Technology Reference Update Distribution (TRUD) API', allowing users 
+    to list available releases for their subscribed items, retrieve metadata, 
+    and download release files. For more information on the API, see 
+    <https://isd.digital.nhs.uk/trud/users/guest/filters/0/api>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

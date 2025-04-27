@@ -24,6 +24,12 @@ knitr::opts_chunk$set(
 
 The goal of `trud` is to provide a convenient R interface to the [NHS TRUD API](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api).
 
+The National Health Service (NHS) England Technology Reference data Update Distribution (TRUD) service provides essential reference files that underpin a wide range of electronic health record (EHR) research, both in the UK and internationally. These files include clinical coding systems such as ICD, Read codes, prescription codes, and the SNOMED CT ontology, with regular updates to reflect new knowledge and changes in clinical practice. NHS TRUD content supports key areas like disease phenotyping, cohort selection, epidemiology, health services research, and the development of risk prediction models.
+
+trud enables seamless, programmatic retrieval and updating of NHS TRUD release items, removing the need for manual downloads and reducing the risk of errors or version drift. This helps researchers maintain reproducible, up-to-date analyses — whether as part of ad-hoc studies or automated pipelines.
+
+To learn more about NHS TRUD and its available resources, visit the [NHS TRUD website](https://isd.digital.nhs.uk/trud).
+
 ## Installation
 
 You can install this package from CRAN:
