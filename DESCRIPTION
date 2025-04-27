@@ -37,6 +37,8 @@ URL: https://rmgpanw.github.io/trud/,
     https://github.com/rmgpanw/trud
 BugReports: https://github.com/rmgpanw/trud/issues
 Suggests: 
+    spelling,
     testthat (>= 3.0.0),
     withr
 Config/testthat/edition: 3
+Language: en-US
