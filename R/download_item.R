@@ -43,7 +43,6 @@ download_item <- function(item,
                           download_file = "archive",
                           TRUD_API_KEY = NULL,
                           release = NULL) {
-
   # validate args
   validate_arg_item(item = item)
 
@@ -66,16 +65,20 @@ download_item <- function(item,
     latest_only <- TRUE
   }
 
-  item_metadata <- get_item_metadata(item = item,
-                                     TRUD_API_KEY = TRUD_API_KEY,
-                                     latest_only = latest_only)
+  item_metadata <- get_item_metadata(
+    item = item,
+    TRUD_API_KEY = TRUD_API_KEY,
+    latest_only = latest_only
+  )
 
   # validate `release`
   if (!is.null(release)) {
     if (!release %in% names(item_metadata$releases)) {
       cli::cli_abort(
-        c("x" = "Unrecognised {.code release} supplied for item {item}.",
-          "i" = "See available releases with {.code get_item_metadata(item = {item}, latest_only = FALSE)}."),
+        c(
+          "x" = "Unrecognised {.code release} supplied for item {item}.",
+          "i" = "See available releases with {.code get_item_metadata(item = {item}, latest_only = FALSE)}."
+        ),
         class = "unrecognised_trud_item_release"
       )
     }
@@ -92,26 +95,33 @@ download_item <- function(item,
   )
 
   file_path <-
-    file.path(directory,
-              file_name)
+    file.path(
+      directory,
+      file_name
+    )
 
   if (file.exists(file_path)) {
     cli::cli_warn(
-        c("!" = "File {.code {file_name}} already exists in directory {.code {directory}}",
-          "i" = "Returning file path {.path {file_path}}")
+      c(
+        "!" = "File {.code {file_name}} already exists in directory {.code {directory}}",
+        "i" = "Returning file path {.path {file_path}}"
       )
+    )
 
     return(file_path)
   }
 
-  url <- purrr::pluck(item_metadata,
-                      "releases",
-                      release,
-                      paste0(download_file, "FileUrl"))
+  url <- purrr::pluck(
+    item_metadata,
+    "releases",
+    release,
+    paste0(download_file, "FileUrl")
+  )
 
   cli::cli_progress_step("Downloading {download_file} file for TRUD item {item}...",
-                         msg_done = "Successfully downloaded {.code {file_name}} to {.path {file_path}}.",
-                         spinner = TRUE)
+    msg_done = "Successfully downloaded {.code {file_name}} to {.path {file_path}}.",
+    spinner = TRUE
+  )
 
   resp <- httr2::request(url) |>
     req_user_agent_trud() |>
