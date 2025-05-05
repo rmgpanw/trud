@@ -8,19 +8,6 @@ test_that("get_trud_api_key() raises error with missing API key", {
                "Can't find NHS TRUD API key")
 })
 
-test_that("get_item_metadata() raises error for expired API key", {
-  skip_if_offline()
-  expect_error(
-    withr::with_envvar(
-      new = c("EXPIRED_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"),
-      {
-        get_item_metadata(1799, TRUD_API_KEY = "EXPIRED_API_KEY")
-      }
-    ),
-    "UNAUTHORIZED: API access is disabled for the requesting account."
-  )
-})
-
 test_that("validate_arg_item() raises error with non-integer argument", {
   expect_error(validate_arg_item("1"), "Argument `item` must be an integer.")
 })

@@ -52,3 +52,16 @@ test_that(
     )
   }
 )
+
+test_that("get_item_metadata() raises error for expired API key", {
+  skip_if_offline()
+  expect_error(
+    withr::with_envvar(
+      new = c("EXPIRED_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"),
+      {
+        get_item_metadata(1799, TRUD_API_KEY = "EXPIRED_API_KEY")
+      }
+    ),
+    "UNAUTHORIZED: API access is disabled for the requesting account."
+  )
+})
