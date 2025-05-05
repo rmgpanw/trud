@@ -5,7 +5,7 @@ test_that("get_trud_api_key() raises error with non-string argument", {
 
 test_that("get_trud_api_key() raises error with missing API key", {
   expect_error(get_trud_api_key(TRUD_API_KEY = "MISSING_API_KEY"),
-               "Can't find NHS TRUD API key")
+               class = "missing_api_key")
 })
 
 test_that("validate_arg_item() raises error with non-integer argument", {

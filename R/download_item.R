@@ -75,7 +75,8 @@ download_item <- function(item,
     if (!release %in% names(item_metadata$releases)) {
       cli::cli_abort(
         c("x" = "Unrecognised {.code release} supplied for item {item}.",
-          "i" = "See available releases with {.code get_item_metadata(item = {item}, latest_only = FALSE)}.")
+          "i" = "See available releases with {.code get_item_metadata(item = {item}, latest_only = FALSE)}."),
+        class = "unrecognised_trud_item_release"
       )
     }
   } else {

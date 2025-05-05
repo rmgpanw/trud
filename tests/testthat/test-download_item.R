@@ -4,7 +4,7 @@ test_that("Expected errors raised for invalid `release` arg with `download_item(
                "Argument `release` must be a string")
 
   expect_error(download_item(394, release = "invalid_release_arg"),
-               "See available releases with `get_item_metadata\\(item = 394, latest_only = FALSE\\)`")
+               class = "unrecognised_trud_item_release")
 })
 
 test_that("", {

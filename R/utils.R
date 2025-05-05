@@ -22,6 +22,7 @@ get_trud_api_key <- function(TRUD_API_KEY, call = rlang::caller_env()) {
   if (identical(TRUD_API_KEY, "")) {
     cli::cli_abort(message = c("x" = "Can't find NHS TRUD API key",
                                error_guidance_messages),
+                   class = "missing_api_key",
                    call = call)
   }
 
