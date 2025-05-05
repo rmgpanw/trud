@@ -62,8 +62,31 @@ with NHS TRUD
 ## Available functionality
 
 The main functions provided by trud are `get_item_metadata()` and
-`download_item()`. Please see `vignette("trud")` for further information
-and getting started.
+`download_item()`. Use `trud_items()` to list available items and their
+IDs, as retrieved from the [NHS TRUD
+website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1):
+
+``` r
+library(trud)
+trud_items()
+#> # A tibble: 73 × 2
+#>    item_number item_name                                                        
+#>          <int> <chr>                                                            
+#>  1         246 Cancer Outcomes and Services Data Set XML Schema                 
+#>  2         245 Commissioning Data Set XML Schema                                
+#>  3         599 Community Services Data Set Intermediate Database                
+#>  4         393 Community Services Data Set post-deadline extract XML Schema     
+#>  5         394 Community Services Data Set pre-deadline extract XML Schema      
+#>  6         391 Community Services Data Set XML Schema                           
+#>  7         248 Diagnostic Imaging Data Set XML Schema                           
+#>  8         239 dm+d XML transformation tool                                     
+#>  9        1859 Electronic Prescribing and Medicines Administration Data Sets XM…
+#> 10        1819 Emergency Care Data Set XML Schema                               
+#> # ℹ 63 more rows
+```
+
+Please see `vignette("trud")` for further information and getting
+started.
 
 ## Citing trud
 

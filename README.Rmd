@@ -50,7 +50,14 @@ You will also need to [sign up for a free account](https://isd.digital.nhs.uk/tr
 
 ## Available functionality
 
-The main functions provided by trud are `get_item_metadata()` and `download_item()`. Please see `vignette("trud")` for further information and getting started.
+The main functions provided by trud are `get_item_metadata()` and `download_item()`. Use `trud_items()` to list available items and their IDs, as retrieved from the [NHS TRUD website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1):
+
+```{r trud-tems}
+library(trud)
+trud_items()
+```
+
+Please see `vignette("trud")` for further information and getting started.
 
 ## Citing trud
 
