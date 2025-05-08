@@ -20,6 +20,6 @@ jobs:
     permissions:
       issues: write
     env:
-      PKG_CHECK: "true"  # skips tests requiring API key
+      PKG_CHECK: true  # skips tests requiring API key
     steps:
       - uses: ropensci-review-tools/pkgcheck-action@main
