@@ -41,8 +41,8 @@ test_that("Warning raised if file to be downloaded already exists locally", {
 
 test_that("`download_item()` works", {
 
-  archiveFileName_unique_path <- tempfile()
-  archiveFileName_unique <- basename(archiveFileName_unique_path)
+  archiveFileName_unique <- basename(tempfile())
+  archiveFileName_unique_path <- file.path(tempdir(), archiveFileName_unique_path)
 
   with_mocked_bindings(
     get_item_metadata = function(...)
