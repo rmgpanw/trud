@@ -1,13 +1,31 @@
 test_that("Error raised with invalid `latest_only` arg value for `get_item_metadata()`", {
-  skip_if_offline()
   expect_error(
     get_item_metadata(394, latest_only = "TRUE"),
     "Argument `latest_only` must be either `TRUE` or `FALSE`"
   )
 })
 
+test_that("`get_item_metadata()` runs with mocked API response", {
+  with_mocked_bindings(
+    request_item_metadata = function(...)
+      list(
+        apiVersion = "",
+        releases = list(list(id = "item1"), list(id = "item2")),
+        httpStatus = 200,
+        message = "OK"
+      ),
+    code = {
+      item_metadata_394 <- get_item_metadata(394)
+
+      expect_equal(names(item_metadata_394$releases), c("item1", "item2"))
+    }
+  )
+})
+
 test_that("`get_item_metadata()` returns result with expected format", {
   skip_if_offline()
+  skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
+  skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
   metadata_394 <- get_item_metadata(394, latest_only = TRUE)
 
   expect_equal(
@@ -24,6 +42,8 @@ test_that(
   "Expected request URL is generated for `get_item_metadata()`, with `latest_only = TRUE` and `latest_only = FALSE`",
   {
     skip_if_offline()
+    skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
+    skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
     # latest_only = TRUE
     withr::with_envvar(new = c("EXPIRED_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"), {
       try({
@@ -54,6 +74,8 @@ test_that(
 
 test_that("get_item_metadata() raises error for expired API key", {
   skip_if_offline()
+  skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
+  skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
   expect_error(
     withr::with_envvar(
       new = c("EXPIRED_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"),

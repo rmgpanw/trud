@@ -123,10 +123,14 @@ download_item <- function(item,
     spinner = TRUE
   )
 
-  resp <- httr2::request(url) |>
-    req_user_agent_trud() |>
-    httr2::req_perform(path = file_path)
+  resp <- request_download_item(url, file_path)
 
   # return path to downloaded file invisibly
   invisible(file_path)
+}
+
+request_download_item <- function(url, file_path) {
+  httr2::request(url) |>
+    req_user_agent_trud() |>
+    httr2::req_perform(path = file_path)
 }

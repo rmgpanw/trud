@@ -10,3 +10,7 @@ library(testthat)
 library(trud)
 
 test_check("trud")
+
+# # To get code coverage report
+# withr::with_envvar(c("PKG_CHECK" = "true"),
+#                    {x <- covr::report()})

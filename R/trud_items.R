@@ -11,8 +11,7 @@
 #' trud_items()
 trud_items <- function() {
   # Read web page
-  page <-
-    rvest::read_html("https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1")
+  page <- get_trud_items_html()
 
   # Find all hyperlinks
   items <- page |>
@@ -41,4 +40,8 @@ trud_items <- function() {
     dplyr::filter(stringr::str_detect(.data[["item_link"]], "trud/users/guest/filters/0/categories/1/items")) |>
     dplyr::filter(!.data[["item_name"]] %in% c("Releases", "Licences", "Future releases")) |>
     dplyr::select(dplyr::all_of(c("item_number", "item_name")))
+}
+
+get_trud_items_html <- function() {
+  rvest::read_html("https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1")
 }

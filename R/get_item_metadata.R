@@ -47,11 +47,7 @@ get_item_metadata <- function(item,
   }
 
   # Make a GET request and parse the JSON response
-  result <- httr2::request(url) |>
-    httr2::req_error(body = trud_error_message) |>
-    req_user_agent_trud() |>
-    httr2::req_perform() |>
-    httr2::resp_body_json()
+  result <- request_item_metadata(url)
 
   # name list of releases, using release ids
   names(result$releases) <- purrr::map_chr(result$releases, \(x) x$id)
@@ -65,4 +61,12 @@ validate_arg_latest_only <- function(latest_only) {
       "Argument {.code latest_only} must be either {.code TRUE} or {.code FALSE}."
     ))
   }
+}
+
+request_item_metadata <- function(url) {
+  httr2::request(url) |>
+    httr2::req_error(body = trud_error_message) |>
+    req_user_agent_trud() |>
+    httr2::req_perform() |>
+    httr2::resp_body_json()
 }
