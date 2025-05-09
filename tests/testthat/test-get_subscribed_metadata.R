@@ -10,6 +10,7 @@ test_that("`get_subscribed_metadata()` runs as expected", {
         httpStatus = 200,
         message = "OK"
       ),
+    get_trud_api_key = function(...) NULL,
     code = {
       result <- get_subscribed_metadata()
     }

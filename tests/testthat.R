@@ -11,6 +11,7 @@ library(trud)
 
 test_check("trud")
 
-# # To get code coverage report
-# withr::with_envvar(c("PKG_CHECK" = "true"),
-#                    {x <- covr::report()})
+# # To get code coverage report when TRUD api key unavailable
+# withr::with_envvar(c("PKG_CHECK" = "true", "TRUD_API_KEY" = "true"), {
+#   x <- covr::report()
+# })

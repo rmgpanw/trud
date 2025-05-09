@@ -1,7 +1,10 @@
 test_that("Expected errors raised for invalid `release` arg with `download_item()`", {
-  expect_error(
-    download_item(394, release = 1),
-    "Argument `release` must be a string"
+  with_mocked_bindings(
+    get_trud_api_key = function(...) NULL,
+    expect_error(
+      download_item(394, release = 1),
+      "Argument `release` must be a string"
+    )
   )
 
   with_mocked_bindings(
@@ -12,6 +15,7 @@ test_that("Expected errors raised for invalid `release` arg with `download_item(
         httpStatus = 200,
         message = "OK"
       ),
+    get_trud_api_key = function(...) NULL,
     code = {
       expect_error(download_item(394, release = "invalid_release_arg"), class = "unrecognised_trud_item_release")
     }
@@ -33,6 +37,7 @@ test_that("Warning raised if file to be downloaded already exists locally", {
         message = "OK"
       ),
     request_download_item = function(...) NULL,
+    get_trud_api_key = function(...) NULL,
     code = {
       expect_warning(download_item(394, release = "item1", directory = tempdir()), "already exists in directory")
     }
@@ -45,6 +50,7 @@ test_that("`download_item()` works", {
   archiveFileName_unique_path <- file.path(tempdir(), archiveFileName_unique)
 
   with_mocked_bindings(
+    get_trud_api_key = function(...) NULL,
     get_item_metadata = function(...)
       list(
         apiVersion = "",

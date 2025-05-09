@@ -1,7 +1,10 @@
 test_that("Error raised with invalid `latest_only` arg value for `get_item_metadata()`", {
-  expect_error(
-    get_item_metadata(394, latest_only = "TRUE"),
-    "Argument `latest_only` must be either `TRUE` or `FALSE`"
+  with_mocked_bindings(
+    get_trud_api_key = function(...) NULL,
+    expect_error(
+      get_item_metadata(394, latest_only = "TRUE"),
+      "Argument `latest_only` must be either `TRUE` or `FALSE`"
+    )
   )
 })
 
@@ -14,6 +17,7 @@ test_that("`get_item_metadata()` runs with mocked API response", {
         httpStatus = 200,
         message = "OK"
       ),
+    get_trud_api_key = function(...) NULL,
     code = {
       item_metadata_394 <- get_item_metadata(394)
 
