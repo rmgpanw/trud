@@ -42,6 +42,10 @@ trud_items <- function() {
     dplyr::select(dplyr::all_of(c("item_number", "item_name")))
 }
 
+#' To facilitate mocking in unit testing for [trud_items()]
+#'
+#' @return Parsed html.
+#' @noRd
 get_trud_items_html <- function() {
   rvest::read_html("https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1")
 }

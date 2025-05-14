@@ -129,6 +129,15 @@ download_item <- function(item,
   invisible(file_path)
 }
 
+#' Performs request to download an item from NHS TRUD
+#'
+#' Used by [download_item()]. Facilitates mocking in unit testing.
+#'
+#' @param url String. Request URL, obtained using [get_item_metadata()].
+#' @param file_path File path to download item to.
+#'
+#' @return httr2 HTTP response.
+#' @noRd
 request_download_item <- function(url, file_path) {
   httr2::request(url) |>
     req_user_agent_trud() |>

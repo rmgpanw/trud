@@ -1,3 +1,15 @@
+#' Utility function to retrieve NHS TRUD API key
+#'
+#' An informative error is raised if either no key is found, or an invalid value
+#' is supplied.
+#'
+#' @param TRUD_API_KEY A string. The name of an environmental variable
+#'   containing your TRUD API key. If `NULL` (default) this is assumed to be
+#'   called `TRUD_API_KEY`.
+#' @param call The function call from which to display any error messages.
+#'
+#' @return The TRUD API key as a string, invisibly.
+#' @noRd
 get_trud_api_key <- function(TRUD_API_KEY, call = rlang::caller_env()) {
   error_guidance_messages <-
     c(
@@ -35,6 +47,14 @@ get_trud_api_key <- function(TRUD_API_KEY, call = rlang::caller_env()) {
   invisible(TRUD_API_KEY)
 }
 
+#' Raise an informative error message for invalid NHS TRUD API key
+#'
+#' To be used with [httr2::req_error()] within [request_item_metadata()].
+#'
+#' @param resp An `httr2_request` object, as returned by [httr2::request()].
+#'
+#' @return Returns the input `httr2_request` object if no errors raised.
+#' @noRd
 trud_error_message <- function(resp) {
   resp <- try_resp_body_json(resp)
 
@@ -56,6 +76,15 @@ trud_error_message <- function(resp) {
   )
 }
 
+#' Attempt to extract JSON from httr2 request object
+#'
+#' Specific error statuses are handled by [trud_error_message()]. This handles
+#' other error types, including when the TRUD service is unavailable.
+#'
+#' @param resp An `httr2_request` object, as returned by [httr2::request()].
+#'
+#' @return A list (parsed JSON from request object), if no error.
+#' @noRd
 try_resp_body_json <- function(resp) {
   tryCatch(
     resp |>
@@ -71,6 +100,13 @@ try_resp_body_json <- function(resp) {
   )
 }
 
+#' Validates `item` arg
+#'
+#' @param item An integer, the item to be downloaded or retrieve metadata for.
+#' @param call The function call from which to display any error messages.
+#'
+#' @return Called for side effect
+#' @noRd
 validate_arg_item <- function(item, call = rlang::caller_env()) {
   if (!rlang::is_scalar_integerish(item)) {
     cli::cli_abort(
@@ -83,6 +119,14 @@ validate_arg_item <- function(item, call = rlang::caller_env()) {
   }
 }
 
+#' Validates `directory` arg
+#'
+#' @param directory Path to the directory to which this item will be downloaded
+#'   to. This is set to the current working directory by default.
+#' @param call The function call from which to display any error messages.
+#'
+#' @return Called for side effect
+#' @noRd
 validate_arg_directory <- function(directory, call = rlang::caller_env()) {
   directory_arg_example <-
     c(
@@ -115,6 +159,13 @@ validate_arg_directory <- function(directory, call = rlang::caller_env()) {
   }
 }
 
+#' Validates `download_file` arg
+#'
+#' @param download_file The item file to be downloaded.
+#' @param call The function call from which to display any error messages.
+#'
+#' @return Called for side effect
+#' @noRd
 validate_arg_download_file <- function(download_file, call = rlang::caller_env()) {
   valid_download_file_values <- c("archive", "checksum", "signature", "publicKey")
 
@@ -138,6 +189,12 @@ validate_arg_download_file <- function(download_file, call = rlang::caller_env()
   )
 }
 
+#' Add user agent to TRUD API request object
+#'
+#' @param req An `httr2_request` object, created by [httr2::request()].
+#'
+#' @return An `httr2_request` object
+#' @noRd
 req_user_agent_trud <- function(req) {
   req |>
     httr2::req_user_agent("trud (http://github.com/rmgpanw/trud)")
