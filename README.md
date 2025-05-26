@@ -14,6 +14,8 @@ status](https://www.r-pkg.org/badges/version/trud)](https://CRAN.R-project.org/p
 [![](https://cranlogs.r-pkg.org/badges/last-month/trud)](https://cran.r-project.org/package=trud)
 [![Repo
 Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Status at rOpenSci Software Peer
+Review](https://badges.ropensci.org/705_status.svg)](https://github.com/ropensci/software-review/issues/705)
 <!-- badges: end -->
 
 The goal of `trud` is to provide a convenient R interface to the
