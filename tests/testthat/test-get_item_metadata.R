@@ -30,7 +30,14 @@ test_that("`get_item_metadata()` returns result with expected format", {
   skip_if_offline()
   skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
   skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
-  metadata_394 <- get_item_metadata(394, latest_only = TRUE)
+
+  metadata_394 <- tryCatch(
+    get_item_metadata(394, latest_only = TRUE),
+    httr2_http_404 = \(cnd) "NOT_SUBSCRIBED"
+  )
+
+  skip_if(condition = identical(metadata_394, "NOT_SUBSCRIBED"),
+          message = "Skipping tests - valid TRUD API key detected, however this account is not subscribed to item 394 (required for these tests).")
 
   expect_equal(
     names(metadata_394),

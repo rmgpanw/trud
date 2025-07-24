@@ -77,7 +77,11 @@ test_that("`download_item()` works", {
   skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
   skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
 
-  x <- download_item(394, directory = tempdir())
+  x <- tryCatch(download_item(394, directory = tempdir()),
+                httr2_http_404 = \(cnd) "NOT_SUBSCRIBED")
+
+  skip_if(condition = identical(x, "NOT_SUBSCRIBED"),
+          message = "Skipping tests - valid TRUD API key detected, however this account is not subscribed to item 394 (required for these tests).")
 
   expect_true(file.exists(x))
 
