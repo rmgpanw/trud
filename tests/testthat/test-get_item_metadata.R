@@ -50,9 +50,10 @@ test_that(
     skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
     # latest_only = TRUE
     withr::with_envvar(new = c("EXPIRED_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"), {
-      try({
+      tryCatch({
         metadata_394_lastet_only <- get_item_metadata(394, TRUD_API_KEY = "EXPIRED_API_KEY", latest_only = TRUE)
-      })
+      },
+      error = \(cnd) invisible())
       req <- httr2::last_request()
     })
 
@@ -63,9 +64,10 @@ test_that(
 
     # latest_only = FALSE
     withr::with_envvar(new = c("EXPIRED_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"), {
-      try({
+      tryCatch({
         metadata_394_lastet_only <- get_item_metadata(394, TRUD_API_KEY = "EXPIRED_API_KEY", latest_only = FALSE)
-      })
+      },
+      error = \(cnd) invisible())
       req <- httr2::last_request()
     })
 

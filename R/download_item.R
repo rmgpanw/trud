@@ -141,5 +141,6 @@ download_item <- function(item,
 request_download_item <- function(url, file_path) {
   httr2::request(url) |>
     req_user_agent_trud() |>
+    handle_trud_request() |>
     httr2::req_perform(path = file_path)
 }

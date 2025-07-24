@@ -65,8 +65,8 @@ validate_arg_latest_only <- function(latest_only) {
 
 request_item_metadata <- function(url) {
   httr2::request(url) |>
-    httr2::req_error(body = trud_error_message) |>
     req_user_agent_trud() |>
+    handle_trud_request() |>
     httr2::req_perform() |>
     httr2::resp_body_json()
 }
