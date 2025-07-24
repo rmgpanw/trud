@@ -1,16 +1,12 @@
 #' Utility function to retrieve NHS TRUD API key
 #'
-#' An informative error is raised if either no key is found, or an invalid value
-#' is supplied.
+#' An informative error is raised if no key is found.
 #'
-#' @param TRUD_API_KEY A string. The name of an environmental variable
-#'   containing your TRUD API key. If `NULL` (default) this is assumed to be
-#'   called `TRUD_API_KEY`.
 #' @param call The function call from which to display any error messages.
 #'
 #' @return The TRUD API key as a string, invisibly.
 #' @noRd
-get_trud_api_key <- function(TRUD_API_KEY, call = rlang::caller_env()) {
+get_trud_api_key <- function(call = rlang::caller_env()) {
   error_guidance_messages <-
     c(
       "i" = "Set your NHS TRUD API key as an environment variable using {.code Sys.setenv(TRUD_API_KEY='<<your-key>>')}, or preferably use a {.code .Renviron} file",
@@ -18,21 +14,7 @@ get_trud_api_key <- function(TRUD_API_KEY, call = rlang::caller_env()) {
       "i" = "To find Your API key, log in and visit your account profile page ({.url https://isd.digital.nhs.uk/trud/users/authenticated/filters/0/account/manage})."
     )
 
-  if (is.null(TRUD_API_KEY)) {
-    TRUD_API_KEY <- "TRUD_API_KEY"
-  } else {
-    if (!rlang::is_string(TRUD_API_KEY)) {
-      cli::cli_abort(
-        message = c(
-          "x" = "Argument {.code TRUD_API_KEY} must either be a string or {.code NULL}",
-          error_guidance_messages
-        ),
-        call = call
-      )
-    }
-  }
-
-  TRUD_API_KEY <- Sys.getenv(TRUD_API_KEY)
+  TRUD_API_KEY <- Sys.getenv("TRUD_API_KEY")
   if (identical(TRUD_API_KEY, "")) {
     cli::cli_abort(
       message = c(

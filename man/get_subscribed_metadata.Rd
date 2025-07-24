@@ -4,13 +4,9 @@
 \alias{get_subscribed_metadata}
 \title{Get metadata for subscribed NHS TRUD items}
 \usage{
-get_subscribed_metadata(TRUD_API_KEY = NULL, latest_only = FALSE)
+get_subscribed_metadata(latest_only = FALSE)
 }
 \arguments{
-\item{TRUD_API_KEY}{A string. The name of an environmental variable
-containing your TRUD API key. If \code{NULL} (default) this is assumed to be
-called \code{TRUD_API_KEY}.}
-
 \item{latest_only}{If \code{TRUE}, only metadata pertaining to the latest item
 release will be retrieved. By default this is set to \code{FALSE}.}
 }

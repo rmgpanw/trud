@@ -4,13 +4,7 @@
 \alias{download_item}
 \title{Download NHS TRUD item}
 \usage{
-download_item(
-  item,
-  directory = ".",
-  download_file = "archive",
-  TRUD_API_KEY = NULL,
-  release = NULL
-)
+download_item(item, directory = ".", download_file = "archive", release = NULL)
 }
 \arguments{
 \item{item}{An integer, the item to be downloaded.}
@@ -25,10 +19,6 @@ to. This is set to the current working directory by default.}
 \item \code{"signature"}
 \item \code{"publickKey"}
 }}
-
-\item{TRUD_API_KEY}{A string. The name of an environmental variable
-containing your TRUD API key. If \code{NULL} (default) this is assumed to be
-called \code{TRUD_API_KEY}.}
 
 \item{release}{The name of a specific release ID to be downloaded (this can
 be ascertained using \code{\link[=get_item_metadata]{get_item_metadata()}}). If \code{NULL} (default), then the
@@ -57,5 +47,5 @@ y <- download_item(394, directory = tempdir(), release = release)
 unzip(y, list = TRUE)
 \dontshow{\}) # examplesIf}
 # An informative error is raised if your API key is invalid or missing
-try(download_item(394, TRUD_API_KEY = "INVALID_API_KEY"))
+try(withr::with_envvar(c("TRUD_API_KEY" = ""), download_item(394)))
 }

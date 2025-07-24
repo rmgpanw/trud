@@ -11,9 +11,9 @@
 #'
 #' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #' get_subscribed_metadata()
-get_subscribed_metadata <- function(TRUD_API_KEY = NULL, latest_only = FALSE) {
+get_subscribed_metadata <- function(latest_only = FALSE) {
   # validate args
-  get_trud_api_key(TRUD_API_KEY)
+  get_trud_api_key()
 
   validate_arg_latest_only(latest_only)
 
@@ -28,7 +28,6 @@ get_subscribed_metadata <- function(TRUD_API_KEY = NULL, latest_only = FALSE) {
           tryCatch(
             get_item_metadata(
               item = item_number,
-              TRUD_API_KEY = TRUD_API_KEY,
               latest_only = latest_only
             ),
             httr2_http_404 = function(cnd) {

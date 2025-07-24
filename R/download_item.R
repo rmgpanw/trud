@@ -11,9 +11,6 @@
 #'   - `"checksum"`
 #'   - `"signature"`
 #'   - `"publickKey"`
-#' @param TRUD_API_KEY A string. The name of an environmental variable
-#'   containing your TRUD API key. If `NULL` (default) this is assumed to be
-#'   called `TRUD_API_KEY`.
 #' @param release The name of a specific release ID to be downloaded (this can
 #'   be ascertained using [get_item_metadata()]). If `NULL` (default), then the
 #'   latest item release will be downloaded.
@@ -37,12 +34,11 @@
 #'
 #' @examples
 #' # An informative error is raised if your API key is invalid or missing
-#' try(download_item(394, TRUD_API_KEY = "INVALID_API_KEY"))
+#' try(withr::with_envvar(c("TRUD_API_KEY" = ""), download_item(394)))
 download_item <- function(
   item,
   directory = ".",
   download_file = "archive",
-  TRUD_API_KEY = NULL,
   release = NULL
 ) {
   # validate args
@@ -52,7 +48,7 @@ download_item <- function(
 
   validate_arg_download_file(download_file = download_file)
 
-  get_trud_api_key(TRUD_API_KEY)
+  get_trud_api_key()
 
   if (!is.null(release)) {
     if (!rlang::is_string(release)) {
@@ -69,7 +65,6 @@ download_item <- function(
 
   item_metadata <- get_item_metadata(
     item = item,
-    TRUD_API_KEY = TRUD_API_KEY,
     latest_only = latest_only
   )
 

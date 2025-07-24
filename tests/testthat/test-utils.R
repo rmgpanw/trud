@@ -1,13 +1,6 @@
-test_that("get_trud_api_key() throws error when provided non-string argument", {
-  expect_error(
-    get_trud_api_key(1),
-    "Argument `TRUD_API_KEY` must either be a string or `NULL`"
-  )
-})
-
 test_that("get_trud_api_key() throws error when API key is missing or invalid", {
   expect_error(
-    get_trud_api_key(TRUD_API_KEY = "MISSING_API_KEY"),
+    withr::with_envvar(c("TRUD_API_KEY" = ""), get_trud_api_key()),
     class = "missing_api_key"
   )
 })
