@@ -42,20 +42,14 @@ retrieving metadata for only items that the user is subscribed to.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_subscribed_metadata</span><span class="op">(</span>TRUD_API_KEY <span class="op">=</span> <span class="cn">NULL</span>, latest_only <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_subscribed_metadata</span><span class="op">(</span>latest_only <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-trud-api-key">TRUD_API_KEY<a class="anchor" aria-label="anchor" href="#arg-trud-api-key"></a></dt>
-<dd><p>A string. The name of an environmental variable
-containing your TRUD API key. If <code>NULL</code> (default) this is assumed to be
-called <code>TRUD_API_KEY</code>.</p></dd>
-
-
-<dt id="arg-latest-only">latest_only<a class="anchor" aria-label="anchor" href="#arg-latest-only"></a></dt>
+<dl><dt id="arg-latest-only">latest_only<a class="anchor" aria-label="anchor" href="#arg-latest-only"></a></dt>
 <dd><p>If <code>TRUE</code>, only metadata pertaining to the latest item
 release will be retrieved. By default this is set to <code>FALSE</code>.</p></dd>
 
@@ -72,10 +66,10 @@ release will be retrieved. By default this is set to <code>FALSE</code>.</p></dd
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_subscribed_metadata</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■                        </span>  25% |  ETA: 11s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■                 </span>  47% |  ETA:  7s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■           </span>  67% |  ETA:  5s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■    </span>  89% |  ETA:  2s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■                           </span>  14% |  ETA: 10s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■                   </span>  41% |  ETA:  7s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span>  68% |  ETA:  4s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span>  96% |  ETA:  0s</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 17 × 3</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    item_number item_name                                            metadata    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span>
