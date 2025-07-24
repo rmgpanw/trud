@@ -46,7 +46,20 @@
 <h3 id="pull-request-process">Pull request process<a class="anchor" aria-label="anchor" href="#pull-request-process"></a></h3>
 <ul><li><p>Fork the package and clone onto your computer. If you haven’t done this before, we recommend using <code>usethis::create_from_github("rmgpanw/trud", fork = TRUE)</code>.</p></li>
 <li><p>Install all development dependencies with <code>devtools::install_dev_deps()</code>, and then make sure the package passes R CMD check by running <code>devtools::check()</code>. If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help before continuing.</p></li>
-<li><p>Create a Git branch for your pull request (PR). We recommend using <code>usethis::pr_init("brief-description-of-change")</code>.</p></li>
+</ul></div>
+<div class="section level3">
+<h3 id="running-tests">Running Tests<a class="anchor" aria-label="anchor" href="#running-tests"></a></h3>
+<p>Most tests will run with just a valid TRUD API key set as the <code>TRUD_API_KEY</code> environment variable. However, some tests require a subscription to specific TRUD items:</p>
+<ul><li>
+<strong>Item 394</strong> (Community Services Data Set pre-deadline extract XML Schema): Required for <code>test-get_item_metadata.R</code> and <code>test-download_item.R</code>
+<ul><li>Subscribe at: <a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases" class="external-link uri">https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases</a>
+</li>
+</ul></li>
+</ul><p>If you don’t have subscriptions to these items, the relevant tests will be automatically skipped with informative messages.</p>
+</div>
+<div class="section level3">
+<h3 id="making-changes">Making Changes<a class="anchor" aria-label="anchor" href="#making-changes"></a></h3>
+<ul><li><p>Create a Git branch for your pull request (PR). We recommend using <code>usethis::pr_init("brief-description-of-change")</code>.</p></li>
 <li><p>Make your changes, commit to git, and then create a PR by running <code>usethis::pr_push()</code>, and following the prompts in your browser. The title of your PR should briefly describe the change. The body of your PR should contain <code>Fixes #issue-number</code>.</p></li>
 <li><p>For user-facing changes, add a bullet to the top of <code>NEWS.md</code> (i.e. just below the first header). Follow the style described in <a href="https://style.tidyverse.org/news.html" class="external-link uri">https://style.tidyverse.org/news.html</a>.</p></li>
 </ul></div>
