@@ -81,7 +81,7 @@ test_that("`download_item()` works", {
                 httr2_http_404 = \(cnd) "NOT_SUBSCRIBED")
 
   skip_if(condition = identical(x, "NOT_SUBSCRIBED"),
-          message = "Skipping tests - valid TRUD API key detected, however this account is not subscribed to item 394 (required for these tests).")
+          message = "Skipping tests - valid TRUD API key detected, but this account is not subscribed to item 394 ('Community Services Data Set pre-deadline extract XML Schema'). Subscribe at: https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases")
 
   expect_true(file.exists(x))
 

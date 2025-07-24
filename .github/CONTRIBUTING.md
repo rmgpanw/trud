@@ -21,7 +21,19 @@ See our guide on [how to create a great issue](https://code-review.tidyverse.org
 *   Fork the package and clone onto your computer. If you haven't done this before, we recommend using `usethis::create_from_github("rmgpanw/trud", fork = TRUE)`.
 
 *   Install all development dependencies with `devtools::install_dev_deps()`, and then make sure the package passes R CMD check by running `devtools::check()`. 
-    If R CMD check doesn't pass cleanly, it's a good idea to ask for help before continuing. 
+    If R CMD check doesn't pass cleanly, it's a good idea to ask for help before continuing.
+
+### Running Tests
+
+Most tests will run with just a valid TRUD API key set as the `TRUD_API_KEY` environment variable. However, some tests require a subscription to specific TRUD items:
+
+- **Item 394** (Community Services Data Set pre-deadline extract XML Schema): Required for `test-get_item_metadata.R` and `test-download_item.R`
+  - Subscribe at: https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases
+
+If you don't have subscriptions to these items, the relevant tests will be automatically skipped with informative messages.
+
+### Making Changes
+
 *   Create a Git branch for your pull request (PR). We recommend using `usethis::pr_init("brief-description-of-change")`.
 
 *   Make your changes, commit to git, and then create a PR by running `usethis::pr_push()`, and following the prompts in your browser.

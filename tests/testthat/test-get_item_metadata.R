@@ -37,7 +37,7 @@ test_that("`get_item_metadata()` returns result with expected format", {
   )
 
   skip_if(condition = identical(metadata_394, "NOT_SUBSCRIBED"),
-          message = "Skipping tests - valid TRUD API key detected, however this account is not subscribed to item 394 (required for these tests).")
+          message = "Skipping tests - valid TRUD API key detected, but this account is not subscribed to item 394 ('Community Services Data Set pre-deadline extract XML Schema'). Subscribe at: https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases")
 
   expect_equal(
     names(metadata_394),
