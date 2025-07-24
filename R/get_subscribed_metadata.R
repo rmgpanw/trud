@@ -11,8 +11,7 @@
 #'
 #' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #' get_subscribed_metadata()
-get_subscribed_metadata <- function(TRUD_API_KEY = NULL,
-                                    latest_only = FALSE) {
+get_subscribed_metadata <- function(TRUD_API_KEY = NULL, latest_only = FALSE) {
   # validate args
   get_trud_api_key(TRUD_API_KEY)
 
@@ -22,15 +21,22 @@ get_subscribed_metadata <- function(TRUD_API_KEY = NULL,
   all_items <- trud_items()
 
   all_items |>
-    dplyr::mutate("metadata" = purrr::map(.data[["item_number"]], \(item_number) tryCatch(
-      get_item_metadata(
-        item = item_number,
-        TRUD_API_KEY = TRUD_API_KEY,
-        latest_only = latest_only
-      ),
-      httr2_http_404 = function(cnd) {
-        NA
-      }
-    ), .progress = TRUE)) |>
+    dplyr::mutate(
+      "metadata" = purrr::map(
+        .data[["item_number"]],
+        \(item_number)
+          tryCatch(
+            get_item_metadata(
+              item = item_number,
+              TRUD_API_KEY = TRUD_API_KEY,
+              latest_only = latest_only
+            ),
+            httr2_http_404 = function(cnd) {
+              NA
+            }
+          ),
+        .progress = TRUE
+      )
+    ) |>
     dplyr::filter(!is.na(.data[["metadata"]]))
 }

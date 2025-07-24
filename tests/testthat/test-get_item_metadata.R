@@ -36,8 +36,10 @@ test_that("`get_item_metadata()` returns result with expected format", {
     httr2_http_404 = \(cnd) "NOT_SUBSCRIBED"
   )
 
-  skip_if(condition = identical(metadata_394, "NOT_SUBSCRIBED"),
-          message = "Skipping tests - valid TRUD API key detected, but this account is not subscribed to item 394 ('Community Services Data Set pre-deadline extract XML Schema'). Subscribe at: https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases")
+  skip_if(
+    condition = identical(metadata_394, "NOT_SUBSCRIBED"),
+    message = "Skipping tests - valid TRUD API key detected, but this account is not subscribed to item 394 ('Community Services Data Set pre-deadline extract XML Schema'). Subscribe at: https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases"
+  )
 
   expect_equal(
     names(metadata_394),
@@ -49,41 +51,56 @@ test_that("`get_item_metadata()` returns result with expected format", {
   expect_equal(names(metadata_394$releases), metadata_394$releases[[1]]$id)
 })
 
-test_that(
-  "Expected request URL is generated for `get_item_metadata()`, with `latest_only = TRUE` and `latest_only = FALSE`",
-  {
-    skip_if_offline()
-    skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
-    skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
-    # latest_only = TRUE
-    withr::with_envvar(new = c("EXPIRED_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"), {
-      tryCatch({
-        metadata_394_lastet_only <- get_item_metadata(394, TRUD_API_KEY = "EXPIRED_API_KEY", latest_only = TRUE)
-      },
-      error = \(cnd) invisible())
+test_that("Expected request URL is generated for `get_item_metadata()`, with `latest_only = TRUE` and `latest_only = FALSE`", {
+  skip_if_offline()
+  skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
+  skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
+  # latest_only = TRUE
+  withr::with_envvar(
+    new = c("EXPIRED_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"),
+    {
+      tryCatch(
+        {
+          metadata_394_lastet_only <- get_item_metadata(
+            394,
+            TRUD_API_KEY = "EXPIRED_API_KEY",
+            latest_only = TRUE
+          )
+        },
+        error = \(cnd) invisible()
+      )
       req <- httr2::last_request()
-    })
+    }
+  )
 
-    expect_equal(
-      req$url,
-      "https://isd.digital.nhs.uk/trud/api/v1/keys/e963cc518cc41500e1a8940a93ffc3c0915e2983/items/394/releases?latest"
-    )
+  expect_equal(
+    req$url,
+    "https://isd.digital.nhs.uk/trud/api/v1/keys/e963cc518cc41500e1a8940a93ffc3c0915e2983/items/394/releases?latest"
+  )
 
-    # latest_only = FALSE
-    withr::with_envvar(new = c("EXPIRED_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"), {
-      tryCatch({
-        metadata_394_lastet_only <- get_item_metadata(394, TRUD_API_KEY = "EXPIRED_API_KEY", latest_only = FALSE)
-      },
-      error = \(cnd) invisible())
+  # latest_only = FALSE
+  withr::with_envvar(
+    new = c("EXPIRED_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"),
+    {
+      tryCatch(
+        {
+          metadata_394_lastet_only <- get_item_metadata(
+            394,
+            TRUD_API_KEY = "EXPIRED_API_KEY",
+            latest_only = FALSE
+          )
+        },
+        error = \(cnd) invisible()
+      )
       req <- httr2::last_request()
-    })
+    }
+  )
 
-    expect_equal(
-      req$url,
-      "https://isd.digital.nhs.uk/trud/api/v1/keys/e963cc518cc41500e1a8940a93ffc3c0915e2983/items/394/releases"
-    )
-  }
-)
+  expect_equal(
+    req$url,
+    "https://isd.digital.nhs.uk/trud/api/v1/keys/e963cc518cc41500e1a8940a93ffc3c0915e2983/items/394/releases"
+  )
+})
 
 test_that("get_item_metadata() raises error for expired API key", {
   skip_if_offline()

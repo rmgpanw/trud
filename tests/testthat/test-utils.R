@@ -6,7 +6,8 @@ test_that("get_trud_api_key() raises error with non-string argument", {
 })
 
 test_that("get_trud_api_key() raises error with missing API key", {
-  expect_error(get_trud_api_key(TRUD_API_KEY = "MISSING_API_KEY"),
+  expect_error(
+    get_trud_api_key(TRUD_API_KEY = "MISSING_API_KEY"),
     class = "missing_api_key"
   )
 })

@@ -62,9 +62,14 @@ trud_error_message <- function(resp) {
     return(resp)
   }
 
-  switch(as.character(resp$httpStatus),
+  switch(
+    as.character(resp$httpStatus),
     "404" = c(
-      "x" = stringr::str_replace(resp$message, "API key .*,", "supplied API key,"),
+      "x" = stringr::str_replace(
+        resp$message,
+        "API key .*,",
+        "supplied API key,"
+      ),
       "i" = "Either this item number does not exist, or you are not subscribed to it",
       "i" = "For further information, see https://isd.digital.nhs.uk/trud/users/guest/filters/0/api"
     ),
@@ -151,7 +156,9 @@ validate_arg_directory <- function(directory, call = rlang::caller_env()) {
     cli::cli_abort(
       message = c(
         "x" = "Argument {.code directory} must be a valid file path.",
-        "!" = stringr::str_glue("Directory does not exist: {{.code {directory}}}."),
+        "!" = stringr::str_glue(
+          "Directory does not exist: {{.code {directory}}}."
+        ),
         directory_arg_example
       ),
       call = call
@@ -166,8 +173,16 @@ validate_arg_directory <- function(directory, call = rlang::caller_env()) {
 #'
 #' @return Called for side effect
 #' @noRd
-validate_arg_download_file <- function(download_file, call = rlang::caller_env()) {
-  valid_download_file_values <- c("archive", "checksum", "signature", "publicKey")
+validate_arg_download_file <- function(
+  download_file,
+  call = rlang::caller_env()
+) {
+  valid_download_file_values <- c(
+    "archive",
+    "checksum",
+    "signature",
+    "publicKey"
+  )
 
   if (!rlang::is_string(download_file)) {
     cli::cli_abort(
@@ -183,10 +198,7 @@ validate_arg_download_file <- function(download_file, call = rlang::caller_env()
     )
   }
 
-  rlang::arg_match(download_file,
-    valid_download_file_values,
-    error_call = call
-  )
+  rlang::arg_match(download_file, valid_download_file_values, error_call = call)
 }
 
 #' Add user agent to TRUD API request object
@@ -205,11 +217,11 @@ req_user_agent_trud <- function(req) {
 #' This function adds request handling to httr2 request objects for
 #' interaction with the NHS TRUD API. It configures custom error messages,
 #' automatic retry for transient failures, and rate limiting to respect API limits.
-#' 
+#'
 #' **Retryable errors (will retry automatically):**
 #' - `429` (TOO_MANY_REQUESTS) - Rate limiting (essential for NHS APIs)
 #' - `500` (INTERNAL_SERVER_ERROR) - Server errors that might resolve on retry
-#' - `502` (BAD_GATEWAY) - Gateway/proxy issues that are often temporary  
+#' - `502` (BAD_GATEWAY) - Gateway/proxy issues that are often temporary
 #' - `503` (SERVICE_UNAVAILABLE) - Server maintenance/overload
 #' - `504` (GATEWAY_TIMEOUT) - Timeout issues that may succeed on retry
 #'
@@ -217,41 +229,41 @@ req_user_agent_trud <- function(req) {
 #' - 4xx client errors (400, 401, 403, 404, 409) - Problems with the request
 #' - `501` (NOT_IMPLEMENTED) - The endpoint doesn't support the method
 #'
-#' For further information about NHS API standards, see the 
+#' For further information about NHS API standards, see the
 #' [NHS reference guide for API standards](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#api-status).
 #'
 #' @param req An `httr2_request` object created by [httr2::request()].
 #' @param max_tries Integer. Maximum number of retry attempts (default: 3).
 #' @param retry_status An integer vector. HTTP status codes that should trigger
 #'   automatic retry (default: `c(429, 500, 502, 503, 504)`).
-#' @param capacity Integer. Maximum number of requests per `fill_time_s` 
+#' @param capacity Integer. Maximum number of requests per `fill_time_s`
 #'   period for rate limiting (default: 2).
-#' @param fill_time_s Integer Time period in seconds for the rate limiting 
+#' @param fill_time_s Integer Time period in seconds for the rate limiting
 #'   bucket to refill (default: 2).
 #'
-#' @returns An `httr2_request` object with error handling, retry logic, and 
+#' @returns An `httr2_request` object with error handling, retry logic, and
 #'   rate limiting configured.
-#' @noRd 
+#' @noRd
 #' @examples
 #' \dontrun{
 #' # Configure a TRUD API request with default retry and rate limiting
 #' req <- httr2::request("https://isd.digital.nhs.uk/trud/api/v1/keys/...")
 #' req <- handle_trud_request(req)
-#' 
+#'
 #' # Customize retry behavior
 #' req <- handle_trud_request(
-#'   req, 
-#'   max_tries = 5, 
-#'   capacity = 1, 
+#'   req,
+#'   max_tries = 5,
+#'   capacity = 1,
 #'   fill_time_s = 3
 #' )
 #' }
 handle_trud_request <- function(
-    req,
-    max_tries = 3,
-    retry_status = c(429, 500, 502, 503, 504),
-    capacity = 2,
-    fill_time_s = 2
+  req,
+  max_tries = 3,
+  retry_status = c(429, 500, 502, 503, 504),
+  capacity = 2,
+  fill_time_s = 2
 ) {
   req |>
     httr2::req_error(body = trud_error_message) |>

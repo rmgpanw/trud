@@ -38,11 +38,13 @@
 #' @examples
 #' # An informative error is raised if your API key is invalid or missing
 #' try(download_item(394, TRUD_API_KEY = "INVALID_API_KEY"))
-download_item <- function(item,
-                          directory = ".",
-                          download_file = "archive",
-                          TRUD_API_KEY = NULL,
-                          release = NULL) {
+download_item <- function(
+  item,
+  directory = ".",
+  download_file = "archive",
+  TRUD_API_KEY = NULL,
+  release = NULL
+) {
   # validate args
   validate_arg_item(item = item)
 
@@ -118,7 +120,8 @@ download_item <- function(item,
     paste0(download_file, "FileUrl")
   )
 
-  cli::cli_progress_step("Downloading {download_file} file for TRUD item {item}...",
+  cli::cli_progress_step(
+    "Downloading {download_file} file for TRUD item {item}...",
     msg_done = "Successfully downloaded {.code {file_name}} to {.path {file_path}}.",
     spinner = TRUE
   )
