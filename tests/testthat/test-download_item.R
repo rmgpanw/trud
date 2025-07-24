@@ -1,4 +1,4 @@
-test_that("Expected errors raised for invalid `release` arg with `download_item()`", {
+test_that("download_item() throws errors for invalid release argument values", {
   with_mocked_bindings(
     get_trud_api_key = function(...) NULL,
     expect_error(
@@ -25,7 +25,7 @@ test_that("Expected errors raised for invalid `release` arg with `download_item(
   )
 })
 
-test_that("Warning raised if file to be downloaded already exists locally", {
+test_that("download_item() warns when attempting to download file that already exists locally", {
   archiveFileName <- "download_file.txt"
 
   file.create(file.path(tempdir(), archiveFileName))
@@ -52,7 +52,7 @@ test_that("Warning raised if file to be downloaded already exists locally", {
   )
 })
 
-test_that("`download_item()` works", {
+test_that("download_item() downloads file and warns when file already exists. Requires TRUD API key with subscription to item 394", {
   archiveFileName_unique <- basename(tempfile())
   archiveFileName_unique_path <- file.path(tempdir(), archiveFileName_unique)
 

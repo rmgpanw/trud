@@ -1,23 +1,23 @@
-test_that("get_trud_api_key() raises error with non-string argument", {
+test_that("get_trud_api_key() throws error when provided non-string argument", {
   expect_error(
     get_trud_api_key(1),
     "Argument `TRUD_API_KEY` must either be a string or `NULL`"
   )
 })
 
-test_that("get_trud_api_key() raises error with missing API key", {
+test_that("get_trud_api_key() throws error when API key is missing or invalid", {
   expect_error(
     get_trud_api_key(TRUD_API_KEY = "MISSING_API_KEY"),
     class = "missing_api_key"
   )
 })
 
-test_that("validate_arg_item() raises error with non-integer argument", {
+test_that("validate_arg_item() throws error when item argument is not integer", {
   expect_error(validate_arg_item("1"), "Argument `item` must be an integer.")
 })
 
 
-test_that("validate_arg_directory() raises error with non-string argument", {
+test_that("validate_arg_directory() throws error for invalid directory arguments", {
   expect_error(
     validate_arg_directory(1),
     "Argument `directory` must be a string"
@@ -29,7 +29,7 @@ test_that("validate_arg_directory() raises error with non-string argument", {
   )
 })
 
-test_that("trud_error_message() returns expected error messages", {
+test_that("trud_error_message() generates appropriate error messages for different HTTP status codes", {
   response_without_json_body <- httr2::response(
     status_code = 499,
     url = "https://example.com",
@@ -77,7 +77,7 @@ test_that("trud_error_message() returns expected error messages", {
   )
 })
 
-test_that("validate_arg_download_file() raises error with non-string argument", {
+test_that("validate_arg_download_file() throws error when download_file argument is not string", {
   expect_error(
     validate_arg_download_file(1),
     "Argument `download_file` must be a string."

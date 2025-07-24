@@ -1,4 +1,4 @@
-test_that("`get_subscribed_metadata()` runs as expected", {
+test_that("get_subscribed_metadata() returns formatted metadata with correct structure", {
   with_mocked_bindings(
     get_item_metadata = function(...)
       list(
@@ -24,7 +24,7 @@ test_that("`get_subscribed_metadata()` runs as expected", {
   expect_true(nrow(result) > 0)
 })
 
-test_that("`get_subscribed_metadata()` runs without error", {
+test_that("get_subscribed_metadata() successfully retrieves subscribed items as data frame", {
   skip_if_offline()
   skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
   skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml

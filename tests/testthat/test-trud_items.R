@@ -1,4 +1,4 @@
-test_that("`trud_items()` returns a tibble with expected properties", {
+test_that("trud_items() returns tibble with correct columns and data types", {
   with_mocked_bindings(
     get_trud_items_html = function() rvest::read_html(snapshot_trud_items_html),
     code = {
@@ -30,7 +30,7 @@ test_that("`trud_items()` returns a tibble with expected properties", {
   )
 })
 
-test_that("`trud_items()` runs without error", {
+test_that("trud_items() successfully retrieves available items as data frame", {
   skip_if_offline()
   skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
   skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml

@@ -1,4 +1,4 @@
-test_that("Error raised with invalid `latest_only` arg value for `get_item_metadata()`", {
+test_that("get_item_metadata() throws error when latest_only argument is not logical", {
   with_mocked_bindings(
     get_trud_api_key = function(...) NULL,
     expect_error(
@@ -8,7 +8,7 @@ test_that("Error raised with invalid `latest_only` arg value for `get_item_metad
   )
 })
 
-test_that("`get_item_metadata()` runs with mocked API response", {
+test_that("get_item_metadata() successfully processes mocked API response and names releases", {
   with_mocked_bindings(
     request_item_metadata = function(...)
       list(
@@ -26,7 +26,7 @@ test_that("`get_item_metadata()` runs with mocked API response", {
   )
 })
 
-test_that("`get_item_metadata()` returns result with expected format", {
+test_that("get_item_metadata() returns metadata with correct structure and single release when retrieving only the latest release", {
   skip_if_offline()
   skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
   skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
@@ -51,7 +51,7 @@ test_that("`get_item_metadata()` returns result with expected format", {
   expect_equal(names(metadata_394$releases), metadata_394$releases[[1]]$id)
 })
 
-test_that("Expected request URL is generated for `get_item_metadata()`, with `latest_only = TRUE` and `latest_only = FALSE`", {
+test_that("get_item_metadata() constructs correct URLs whether retrieving for all item releases or only the latest release", {
   skip_if_offline()
   skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
   skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
@@ -102,7 +102,7 @@ test_that("Expected request URL is generated for `get_item_metadata()`, with `la
   )
 })
 
-test_that("get_item_metadata() raises error for expired API key", {
+test_that("get_item_metadata() throws unauthorized error when API key is expired", {
   skip_if_offline()
   skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
   skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
