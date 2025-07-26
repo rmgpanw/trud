@@ -1,11 +1,16 @@
 #' Get available NHS TRUD items
 #'
+#' @description
 #' Scrapes [this
 #' page](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1)
 #' from the NHS TRUD website for all available items.
 #'
+#' ```{r child = "man/rmd/subscription-required.Rmd"}
+#' ```
+#'
 #' @returns A tibble, with columns `item_number` and `item_name`.
 #' @export
+#' @seealso [get_subscribed_metadata()] to see only your subscribed items.
 #'
 #' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #' trud_items()

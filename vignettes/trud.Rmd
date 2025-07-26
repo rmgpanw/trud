@@ -30,9 +30,30 @@ Having installed trud, you will also need to:
 TRUD_API_KEY=e963cc518cc41500e1a8940a93ffc3c0915e2983
 ```
 
+## Understanding TRUD Subscriptions
+
+**Important**: NHS TRUD operates on a subscription-based model. Having an API key allows you to authenticate, but you must also subscribe to individual items through the NHS TRUD website before you can access them.
+
+**The subscription workflow:**
+
+1. Create your NHS TRUD account and get your API key (as described above)
+2. Browse available items on the [NHS TRUD website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1)
+3. Subscribe to the specific items you need
+4. Use the `trud` package to access your subscribed items
+
 ## Examples
 
-### Retrieve available item endpoints
+### Check your current subscriptions
+
+Start by seeing what items you're already subscribed to:
+
+```{r get-subscribed-metadata}
+get_subscribed_metadata()
+```
+
+### Browse all available items
+
+You can see all available TRUD items, though you'll need to subscribe to access them:
 
 ```{r trud-items}
 trud_items()
@@ -40,7 +61,11 @@ trud_items()
 
 > Note that item numbers can also be found in the URLs of releases pages, between `items` and `releases`. For example, the URL for the [Community Services Data Set pre-deadline extract XML Schema](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases) releases page is `https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1/items/394/releases` and the item number is `394`.
 
-### Get metadata for an item
+To subscribe to an item, visit its page on the NHS TRUD website and click the "Subscribe" button.
+
+### Get metadata for a specific item
+
+Once subscribed to an item, you can retrieve its metadata:
 
 ```{r get-item-metadata}
 get_item_metadata(394) |>

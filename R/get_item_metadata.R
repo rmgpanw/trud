@@ -1,7 +1,11 @@
 #' Retrieve metadata for a NHS TRUD item
 #'
+#' @description
 #' Sends a request to the release list endpoint, returning a list of metadata
 #' pertaining to the specified NHS TRUD item.
+#'
+#' ```{r child = "man/rmd/subscription-required.Rmd"}
+#' ```
 #'
 #' @inheritParams download_item
 #' @param latest_only If `TRUE`, only metadata pertaining to the latest item

@@ -1,0 +1,7 @@
+***Subscription Required***
+
+You must subscribe to TRUD items individually through the NHS TRUD website 
+before you can access them using [get_item_metadata()] or [download_item()]. 
+Simply having an API key is not sufficient. To see items you're already 
+subscribed to, use [get_subscribed_metadata()]. To browse all available 
+items, use [trud_items()].

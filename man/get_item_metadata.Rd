@@ -18,6 +18,14 @@ A list.
 \description{
 Sends a request to the release list endpoint, returning a list of metadata
 pertaining to the specified NHS TRUD item.
+
+\emph{\strong{Subscription Required}}
+
+You must subscribe to TRUD items individually through the NHS TRUD website
+before you can access them using \code{\link[=get_item_metadata]{get_item_metadata()}} or \code{\link[=download_item]{download_item()}}.
+Simply having an API key is not sufficient. To see items you're already
+subscribed to, use \code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}}. To browse all available
+items, use \code{\link[=trud_items]{trud_items()}}.
 }
 \examples{
 \dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

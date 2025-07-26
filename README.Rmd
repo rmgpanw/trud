@@ -47,16 +47,52 @@ Or you can install the development version  of `trud` from [GitHub](https://gith
 pak::pak("rmgpanw/trud")
 ```
 
-You will also need to [sign up for a free account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form) with NHS TRUD
+You will also need to [sign up for a free account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form) with NHS TRUD and set up your API key as described in `vignette("trud")`.
+
+## Getting Started
+
+### Understanding TRUD Subscriptions
+
+**Important**: NHS TRUD operates on a subscription model. After creating your account, you must individually subscribe to each item you want to access through the [NHS TRUD website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1).
+
+### Recommended Workflow
+
+**Step 1**: Check what you're already subscribed to:
+
+```{r subscribed-items}
+library(trud)
+
+# See items you can currently access
+get_subscribed_metadata()
+```
+
+**Step 2**: Browse all available items (note: subscription required for access):
+
+```{r browse-items}
+# List all available TRUD items
+trud_items()
+```
+
+**Step 3**: Subscribe to additional items you need via the [NHS TRUD website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1), then access them:
+
+```{r access-items, eval=FALSE}
+# After subscribing to an item (e.g., item 394), you can:
+
+# Get metadata
+metadata <- get_item_metadata(394)
+
+# Download the item
+file_path <- download_item(394, directory = tempdir())
+```
 
 ## Available functionality
 
-The main functions provided by trud are `get_item_metadata()` and `download_item()`. Use `trud_items()` to list available items and their IDs, as retrieved from the [NHS TRUD website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1):
+The main functions provided by trud are:
 
-```{r trud-tems}
-library(trud)
-trud_items()
-```
+- `get_subscribed_metadata()`: Shows items you can currently access
+- `trud_items()`: Lists all available items
+- `get_item_metadata()`: Retrieves metadata for a specific item
+- `download_item()`: Downloads files for a specific item
 
 Please see `vignette("trud")` for further information and getting started.
 

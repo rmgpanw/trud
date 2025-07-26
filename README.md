@@ -59,17 +59,56 @@ pak::pak("rmgpanw/trud")
 
 You will also need to [sign up for a free
 account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form)
-with NHS TRUD
+with NHS TRUD and set up your API key as described in
+`vignette("trud")`.
 
-## Available functionality
+## Getting Started
 
-The main functions provided by trud are `get_item_metadata()` and
-`download_item()`. Use `trud_items()` to list available items and their
-IDs, as retrieved from the [NHS TRUD
-website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1):
+### Understanding TRUD Subscriptions
+
+**Important**: NHS TRUD operates on a subscription model. After creating
+your account, you must individually subscribe to each item you want to
+access through the [NHS TRUD
+website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1).
+
+### Recommended Workflow
+
+**Step 1**: Check what you’re already subscribed to:
 
 ``` r
 library(trud)
+
+# See items you can currently access
+get_subscribed_metadata()
+#>  ■■■■■■■■                          22% |  ETA:  6s
+#>  ■■■■■■■■■■■■■■■■■■■■■■            68% |  ETA:  2s
+#> # A tibble: 17 × 3
+#>    item_number item_name                                            metadata    
+#>          <int> <chr>                                                <list>      
+#>  1         394 Community Services Data Set pre-deadline extract XM… <named list>
+#>  2         239 dm+d XML transformation tool                         <named list>
+#>  3         263 eViewer application                                  <named list>
+#>  4         398 Global Trade Item Number to OPCS-4 code cross refer… <named list>
+#>  5        1760 NHS Continuing Health Care (CHC) Data Set - JSON Sc… <named list>
+#>  6         719 NHS Continuing Health Care (CHC) Data Set - XML Sch… <named list>
+#>  7           9 NHS Data Migration                                   <named list>
+#>  8         258 NHS ICD-10 5th Edition data files                    <named list>
+#>  9           8 NHS Read Browser                                     <named list>
+#> 10          19 NHS UK Read Codes Clinical Terms Version 3           <named list>
+#> 11         255 NHS UK Read Codes Clinical Terms Version 3, Cross M… <named list>
+#> 12          24 NHSBSA dm+d                                          <named list>
+#> 13         264 OPCS-4 eVersion book                                 <named list>
+#> 14         659 Primary Care Domain reference sets                   <named list>
+#> 15         101 SNOMED CT UK Clinical Edition, RF2: Full, Snapshot … <named list>
+#> 16          98 SNOMED CT UK Data Migration Workbench                <named list>
+#> 17        1799 SNOMED CT UK Monolith Edition, RF2: Snapshot         <named list>
+```
+
+**Step 2**: Browse all available items (note: subscription required for
+access):
+
+``` r
+# List all available TRUD items
 trud_items()
 #> # A tibble: 73 × 2
 #>    item_number item_name                                                        
@@ -86,6 +125,29 @@ trud_items()
 #> 10        1819 Emergency Care Data Set XML Schema                               
 #> # ℹ 63 more rows
 ```
+
+**Step 3**: Subscribe to additional items you need via the [NHS TRUD
+website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1),
+then access them:
+
+``` r
+# After subscribing to an item (e.g., item 394), you can:
+
+# Get metadata
+metadata <- get_item_metadata(394)
+
+# Download the item
+file_path <- download_item(394, directory = tempdir())
+```
+
+## Available functionality
+
+The main functions provided by trud are:
+
+- `get_subscribed_metadata()`: Shows items you can currently access
+- `trud_items()`: Lists all available items
+- `get_item_metadata()`: Retrieves metadata for a specific item
+- `download_item()`: Downloads files for a specific item
 
 Please see `vignette("trud")` for further information and getting
 started.

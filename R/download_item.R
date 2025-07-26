@@ -1,7 +1,11 @@
 #' Download NHS TRUD item
 #'
-#' Downloads files for a specified NHS TRUD item (requires a subscription). By
-#' default this is the latest release.
+#' @description
+#' Downloads files for a specified NHS TRUD item. By default this downloads
+#' the latest release.
+#'
+#' ```{r child = "man/rmd/subscription-required.Rmd"}
+#' ```
 #'
 #' @param item An integer, the item to be downloaded.
 #' @param directory Path to the directory to which this item will be downloaded

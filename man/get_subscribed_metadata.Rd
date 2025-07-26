@@ -15,13 +15,15 @@ A tibble, with item metadata stored in the list column \code{metadata}.
 }
 \description{
 A convenience wrapper around \code{\link[=trud_items]{trud_items()}} and \code{\link[=get_item_metadata]{get_item_metadata()}},
-retrieving metadata for only items that the user is subscribed to.
+retrieving metadata for only items that the user is subscribed to. If you
+need access to additional items, browse available options with
+\code{\link[=trud_items]{trud_items()}}, then subscribe through the NHS TRUD website.
 }
 \examples{
 \dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-get_subscribed_metadata()
+  get_subscribed_metadata()
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=trud_items]{trud_items()}}, \code{\link[=get_item_metadata]{get_item_metadata()}}
+\code{\link[=trud_items]{trud_items()}} to browse all available items, \code{\link[=get_item_metadata]{get_item_metadata()}}
 }

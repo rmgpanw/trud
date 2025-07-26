@@ -28,8 +28,16 @@ latest item release will be downloaded.}
 The file path to the downloaded file, returned invisibly.
 }
 \description{
-Downloads files for a specified NHS TRUD item (requires a subscription). By
-default this is the latest release.
+Downloads files for a specified NHS TRUD item. By default this downloads
+the latest release.
+
+\emph{\strong{Subscription Required}}
+
+You must subscribe to TRUD items individually through the NHS TRUD website
+before you can access them using \code{\link[=get_item_metadata]{get_item_metadata()}} or \code{\link[=download_item]{download_item()}}.
+Simply having an API key is not sufficient. To see items you're already
+subscribed to, use \code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}}. To browse all available
+items, use \code{\link[=trud_items]{trud_items()}}.
 }
 \examples{
 \dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
