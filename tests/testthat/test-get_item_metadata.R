@@ -1,9 +1,9 @@
-test_that("get_item_metadata() throws error when latest_only argument is not logical", {
+test_that("get_item_metadata() throws error when release_scope argument is invalid", {
   with_mocked_bindings(
     get_trud_api_key = function(...) NULL,
     expect_error(
-      get_item_metadata(394, latest_only = "TRUE"),
-      "Argument `latest_only` must be either `TRUE` or `FALSE`"
+      get_item_metadata(394, release_scope = "invalid"),
+      "`release_scope`.*must be one of"
     )
   )
 })
@@ -32,7 +32,7 @@ test_that("get_item_metadata() returns metadata with correct structure and singl
   skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
 
   metadata_394 <- tryCatch(
-    get_item_metadata(394, latest_only = TRUE),
+    get_item_metadata(394, release_scope = "latest"),
     httr2_http_404 = \(cnd) "NOT_SUBSCRIBED"
   )
 
@@ -55,15 +55,15 @@ test_that("get_item_metadata() constructs correct URLs whether retrieving for al
   skip_if_offline()
   skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
   skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
-  # latest_only = TRUE
+  # release_scope = "latest"
   tryCatch(
     {
       withr::with_envvar(
         c("TRUD_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"),
         {
-          metadata_394_lastet_only <- get_item_metadata(
+          metadata_394_latest_only <- get_item_metadata(
             394,
-            latest_only = TRUE
+            release_scope = "latest"
           )
         }
       )
@@ -78,7 +78,7 @@ test_that("get_item_metadata() constructs correct URLs whether retrieving for al
     "https://isd.digital.nhs.uk/trud/api/v1/keys/e963cc518cc41500e1a8940a93ffc3c0915e2983/items/394/releases?latest"
   )
 
-  # latest_only = FALSE
+  # release_scope = "all"
   withr::with_envvar(
     new = c("EXPIRED_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"),
     {
@@ -87,9 +87,9 @@ test_that("get_item_metadata() constructs correct URLs whether retrieving for al
           withr::with_envvar(
             c("TRUD_API_KEY" = "e963cc518cc41500e1a8940a93ffc3c0915e2983"),
             {
-              metadata_394_lastet_only <- get_item_metadata(
+              metadata_394_latest_only <- get_item_metadata(
                 394,
-                latest_only = FALSE
+                release_scope = "all"
               )
             }
           )

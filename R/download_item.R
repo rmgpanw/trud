@@ -11,7 +11,7 @@
 #' @section Working with specific releases:
 #' To download a specific (non-latest) release:
 #'
-#' 1. Use [get_item_metadata()] to retrieve metadata for all releases
+#' 1. Use [get_item_metadata()] with `release_scope = "all"` to retrieve metadata for all releases
 #' 2. The release IDs are stored under the `id` item for each release
 #' 3. Pass the desired release ID to the `release` parameter of [download_item()]
 #'
@@ -43,9 +43,11 @@
 #' unzip(x, list = TRUE)
 #'
 #' # Download a previous release
-#' release <- get_item_metadata(394)$releases[[2]]$id
+#' # First get all releases to see available options
+#' metadata <- get_item_metadata(394, release_scope = "all")
+#' release_id <- metadata$releases[[2]]$id
 #'
-#' y <- download_item(394, directory = tempdir(), release = release)
+#' y <- download_item(394, directory = tempdir(), release = release_id)
 #'
 #' unzip(y, list = TRUE)
 #'
@@ -74,15 +76,11 @@ download_item <- function(
   }
 
   # get file URLs
-  latest_only <- FALSE
-
-  if (is.null(release)) {
-    latest_only <- TRUE
-  }
+  release_scope <- if (is.null(release)) "latest" else "all"
 
   item_metadata <- get_item_metadata(
     item = item,
-    latest_only = latest_only
+    release_scope = release_scope
   )
 
   # validate `release`
@@ -91,7 +89,7 @@ download_item <- function(
       cli::cli_abort(
         c(
           "x" = "Unrecognised {.code release} supplied for item {item}.",
-          "i" = "See available releases with {.code get_item_metadata(item = {item}, latest_only = FALSE)}."
+          "i" = "See available releases with {.code get_item_metadata(item = {item}, release_scope = \"all\")}."
         ),
         class = "unrecognised_trud_item_release"
       )

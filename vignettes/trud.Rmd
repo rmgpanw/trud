@@ -87,7 +87,7 @@ To download a specific release (rather than the latest), you need the release ID
 
 ```{r specific-releases}
 # Get metadata for all releases (not just latest)
-metadata <- get_item_metadata(394, latest_only = FALSE)
+metadata <- get_item_metadata(394, release_scope = "all")
 
 # Release IDs are in the `id` field of each release
 metadata$releases |> purrr::map("id")

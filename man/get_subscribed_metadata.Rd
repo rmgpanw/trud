@@ -4,11 +4,11 @@
 \alias{get_subscribed_metadata}
 \title{Get metadata for subscribed NHS TRUD items}
 \usage{
-get_subscribed_metadata(latest_only = FALSE)
+get_subscribed_metadata(release_scope = c("all", "latest"))
 }
 \arguments{
-\item{latest_only}{If \code{TRUE}, only metadata pertaining to the latest item
-release will be retrieved. By default this is set to \code{FALSE}.}
+\item{release_scope}{Which releases to retrieve metadata for. Use \code{"all"} to
+get all releases, or \code{"latest"} to get only the most recent release.}
 }
 \value{
 A tibble, with item metadata stored in the list column \code{metadata}.
@@ -23,7 +23,12 @@ If you need access to additional items, browse available options with
 }
 \examples{
 \dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-  get_subscribed_metadata()
+  # Get metadata for all subscribed items
+  subscribed <- get_subscribed_metadata()
+
+  # Show structure without exposing API keys in URLs
+  subscribed$metadata[[1]] |>
+    purrr::map_at("releases", \(release) purrr::map(release, names))
 \dontshow{\}) # examplesIf}
 }
 \seealso{

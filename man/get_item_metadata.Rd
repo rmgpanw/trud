@@ -4,14 +4,14 @@
 \alias{get_item_metadata}
 \title{Retrieve metadata for a NHS TRUD item}
 \usage{
-get_item_metadata(item, latest_only = FALSE)
+get_item_metadata(item, release_scope = c("all", "latest"))
 }
 \arguments{
 \item{item}{An integer, the item to be downloaded. Get these from \code{\link[=trud_items]{trud_items()}}
 or \code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}}.}
 
-\item{latest_only}{If \code{TRUE}, only metadata pertaining to the latest item
-release will be retrieved. By default this is set to \code{FALSE}.}
+\item{release_scope}{Which releases to retrieve metadata for. Use \code{"all"} to
+get all releases, or \code{"latest"} to get only the most recent release.}
 }
 \value{
 A list containing item metadata, including release information that
@@ -38,8 +38,8 @@ get_item_metadata(394) |>
   # Display structure without showing sensitive API keys in URLs
   purrr::map_at("releases", \(release) purrr::map(release, names))
 
-# Include metadata for any previous releases using `latest_only = FALSE`
-get_item_metadata(394, latest_only = FALSE) |>
+# Include metadata for any previous releases using `release_scope = "all"`
+get_item_metadata(394, release_scope = "all") |>
   # Display structure without showing sensitive API keys in URLs
   purrr::map_at("releases", \(release) purrr::map(release, names))
 \dontshow{\}) # examplesIf}

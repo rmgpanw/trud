@@ -45,7 +45,7 @@ items, use \code{\link[=trud_items]{trud_items()}}.
 
 To download a specific (non-latest) release:
 \enumerate{
-\item Use \code{\link[=get_item_metadata]{get_item_metadata()}} to retrieve metadata for all releases
+\item Use \code{\link[=get_item_metadata]{get_item_metadata()}} with \code{release_scope = "all"} to retrieve metadata for all releases
 \item The release IDs are stored under the \code{id} item for each release
 \item Pass the desired release ID to the \code{release} parameter of \code{\link[=download_item]{download_item()}}
 }
@@ -60,9 +60,11 @@ x <- download_item(394, directory = tempdir())
 unzip(x, list = TRUE)
 
 # Download a previous release
-release <- get_item_metadata(394)$releases[[2]]$id
+# First get all releases to see available options
+metadata <- get_item_metadata(394, release_scope = "all")
+release_id <- metadata$releases[[2]]$id
 
-y <- download_item(394, directory = tempdir(), release = release)
+y <- download_item(394, directory = tempdir(), release = release_id)
 
 unzip(y, list = TRUE)
 \dontshow{\}) # examplesIf}

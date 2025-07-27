@@ -257,3 +257,11 @@ handle_trud_request <- function(
     ) |>
     httr2::req_throttle(capacity = capacity, fill_time_s = fill_time_s)
 }
+
+#' Validate release_scope argument
+#' @param release_scope Character vector to validate
+#' @return The matched value, invisibly
+#' @noRd
+validate_arg_release_scope <- function(release_scope) {
+  rlang::arg_match(release_scope, c("all", "latest"))
+}

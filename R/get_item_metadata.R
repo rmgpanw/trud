@@ -9,8 +9,8 @@
 #' ```
 #'
 #' @inheritParams download_item
-#' @param latest_only If `TRUE`, only metadata pertaining to the latest item
-#'   release will be retrieved. By default this is set to `FALSE`.
+#' @param release_scope Which releases to retrieve metadata for. Use `"all"` to 
+#'   get all releases, or `"latest"` to get only the most recent release.
 #'
 #' @returns A list containing item metadata, including release information that
 #'   can be used with [download_item()]. Release IDs for specific downloads are
@@ -27,21 +27,21 @@
 #'   # Display structure without showing sensitive API keys in URLs
 #'   purrr::map_at("releases", \(release) purrr::map(release, names))
 #'
-#' # Include metadata for any previous releases using `latest_only = FALSE`
-#' get_item_metadata(394, latest_only = FALSE) |>
+#' # Include metadata for any previous releases using `release_scope = "all"`
+#' get_item_metadata(394, release_scope = "all") |>
 #'   # Display structure without showing sensitive API keys in URLs
 #'   purrr::map_at("releases", \(release) purrr::map(release, names))
 #'
 #' @examples
 #' # An informative error is raised if your API key is invalid or missing
 #' try(withr::with_envvar(c("TRUD_API_KEY" = ""), get_item_metadata(394)))
-get_item_metadata <- function(item, latest_only = FALSE) {
+get_item_metadata <- function(item, release_scope = c("all", "latest")) {
   # validate args
   TRUD_API_KEY <- get_trud_api_key()
 
   validate_arg_item(item = item)
 
-  validate_arg_latest_only(latest_only)
+  release_scope <- validate_arg_release_scope(release_scope)
 
   # Construct the URL with the API key and the item number
   url <-
@@ -53,7 +53,7 @@ get_item_metadata <- function(item, latest_only = FALSE) {
       "/releases"
     )
 
-  if (latest_only) {
+  if (release_scope == "latest") {
     url <- paste0(url, "?latest")
   }
 
@@ -64,14 +64,6 @@ get_item_metadata <- function(item, latest_only = FALSE) {
   names(result$releases) <- purrr::map_chr(result$releases, \(x) x$id)
 
   return(result)
-}
-
-validate_arg_latest_only <- function(latest_only) {
-  if (!rlang::is_logical(latest_only)) {
-    cli::cli_abort(c(
-      "Argument {.code latest_only} must be either {.code TRUE} or {.code FALSE}."
-    ))
-  }
 }
 
 request_item_metadata <- function(url) {
