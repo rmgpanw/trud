@@ -19,11 +19,11 @@
 #'   or [get_subscribed_metadata()].
 #' @param directory Path to the directory to which this item will be downloaded
 #'   to. This is set to the current working directory by default.
-#' @param file_type The type of file to download. Options are `"archive"` (the 
-#'   main release file), `"checksum"`, `"signature"`, or `"publicKey"`. Defaults 
+#' @param file_type The type of file to download. Options are `"archive"` (the
+#'   main release file), `"checksum"`, `"signature"`, or `"publicKey"`. Defaults
 #'   to `"archive"`.
-#' @param release The release ID to be downloaded. Release IDs are found in the 
-#'   `id` field of each release from [get_item_metadata()]. If `NULL` (default), 
+#' @param release The release ID to be downloaded. Release IDs are found in the
+#'   `id` field of each release from [get_item_metadata()]. If `NULL` (default),
 #'   the latest item release will be downloaded.
 #'
 #' @returns The file path to the downloaded file, returned invisibly.
@@ -134,10 +134,13 @@ download_item <- function(
     spinner = TRUE
   )
 
-  resp <- request_download_item(url, file_path)
+  resp_file_path <- request_download_item(url, file_path) |>
+    purrr::pluck("body") |>
+    unclass() |>
+    normalizePath()
 
   # return path to downloaded file invisibly
-  invisible(file_path)
+  invisible(resp_file_path)
 }
 
 #' Performs request to download an item from NHS TRUD

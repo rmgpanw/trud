@@ -71,10 +71,16 @@ test_that("download_item() downloads file and warns when file already exists. Re
         httpStatus = 200,
         message = "OK"
       ),
-    request_download_item = function(...) NULL,
+    request_download_item = function(...)
+      list(body = archiveFileName_unique_path),
     code = {
       expect_equal(
-        download_item(394, release = "item1", directory = tempdir()),
+        # suppress warning raised by normalizePath() saying that file does not exist
+        suppressWarnings(download_item(
+          394,
+          release = "item1",
+          directory = tempdir()
+        )),
         archiveFileName_unique_path
       )
     }
