@@ -115,11 +115,9 @@ items</li>
 <p>Start by seeing what items you’re already subscribed to:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_subscribed_metadata.html">get_subscribed_metadata</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■                              </span>   4% |  ETA: 26s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■                        </span>  25% |  ETA: 12s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■                 </span>  45% |  ETA:  9s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■           </span>  66% |  ETA:  5s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■      </span>  85% |  ETA:  2s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■                           </span>  14% |  ETA: 10s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■                  </span>  44% |  ETA:  6s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■         </span>  74% |  ETA:  3s</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 17 × 3</span></span></span>
 <span><span class="co">#&gt;    item_number item_name                                            metadata    </span></span>
 <span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span></span>
@@ -179,6 +177,7 @@ click the “Subscribe” button.</p>
 <p>Once subscribed to an item, you can retrieve its metadata:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_item_metadata.html">get_item_metadata</a></span><span class="op">(</span><span class="fl">394</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># Display structure without showing sensitive API keys in URLs</span></span>
 <span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">map_at</a></span><span class="op">(</span><span class="st">"releases"</span>, \<span class="op">(</span><span class="va">release</span><span class="op">)</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">release</span>, <span class="va">names</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $apiVersion</span></span>
 <span><span class="co">#&gt; [1] "1"</span></span>
@@ -216,40 +215,9 @@ click the “Subscribe” button.</p>
 <span><span class="co">#&gt; [1] "OK"</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="get-metadata-for-all-subscribed-items">Get metadata for all subscribed items<a class="anchor" aria-label="anchor" href="#get-metadata-for-all-subscribed-items"></a>
-</h3>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_subscribed_metadata.html">get_subscribed_metadata</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■                           </span>  12% |  ETA: 13s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■                     </span>  33% |  ETA: 10s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■               </span>  53% |  ETA:  7s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■         </span>  73% |  ETA:  4s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   </span>  95% |  ETA:  1s</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 17 × 3</span></span></span>
-<span><span class="co">#&gt;    item_number item_name                                            metadata    </span></span>
-<span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>         394 Community Services Data Set pre-deadline extract XM… <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>         239 dm+d XML transformation tool                         <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>         263 eViewer application                                  <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>         398 Global Trade Item Number to OPCS-4 code cross refer… <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>        <span style="text-decoration: underline;">1</span>760 NHS Continuing Health Care (CHC) Data Set - JSON Sc… <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>         719 NHS Continuing Health Care (CHC) Data Set - XML Sch… <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>           9 NHS Data Migration                                   <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>         258 NHS ICD-10 5th Edition data files                    <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>           8 NHS Read Browser                                     <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>          19 NHS UK Read Codes Clinical Terms Version 3           <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>         255 NHS UK Read Codes Clinical Terms Version 3, Cross M… <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span>          24 NHSBSA dm+d                                          <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span>         264 OPCS-4 eVersion book                                 <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span>         659 Primary Care Domain reference sets                   <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span>         101 SNOMED CT UK Clinical Edition, RF2: Full, Snapshot … <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span>          98 SNOMED CT UK Data Migration Workbench                <span style="color: #949494;">&lt;named list&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span>        <span style="text-decoration: underline;">1</span>799 SNOMED CT UK Monolith Edition, RF2: Snapshot         <span style="color: #949494;">&lt;named list&gt;</span></span></span></code></pre></div>
-</div>
-<div class="section level3">
 <h3 id="download-an-item">Download an item<a class="anchor" aria-label="anchor" href="#download-an-item"></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># by default the latest release will be downloaded to the current working directory</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/download_item.html">download_item</a></span><span class="op">(</span><span class="fl">394</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ⠙ Downloading archive file for TRUD item 394...</span></span>

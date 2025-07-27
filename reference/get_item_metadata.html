@@ -98,6 +98,7 @@ can be used with <code><a href="download_item.html">download_item()</a></code>.<
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Get metadata for Community Services Data Set pre-deadline extract XML Schema</span></span></span>
 <span class="r-in"><span><span class="fu">get_item_metadata</span><span class="op">(</span><span class="fl">394</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="co"># Display structure without showing sensitive API keys in URLs</span></span></span>
 <span class="r-in"><span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">map_at</a></span><span class="op">(</span><span class="st">"releases"</span>, \<span class="op">(</span><span class="va">release</span><span class="op">)</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">release</span>, <span class="va">names</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $apiVersion</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
@@ -137,6 +138,7 @@ can be used with <code><a href="download_item.html">download_item()</a></code>.<
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Include metadata for any previous releases using `latest_only = FALSE`</span></span></span>
 <span class="r-in"><span><span class="fu">get_item_metadata</span><span class="op">(</span><span class="fl">394</span>, latest_only <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="co"># Display structure without showing sensitive API keys in URLs</span></span></span>
 <span class="r-in"><span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">map_at</a></span><span class="op">(</span><span class="st">"releases"</span>, \<span class="op">(</span><span class="va">release</span><span class="op">)</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">release</span>, <span class="va">names</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $apiVersion</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1"</span>
