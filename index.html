@@ -63,7 +63,7 @@
 
 <p>The goal of <code>trud</code> is to provide a convenient R interface to the <a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/api" class="external-link">National Health Service (NHS) England Technology Reference data Update Distribution (TRUD)</a>.</p>
 <p>The NHS TRUD service provides essential reference files that underpin a wide range of electronic health record (EHR) areas, both in the UK and internationally. These files include clinical coding systems such as ICD, Read codes, prescription codes, and the SNOMED CT ontology, with regular updates to reflect new knowledge and changes in clinical practice. NHS TRUD content supports key research areas like disease phenotyping, cohort selection, epidemiology, health services research, and the development of risk prediction models.</p>
-<p>trud enables seamless, programmatic retrieval and updating of NHS TRUD release items, removing the need for manual downloads and reducing the risk of errors or version drift. This helps researchers maintain reproducible, up-to-date analyses — whether as part of ad-hoc studies or automated pipelines.</p>
+<p><code>trud</code> enables seamless, programmatic retrieval and updating of NHS TRUD release items, removing the need for manual downloads and reducing the risk of errors or version drift. This helps researchers maintain reproducible, up-to-date analyses — whether as part of ad-hoc studies or automated pipelines.</p>
 <p>To learn more about NHS TRUD and its available resources, visit the <a href="https://isd.digital.nhs.uk/trud" class="external-link">NHS TRUD website</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -94,8 +94,8 @@
 <span></span>
 <span><span class="co"># See items you can currently access</span></span>
 <span><span class="fu"><a href="reference/get_subscribed_metadata.html">get_subscribed_metadata</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  ■■■■■■■■                          22% |  ETA:  6s</span></span>
-<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■            68% |  ETA:  2s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■                        29% |  ETA:  4s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      90% |  ETA:  0s</span></span>
 <span><span class="co">#&gt; # A tibble: 17 × 3</span></span>
 <span><span class="co">#&gt;    item_number item_name                                            metadata    </span></span>
 <span><span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;                                                &lt;list&gt;      </span></span>
@@ -148,7 +148,7 @@
 <div class="section level2">
 <h2 id="available-functionality">Available functionality<a class="anchor" aria-label="anchor" href="#available-functionality"></a>
 </h2>
-<p>The main functions provided by trud are:</p>
+<p>The main functions provided by <code>trud</code> are:</p>
 <ul>
 <li>
 <code><a href="reference/get_subscribed_metadata.html">get_subscribed_metadata()</a></code>: Shows items you can currently access</li>
@@ -164,7 +164,7 @@
 <div class="section level2">
 <h2 id="citing-trud">Citing trud<a class="anchor" aria-label="anchor" href="#citing-trud"></a>
 </h2>
-<p>If you find trud useful, please consider citing it. Citation details are available <a href="https://rmgpanw.github.io/trud/authors.html#citation">here</a>.</p>
+<p>If you find <code>trud</code> useful, please consider citing it. Citation details are available <a href="https://rmgpanw.github.io/trud/authors.html#citation">here</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="community-guidelines">Community guidelines<a class="anchor" aria-label="anchor" href="#community-guidelines"></a>

@@ -69,10 +69,10 @@
 <p>The <a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/api" class="external-link">National
 Health Service (NHS) England Technology Reference data Update
 Distribution (TRUD)</a> enables programmatic access to retrieve metadata
-for and download NHS TRUD release items. The trud package wraps this
-API, facilitating programmatic retrieval and updating of NHS TRUD
-resources:</p>
-<p>Having installed trud, you will also need to:</p>
+for and download NHS TRUD release items. The <code>trud</code> package
+wraps this API, facilitating programmatic retrieval and updating of NHS
+TRUD resources:</p>
+<p>Having installed <code>trud</code>, you will also need to:</p>
 <ul>
 <li>
 <a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form" class="external-link">Sign
@@ -115,10 +115,10 @@ items</li>
 <p>Start by seeing what items you’re already subscribed to:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_subscribed_metadata.html">get_subscribed_metadata</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■                             </span>   8% |  ETA: 18s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■                      </span>  32% |  ETA: 10s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■               </span>  53% |  ETA:  7s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■        </span>  75% |  ETA:  3s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■                             </span>   8% |  ETA: 17s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■                      </span>  30% |  ETA: 10s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■               </span>  53% |  ETA:  6s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■        </span>  77% |  ETA:  3s</span></span>
 <span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span>  99% |  ETA:  0s</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 17 × 3</span></span></span>
 <span><span class="co">#&gt;    item_number item_name                                            metadata    </span></span>
@@ -220,10 +220,10 @@ click the “Subscribe” button.</p>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_subscribed_metadata.html">get_subscribed_metadata</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■                            </span>  10% |  ETA: 12s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■                      </span>  32% |  ETA:  9s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■              </span>  56% |  ETA:  6s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■       </span>  79% |  ETA:  3s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■                      </span>  30% |  ETA:  9s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■               </span>  53% |  ETA:  6s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■        </span>  75% |  ETA:  3s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span>  99% |  ETA:  0s</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 17 × 3</span></span></span>
 <span><span class="co">#&gt;    item_number item_name                                            metadata    </span></span>
 <span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span></span>
