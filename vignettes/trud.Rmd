@@ -69,13 +69,8 @@ Once subscribed to an item, you can retrieve its metadata:
 
 ```{r get-item-metadata}
 get_item_metadata(394) |>
+  # Display structure without showing sensitive API keys in URLs
   purrr::map_at("releases", \(release) purrr::map(release, names))
-```
-
-### Get metadata for all subscribed items
-
-```{r get-subscribed_metadata}
-get_subscribed_metadata()
 ```
 
 ### Download an item

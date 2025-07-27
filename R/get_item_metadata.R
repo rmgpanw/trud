@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Sends a request to the release list endpoint, returning a list of metadata
-#' pertaining to the specified NHS TRUD item. Use the `item` numbers from 
+#' pertaining to the specified NHS TRUD item. Use the `item` numbers from
 #' [trud_items()] or [get_subscribed_metadata()].
 #'
 #' ```{r child = "man/rmd/subscription-required.Rmd"}
@@ -15,7 +15,7 @@
 #' @returns A list containing item metadata, including release information that
 #'   can be used with [download_item()].
 #' @export
-#' @seealso 
+#' @seealso
 #' * [trud_items()] to find item numbers
 #' * [get_subscribed_metadata()] to see items you can access
 #' * [download_item()] to download files using this metadata
@@ -23,10 +23,12 @@
 #' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #' # Get metadata for Community Services Data Set pre-deadline extract XML Schema
 #' get_item_metadata(394) |>
+#'   # Display structure without showing sensitive API keys in URLs
 #'   purrr::map_at("releases", \(release) purrr::map(release, names))
 #'
 #' # Include metadata for any previous releases using `latest_only = FALSE`
 #' get_item_metadata(394, latest_only = FALSE) |>
+#'   # Display structure without showing sensitive API keys in URLs
 #'   purrr::map_at("releases", \(release) purrr::map(release, names))
 #'
 #' @examples

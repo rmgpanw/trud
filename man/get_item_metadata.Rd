@@ -34,10 +34,12 @@ items, use \code{\link[=trud_items]{trud_items()}}.
 \dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Get metadata for Community Services Data Set pre-deadline extract XML Schema
 get_item_metadata(394) |>
+  # Display structure without showing sensitive API keys in URLs
   purrr::map_at("releases", \(release) purrr::map(release, names))
 
 # Include metadata for any previous releases using `latest_only = FALSE`
 get_item_metadata(394, latest_only = FALSE) |>
+  # Display structure without showing sensitive API keys in URLs
   purrr::map_at("releases", \(release) purrr::map(release, names))
 \dontshow{\}) # examplesIf}
 # An informative error is raised if your API key is invalid or missing
