@@ -135,7 +135,7 @@ download_item <- function(
       )
     )
 
-    return(file_path)
+    invisible(file_path)
   }
 
   url <- purrr::pluck(
