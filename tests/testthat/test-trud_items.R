@@ -33,13 +33,13 @@ test_that("trud_items() returns tibble with correct columns and data types", {
 test_that("trud_items() warns when no items are found (page structure changed)", {
   # Mock HTML that doesn't contain any TRUD items
   empty_html <- "<html><body><p>No items found</p></body></html>"
-  
+
   with_mocked_bindings(
     get_trud_items_html = function() rvest::read_html(empty_html),
     code = {
       expect_warning(
         result <- trud_items(),
-        "No TRUD items found — page structure may have changed"
+        "No TRUD items found - page structure may have changed"
       )
       expect_equal(nrow(result), 0)
     }
@@ -67,7 +67,7 @@ test_that("trud_items() warns when HTML structure changes but returns partial re
       </div>
     </body>
   </html>'
-  
+
   with_mocked_bindings(
     get_trud_items_html = function() rvest::read_html(partial_html),
     code = {
@@ -90,7 +90,7 @@ test_that("trud_items() warns when unusually few items are found", {
       </div>
     </body>
   </html>'
-  
+
   with_mocked_bindings(
     get_trud_items_html = function() rvest::read_html(few_items_html),
     code = {

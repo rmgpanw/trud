@@ -9,7 +9,7 @@
 #' ```
 #'
 #' @inheritParams download_item
-#' @param release_scope Which releases to retrieve metadata for. Use `"all"` to 
+#' @param release_scope Which releases to retrieve metadata for. Use `"all"` to
 #'   get all releases, or `"latest"` to get only the most recent release.
 #'
 #' @returns A list containing item metadata, including release information that
