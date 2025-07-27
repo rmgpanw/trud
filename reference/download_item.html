@@ -102,7 +102,7 @@ the latest item release will be downloaded.</p></dd>
     <h2 id="working-with-specific-releases">Working with specific releases<a class="anchor" aria-label="anchor" href="#working-with-specific-releases"></a></h2>
 
 
-<p>To download a specific (non-latest) release:</p><ol><li><p>Use <code><a href="get_item_metadata.html">get_item_metadata()</a></code> to retrieve metadata for all releases</p></li>
+<p>To download a specific (non-latest) release:</p><ol><li><p>Use <code><a href="get_item_metadata.html">get_item_metadata()</a></code> with <code>release_scope = "all"</code> to retrieve metadata for all releases</p></li>
 <li><p>The release IDs are stored under the <code>id</code> item for each release</p></li>
 <li><p>Pass the desired release ID to the <code>release</code> parameter of <code>download_item()</code></p></li>
 </ol></div>
@@ -135,9 +135,11 @@ the latest item release will be downloaded.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 2022-11-15 11:57:00</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Download a previous release</span></span></span>
-<span class="r-in"><span><span class="va">release</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_item_metadata.html">get_item_metadata</a></span><span class="op">(</span><span class="fl">394</span><span class="op">)</span><span class="op">$</span><span class="va">releases</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">id</span></span></span>
+<span class="r-in"><span><span class="co"># First get all releases to see available options</span></span></span>
+<span class="r-in"><span><span class="va">metadata</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_item_metadata.html">get_item_metadata</a></span><span class="op">(</span><span class="fl">394</span>, release_scope <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">release_id</span> <span class="op">&lt;-</span> <span class="va">metadata</span><span class="op">$</span><span class="va">releases</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">id</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">download_item</span><span class="op">(</span><span class="fl">394</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, release <span class="op">=</span> <span class="va">release</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu">download_item</span><span class="op">(</span><span class="fl">394</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, release <span class="op">=</span> <span class="va">release_id</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ⠙ Downloading archive file for TRUD item 394...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Successfully downloaded `csds_provpredextract_1.5.21_20200805000001.zip` to <span style="color: #0000BB;">/</span>…</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
