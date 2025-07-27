@@ -34,6 +34,45 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="trud-development-version">trud (development version)<a class="anchor" aria-label="anchor" href="#trud-development-version"></a></h2>
+<div class="section level3">
+<h3 id="major-changes-development-version">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-development-version"></a></h3>
+<ul><li>
+<p>Enhanced parameter design with enum validation:</p>
+<ul><li>
+<code><a href="../reference/get_item_metadata.html">get_item_metadata()</a></code> and <code><a href="../reference/get_subscribed_metadata.html">get_subscribed_metadata()</a></code> now use <code>release_scope = c("all", "latest")</code> parameter instead of <code>latest_only</code> boolean. This makes function calls more expressive and eliminates boolean ambiguity.</li>
+<li>
+<code><a href="../reference/download_item.html">download_item()</a></code> now uses <code>file_type = c("archive", "checksum", "signature", "publicKey")</code> parameter instead of <code>download_file</code>.</li>
+</ul></li>
+<li><p>Added <code>overwrite</code> parameter to <code><a href="../reference/download_item.html">download_item()</a></code> allowing users to explicitly control whether existing files should be overwritten.</p></li>
+<li>
+<p><strong>Breaking changes:</strong></p>
+<ul><li>Removed <code>TRUD_API_KEY</code> parameter from all exported functions. API keys must now be set via the <code>TRUD_API_KEY</code> environment variable only.</li>
+<li>
+<code><a href="../reference/download_item.html">download_item()</a></code> parameter <code>download_file</code> renamed to <code>file_type</code> with enhanced validation.</li>
+<li>
+<code><a href="../reference/get_item_metadata.html">get_item_metadata()</a></code> and <code><a href="../reference/get_subscribed_metadata.html">get_subscribed_metadata()</a></code> parameter <code>latest_only</code> replaced with <code>release_scope</code>.</li>
+</ul></li>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-and-bug-fixes-development-version">Minor changes and bug fixes<a class="anchor" aria-label="anchor" href="#minor-changes-and-bug-fixes-development-version"></a></h3>
+<ul><li>Improved documentation and user experience:
+<ul><li>Enhanced subscription workflow documentation with clear step-by-step guidance.</li>
+<li>Added explanation that <code><a href="https://purrr.tidyverse.org/reference/map_if.html" class="external-link">purrr::map_at()</a></code> pattern is used in examples to avoid exposing API keys.</li>
+<li>Clarified how to obtain and use release IDs from <code><a href="../reference/get_item_metadata.html">get_item_metadata()</a></code> for downloading specific releases.</li>
+</ul></li>
+<li>Enhanced robustness and testing:
+<ul><li>Added validation warnings to <code><a href="../reference/trud_items.html">trud_items()</a></code> to detect changes in NHS TRUD website structure that might break the scraper.</li>
+<li>Refactored tests to use <code><a href="https://withr.r-lib.org/reference/with_tempfile.html" class="external-link">withr::local_tempdir()</a></code> for better test isolation and cleanup.</li>
+<li>Improved test descriptions to be more specific and informative.</li>
+<li>Enhanced error handling with better retry logic and rate limiting.</li>
+</ul></li>
+<li>Technical improvements:
+<ul><li>Added support for custom user agent headers via <code>TRUD_USER_AGENT</code> environment variable.</li>
+<li>Improved file existence handling in <code><a href="../reference/download_item.html">download_item()</a></code> with clearer warning messages.</li>
+<li>Enhanced request handling with retry logic, and rate limiting.</li>
+<li>Consistently return file paths invisibly from <code><a href="../reference/download_item.html">download_item()</a></code>.</li>
+</ul></li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="trud-010">trud 0.1.0<a class="anchor" aria-label="anchor" href="#trud-010"></a></h2><p class="text-muted">CRAN release: 2024-07-22</p>
