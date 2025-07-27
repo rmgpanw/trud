@@ -12,6 +12,8 @@ coverage](https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg)](https
 [![CRAN
 status](https://www.r-pkg.org/badges/version/trud)](https://CRAN.R-project.org/package=trud)
 [![](https://cranlogs.r-pkg.org/badges/last-month/trud)](https://cran.r-project.org/package=trud)
+[![CRAN
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/trud)](https://CRAN.R-project.org/package=trud)
 [![Repo
 Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Status at rOpenSci Software Peer
@@ -80,8 +82,7 @@ library(trud)
 
 # See items you can currently access
 get_subscribed_metadata()
-#>  ■■■■■■■■■■                        29% |  ETA:  4s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      90% |  ETA:  0s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■          77% |  ETA:  1s
 #> # A tibble: 17 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      
