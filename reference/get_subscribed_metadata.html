@@ -81,11 +81,10 @@ Use the <code>item_number</code> column values with <code><a href="download_item
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="co"># Get metadata for all subscribed items</span></span></span>
 <span class="r-in"><span>  <span class="va">subscribed</span> <span class="op">&lt;-</span> <span class="fu">get_subscribed_metadata</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■                            </span>  10% |  ETA: 13s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■                      </span>  32% |  ETA: 10s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■               </span>  53% |  ETA:  7s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■         </span>  74% |  ETA:  4s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span>  96% |  ETA:  1s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■                            </span>  10% |  ETA: 10s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■                   </span>  38% |  ETA:  6s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span>  68% |  ETA:  3s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span>  97% |  ETA:  0s</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Show structure without exposing API keys in URLs</span></span></span>
 <span class="r-in"><span>  <span class="va">subscribed</span><span class="op">$</span><span class="va">metadata</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">|&gt;</span></span></span>
