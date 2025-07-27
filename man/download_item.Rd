@@ -18,7 +18,7 @@ to. This is set to the current working directory by default.}
 \item \code{"archive"} (the release item)
 \item \code{"checksum"}
 \item \code{"signature"}
-\item \code{"publickKey"}
+\item \code{"publicKey"}
 }}
 
 \item{release}{The name of a specific release ID to be downloaded (this can

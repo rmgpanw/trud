@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Downloads files for a specified NHS TRUD item. By default this downloads
-#' the latest release. Use the `item` numbers from [trud_items()] or 
+#' the latest release. Use the `item` numbers from [trud_items()] or
 #' [get_subscribed_metadata()].
 #'
 #' ```{r child = "man/rmd/subscription-required.Rmd"}
@@ -16,15 +16,15 @@
 #'   - `"archive"` (the release item)
 #'   - `"checksum"`
 #'   - `"signature"`
-#'   - `"publickKey"`
+#'   - `"publicKey"`
 #' @param release The name of a specific release ID to be downloaded (this can
 #'   be ascertained using [get_item_metadata()]). If `NULL` (default), then the
 #'   latest item release will be downloaded.
 #'
 #' @returns The file path to the downloaded file, returned invisibly.
 #' @export
-#' @seealso 
-#' * [trud_items()] to find item numbers  
+#' @seealso
+#' * [trud_items()] to find item numbers
 #' * [get_subscribed_metadata()] to see items you can access
 #' * [get_item_metadata()] to explore available releases before downloading
 #'
