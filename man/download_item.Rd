@@ -8,7 +8,8 @@ download_item(
   item,
   directory = ".",
   file_type = c("archive", "checksum", "signature", "publicKey"),
-  release = NULL
+  release = NULL,
+  overwrite = FALSE
 )
 }
 \arguments{
@@ -25,6 +26,10 @@ to \code{"archive"}.}
 \item{release}{The release ID to be downloaded. Release IDs are found in the
 \code{id} field of each release from \code{\link[=get_item_metadata]{get_item_metadata()}}. If \code{NULL} (default),
 the latest item release will be downloaded.}
+
+\item{overwrite}{If \code{TRUE}, existing files will be overwritten. If \code{FALSE}
+(default), existing files will be skipped and the function will return the
+existing file path.}
 }
 \value{
 The file path to the downloaded file, returned invisibly.
@@ -68,6 +73,9 @@ release_id <- metadata$releases[[2]]$id
 y <- download_item(394, directory = tempdir(), release = release_id)
 
 unzip(y, list = TRUE)
+
+# Overwrite existing files if needed
+z <- download_item(394, directory = tempdir(), overwrite = TRUE)
 \dontshow{\}) # examplesIf}
 # An informative error is raised if your API key is invalid or missing
 try(withr::with_envvar(c("TRUD_API_KEY" = ""), download_item(394)))

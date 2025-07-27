@@ -25,6 +25,9 @@
 #' @param release The release ID to be downloaded. Release IDs are found in the
 #'   `id` field of each release from [get_item_metadata()]. If `NULL` (default),
 #'   the latest item release will be downloaded.
+#' @param overwrite If `TRUE`, existing files will be overwritten. If `FALSE`
+#'   (default), existing files will be skipped and the function will return the
+#'   existing file path.
 #'
 #' @returns The file path to the downloaded file, returned invisibly.
 #' @export
@@ -49,6 +52,9 @@
 #'
 #' unzip(y, list = TRUE)
 #'
+#' # Overwrite existing files if needed
+#' z <- download_item(394, directory = tempdir(), overwrite = TRUE)
+#'
 #' @examples
 #' # An informative error is raised if your API key is invalid or missing
 #' try(withr::with_envvar(c("TRUD_API_KEY" = ""), download_item(394)))
@@ -56,7 +62,8 @@ download_item <- function(
   item,
   directory = ".",
   file_type = c("archive", "checksum", "signature", "publicKey"),
-  release = NULL
+  release = NULL,
+  overwrite = FALSE
 ) {
   # validate args
   validate_arg_item(item = item)
@@ -66,6 +73,12 @@ download_item <- function(
   file_type <- rlang::arg_match(file_type)
 
   get_trud_api_key()
+
+  if (!rlang::is_logical(overwrite)) {
+    cli::cli_abort(c(
+      "Argument {.code overwrite} must be either {.code TRUE} or {.code FALSE}."
+    ))
+  }
 
   if (!is.null(release)) {
     if (!rlang::is_string(release)) {
@@ -110,11 +123,15 @@ download_item <- function(
       file_name
     )
 
-  if (file.exists(file_path)) {
+  if (file.exists(file_path) && !overwrite) {
+    file_path <- normalizePath(file_path)
+
     cli::cli_warn(
       c(
+        "!" = "Skipping download:",
         "!" = "File {.code {file_name}} already exists in directory {.code {directory}}",
-        "i" = "Returning file path {.path {file_path}}"
+        "i" = "Returning file path {.path {file_path}}",
+        "i" = "Use {.code overwrite = TRUE} to overwrite existing files"
       )
     )
 

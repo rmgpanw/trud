@@ -108,3 +108,14 @@ test_that("download_item() downloads file and warns when file already exists. Re
     "already exists in directory"
   )
 })
+
+test_that("download_item() respects overwrite parameter", {
+  # Test validation of overwrite parameter
+  with_mocked_bindings(
+    get_trud_api_key = function(...) NULL,
+    expect_error(
+      download_item(394, overwrite = "invalid"),
+      "Argument `overwrite` must be either `TRUE` or `FALSE`"
+    )
+  )
+})
