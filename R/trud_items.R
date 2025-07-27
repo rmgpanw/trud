@@ -3,14 +3,20 @@
 #' @description
 #' Scrapes [this
 #' page](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1)
-#' from the NHS TRUD website for all available items.
+#' from the NHS TRUD website for all available items. The `item_number` column
+#' in the result contains the identifiers you need for [get_item_metadata()] 
+#' and [download_item()].
 #'
 #' ```{r child = "man/rmd/subscription-required.Rmd"}
 #' ```
 #'
-#' @returns A tibble, with columns `item_number` and `item_name`.
+#' @returns A tibble, with columns `item_number` and `item_name`. Use the 
+#'   `item_number` values as arguments to [get_item_metadata()] and [download_item()].
 #' @export
-#' @seealso [get_subscribed_metadata()] to see only your subscribed items.
+#' @seealso 
+#' * [get_subscribed_metadata()] to see only items you're subscribed to
+#' * [get_item_metadata()] to get detailed information about a specific item
+#' * [download_item()] to download files for a specific item
 #'
 #' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #' trud_items()

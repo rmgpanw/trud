@@ -7,11 +7,14 @@
 trud_items()
 }
 \value{
-A tibble, with columns \code{item_number} and \code{item_name}.
+A tibble, with columns \code{item_number} and \code{item_name}. Use the
+\code{item_number} values as arguments to \code{\link[=get_item_metadata]{get_item_metadata()}} and \code{\link[=download_item]{download_item()}}.
 }
 \description{
 Scrapes \href{https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1}{this page}
-from the NHS TRUD website for all available items.
+from the NHS TRUD website for all available items. The \code{item_number} column
+in the result contains the identifiers you need for \code{\link[=get_item_metadata]{get_item_metadata()}}
+and \code{\link[=download_item]{download_item()}}.
 
 \emph{\strong{Subscription Required}}
 
@@ -27,5 +30,9 @@ trud_items()
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}} to see only your subscribed items.
+\itemize{
+\item \code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}} to see only items you're subscribed to
+\item \code{\link[=get_item_metadata]{get_item_metadata()}} to get detailed information about a specific item
+\item \code{\link[=download_item]{download_item()}} to download files for a specific item
+}
 }

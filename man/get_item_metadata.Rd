@@ -7,17 +7,20 @@
 get_item_metadata(item, latest_only = FALSE)
 }
 \arguments{
-\item{item}{An integer, the item to be downloaded.}
+\item{item}{An integer, the item to be downloaded. Get these from \code{\link[=trud_items]{trud_items()}}
+or \code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}}.}
 
 \item{latest_only}{If \code{TRUE}, only metadata pertaining to the latest item
 release will be retrieved. By default this is set to \code{FALSE}.}
 }
 \value{
-A list.
+A list containing item metadata, including release information that
+can be used with \code{\link[=download_item]{download_item()}}.
 }
 \description{
 Sends a request to the release list endpoint, returning a list of metadata
-pertaining to the specified NHS TRUD item.
+pertaining to the specified NHS TRUD item. Use the \code{item} numbers from
+\code{\link[=trud_items]{trud_items()}} or \code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}}.
 
 \emph{\strong{Subscription Required}}
 
@@ -39,4 +42,11 @@ get_item_metadata(394, latest_only = FALSE) |>
 \dontshow{\}) # examplesIf}
 # An informative error is raised if your API key is invalid or missing
 try(withr::with_envvar(c("TRUD_API_KEY" = ""), get_item_metadata(394)))
+}
+\seealso{
+\itemize{
+\item \code{\link[=trud_items]{trud_items()}} to find item numbers
+\item \code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}} to see items you can access
+\item \code{\link[=download_item]{download_item()}} to download files using this metadata
+}
 }

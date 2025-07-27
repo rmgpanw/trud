@@ -2,12 +2,14 @@
 #'
 #' @description
 #' Downloads files for a specified NHS TRUD item. By default this downloads
-#' the latest release.
+#' the latest release. Use the `item` numbers from [trud_items()] or 
+#' [get_subscribed_metadata()].
 #'
 #' ```{r child = "man/rmd/subscription-required.Rmd"}
 #' ```
 #'
-#' @param item An integer, the item to be downloaded.
+#' @param item An integer, the item to be downloaded. Get these from [trud_items()]
+#'   or [get_subscribed_metadata()].
 #' @param directory Path to the directory to which this item will be downloaded
 #'   to. This is set to the current working directory by default.
 #' @param download_file The item file to be downloaded. Valid values:
@@ -21,6 +23,10 @@
 #'
 #' @returns The file path to the downloaded file, returned invisibly.
 #' @export
+#' @seealso 
+#' * [trud_items()] to find item numbers  
+#' * [get_subscribed_metadata()] to see items you can access
+#' * [get_item_metadata()] to explore available releases before downloading
 #'
 #' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #' # Download Community Services Data Set pre-deadline extract XML Schema

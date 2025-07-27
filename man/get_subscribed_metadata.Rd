@@ -12,11 +12,13 @@ release will be retrieved. By default this is set to \code{FALSE}.}
 }
 \value{
 A tibble, with item metadata stored in the list column \code{metadata}.
+Use the \code{item_number} column values with \code{\link[=download_item]{download_item()}}.
 }
 \description{
 A convenience wrapper around \code{\link[=trud_items]{trud_items()}} and \code{\link[=get_item_metadata]{get_item_metadata()}},
-retrieving metadata for only items that the user is subscribed to. If you
-need access to additional items, browse available options with
+retrieving metadata for only items that the user is subscribed to. This is
+particularly useful for seeing what data you can download with \code{\link[=download_item]{download_item()}}.
+If you need access to additional items, browse available options with
 \code{\link[=trud_items]{trud_items()}}, then subscribe through the NHS TRUD website.
 }
 \examples{
@@ -25,5 +27,9 @@ need access to additional items, browse available options with
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=trud_items]{trud_items()}} to browse all available items, \code{\link[=get_item_metadata]{get_item_metadata()}}
+\itemize{
+\item \code{\link[=trud_items]{trud_items()}} to browse all available items
+\item \code{\link[=get_item_metadata]{get_item_metadata()}} for detailed metadata on specific items
+\item \code{\link[=download_item]{download_item()}} to download items you're subscribed to
+}
 }

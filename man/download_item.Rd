@@ -7,7 +7,8 @@
 download_item(item, directory = ".", download_file = "archive", release = NULL)
 }
 \arguments{
-\item{item}{An integer, the item to be downloaded.}
+\item{item}{An integer, the item to be downloaded. Get these from \code{\link[=trud_items]{trud_items()}}
+or \code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}}.}
 
 \item{directory}{Path to the directory to which this item will be downloaded
 to. This is set to the current working directory by default.}
@@ -29,7 +30,8 @@ The file path to the downloaded file, returned invisibly.
 }
 \description{
 Downloads files for a specified NHS TRUD item. By default this downloads
-the latest release.
+the latest release. Use the \code{item} numbers from \code{\link[=trud_items]{trud_items()}} or
+\code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}}.
 
 \emph{\strong{Subscription Required}}
 
@@ -56,4 +58,11 @@ unzip(y, list = TRUE)
 \dontshow{\}) # examplesIf}
 # An informative error is raised if your API key is invalid or missing
 try(withr::with_envvar(c("TRUD_API_KEY" = ""), download_item(394)))
+}
+\seealso{
+\itemize{
+\item \code{\link[=trud_items]{trud_items()}} to find item numbers
+\item \code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}} to see items you can access
+\item \code{\link[=get_item_metadata]{get_item_metadata()}} to explore available releases before downloading
+}
 }

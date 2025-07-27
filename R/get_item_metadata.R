@@ -2,7 +2,8 @@
 #'
 #' @description
 #' Sends a request to the release list endpoint, returning a list of metadata
-#' pertaining to the specified NHS TRUD item.
+#' pertaining to the specified NHS TRUD item. Use the `item` numbers from 
+#' [trud_items()] or [get_subscribed_metadata()].
 #'
 #' ```{r child = "man/rmd/subscription-required.Rmd"}
 #' ```
@@ -11,8 +12,13 @@
 #' @param latest_only If `TRUE`, only metadata pertaining to the latest item
 #'   release will be retrieved. By default this is set to `FALSE`.
 #'
-#' @returns A list.
+#' @returns A list containing item metadata, including release information that
+#'   can be used with [download_item()].
 #' @export
+#' @seealso 
+#' * [trud_items()] to find item numbers
+#' * [get_subscribed_metadata()] to see items you can access
+#' * [download_item()] to download files using this metadata
 #'
 #' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
 #' # Get metadata for Community Services Data Set pre-deadline extract XML Schema
