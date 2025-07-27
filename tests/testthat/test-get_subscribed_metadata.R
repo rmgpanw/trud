@@ -1,6 +1,6 @@
 test_that("get_subscribed_metadata() returns formatted metadata with correct structure", {
   with_mocked_bindings(
-    get_item_metadata = function(...)
+    get_item_metadata = function(...) {
       list(
         apiVersion = "",
         releases = list(
@@ -9,7 +9,8 @@ test_that("get_subscribed_metadata() returns formatted metadata with correct str
         ),
         httpStatus = 200,
         message = "OK"
-      ),
+      )
+    },
     get_trud_api_key = function(...) NULL,
     code = {
       result <- get_subscribed_metadata()

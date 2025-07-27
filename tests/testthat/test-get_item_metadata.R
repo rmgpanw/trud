@@ -10,13 +10,14 @@ test_that("get_item_metadata() throws error when release_scope argument is inval
 
 test_that("get_item_metadata() successfully processes mocked API response and names releases", {
   with_mocked_bindings(
-    request_item_metadata = function(...)
+    request_item_metadata = function(...) {
       list(
         apiVersion = "",
         releases = list(list(id = "item1"), list(id = "item2")),
         httpStatus = 200,
         message = "OK"
-      ),
+      )
+    },
     get_trud_api_key = function(...) NULL,
     code = {
       item_metadata_394 <- get_item_metadata(394)

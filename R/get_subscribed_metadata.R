@@ -37,7 +37,7 @@ get_subscribed_metadata <- function(release_scope = c("all", "latest")) {
     dplyr::mutate(
       "metadata" = purrr::map(
         .data[["item_number"]],
-        \(item_number)
+        \(item_number) {
           tryCatch(
             get_item_metadata(
               item = item_number,
@@ -46,7 +46,8 @@ get_subscribed_metadata <- function(release_scope = c("all", "latest")) {
             httr2_http_404 = function(cnd) {
               NA
             }
-          ),
+          )
+        },
         .progress = TRUE
       )
     ) |>

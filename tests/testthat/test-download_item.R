@@ -8,13 +8,14 @@ test_that("download_item() throws errors for invalid release argument values", {
   )
 
   with_mocked_bindings(
-    get_item_metadata = function(...)
+    get_item_metadata = function(...) {
       list(
         apiVersion = "",
         releases = list(item1 = list(id = "id1"), item2 = list(id = "id2")),
         httpStatus = 200,
         message = "OK"
-      ),
+      )
+    },
     get_trud_api_key = function(...) NULL,
     code = {
       expect_error(
@@ -33,7 +34,7 @@ test_that("download_item() warns when attempting to download file that already e
   file.create(file.path(temp_dir, archiveFileName))
 
   with_mocked_bindings(
-    get_item_metadata = function(...)
+    get_item_metadata = function(...) {
       list(
         apiVersion = "",
         releases = list(
@@ -42,7 +43,8 @@ test_that("download_item() warns when attempting to download file that already e
         ),
         httpStatus = 200,
         message = "OK"
-      ),
+      )
+    },
     request_download_item = function(url, file_path) {
       # Return a proper httr2 response-like structure
       structure(list(body = file_path), class = "httr2_response")
@@ -64,7 +66,7 @@ test_that("download_item() downloads file and warns when file already exists. Re
 
   with_mocked_bindings(
     get_trud_api_key = function(...) NULL,
-    get_item_metadata = function(...)
+    get_item_metadata = function(...) {
       list(
         apiVersion = "",
         releases = list(
@@ -76,7 +78,8 @@ test_that("download_item() downloads file and warns when file already exists. Re
         ),
         httpStatus = 200,
         message = "OK"
-      ),
+      )
+    },
     request_download_item = function(url, file_path) {
       # Return a proper httr2 response-like structure
       structure(list(body = file_path), class = "httr2_response")
