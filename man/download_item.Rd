@@ -4,7 +4,12 @@
 \alias{download_item}
 \title{Download NHS TRUD item}
 \usage{
-download_item(item, directory = ".", download_file = "archive", release = NULL)
+download_item(
+  item,
+  directory = ".",
+  file_type = c("archive", "checksum", "signature", "publicKey"),
+  release = NULL
+)
 }
 \arguments{
 \item{item}{An integer, the item to be downloaded. Get these from \code{\link[=trud_items]{trud_items()}}
@@ -13,13 +18,9 @@ or \code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}}.}
 \item{directory}{Path to the directory to which this item will be downloaded
 to. This is set to the current working directory by default.}
 
-\item{download_file}{The item file to be downloaded. Valid values:
-\itemize{
-\item \code{"archive"} (the release item)
-\item \code{"checksum"}
-\item \code{"signature"}
-\item \code{"publicKey"}
-}}
+\item{file_type}{The type of file to download. Options are \code{"archive"} (the
+main release file), \code{"checksum"}, \code{"signature"}, or \code{"publicKey"}. Defaults
+to \code{"archive"}.}
 
 \item{release}{The release ID to be downloaded. Release IDs are found in the
 \code{id} field of each release from \code{\link[=get_item_metadata]{get_item_metadata()}}. If \code{NULL} (default),

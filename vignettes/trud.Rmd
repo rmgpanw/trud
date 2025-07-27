@@ -97,5 +97,5 @@ metadata$releases |> names()
 
 # Use a specific release ID with download_item()
 release_id <- metadata$releases[[1]]$id  # Get ID of first release
-download_item(394, directory = tempdir(), download_file = "checksum", release = release_id)
+download_item(394, directory = tempdir(), file_type = "checksum", release = release_id)
 ```

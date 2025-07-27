@@ -69,10 +69,3 @@ test_that("trud_error_message() generates appropriate error messages for differe
     }
   )
 })
-
-test_that("validate_arg_download_file() throws error when download_file argument is not string", {
-  expect_error(
-    validate_arg_download_file(1),
-    "Argument `download_file` must be a string."
-  )
-})

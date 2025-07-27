@@ -148,41 +148,6 @@ validate_arg_directory <- function(directory, call = rlang::caller_env()) {
   }
 }
 
-#' Validates `download_file` arg
-#'
-#' @param download_file The item file to be downloaded.
-#' @param call The function call from which to display any error messages.
-#'
-#' @return Called for side effect
-#' @noRd
-validate_arg_download_file <- function(
-  download_file,
-  call = rlang::caller_env()
-) {
-  valid_download_file_values <- c(
-    "archive",
-    "checksum",
-    "signature",
-    "publicKey"
-  )
-
-  if (!rlang::is_string(download_file)) {
-    cli::cli_abort(
-      c(
-        "x" = "Argument {.code download_file} must be a string.",
-        "i" = paste0(
-          "Valid values: '",
-          paste(valid_download_file_values, sep = "", collapse = "', '"),
-          "'."
-        )
-      ),
-      call = call
-    )
-  }
-
-  rlang::arg_match(download_file, valid_download_file_values, error_call = call)
-}
-
 #' Add user agent to TRUD API request object
 #'
 #' @param req An `httr2_request` object, created by [httr2::request()].

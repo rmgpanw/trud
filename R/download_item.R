@@ -19,11 +19,9 @@
 #'   or [get_subscribed_metadata()].
 #' @param directory Path to the directory to which this item will be downloaded
 #'   to. This is set to the current working directory by default.
-#' @param download_file The item file to be downloaded. Valid values:
-#'   - `"archive"` (the release item)
-#'   - `"checksum"`
-#'   - `"signature"`
-#'   - `"publicKey"`
+#' @param file_type The type of file to download. Options are `"archive"` (the 
+#'   main release file), `"checksum"`, `"signature"`, or `"publicKey"`. Defaults 
+#'   to `"archive"`.
 #' @param release The release ID to be downloaded. Release IDs are found in the 
 #'   `id` field of each release from [get_item_metadata()]. If `NULL` (default), 
 #'   the latest item release will be downloaded.
@@ -57,7 +55,7 @@
 download_item <- function(
   item,
   directory = ".",
-  download_file = "archive",
+  file_type = c("archive", "checksum", "signature", "publicKey"),
   release = NULL
 ) {
   # validate args
@@ -65,7 +63,7 @@ download_item <- function(
 
   validate_arg_directory(directory = directory)
 
-  validate_arg_download_file(download_file = download_file)
+  file_type <- rlang::arg_match(file_type)
 
   get_trud_api_key()
 
@@ -103,7 +101,7 @@ download_item <- function(
     item_metadata,
     "releases",
     release,
-    paste0(download_file, "FileName")
+    paste0(file_type, "FileName")
   )
 
   file_path <-
@@ -127,11 +125,11 @@ download_item <- function(
     item_metadata,
     "releases",
     release,
-    paste0(download_file, "FileUrl")
+    paste0(file_type, "FileUrl")
   )
 
   cli::cli_progress_step(
-    "Downloading {download_file} file for TRUD item {item}...",
+    "Downloading {file_type} file for TRUD item {item}...",
     msg_done = "Successfully downloaded {.code {file_name}} to {.path {file_path}}.",
     spinner = TRUE
   )
