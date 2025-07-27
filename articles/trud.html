@@ -115,9 +115,11 @@ items</li>
 <p>Start by seeing what items you’re already subscribed to:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_subscribed_metadata.html">get_subscribed_metadata</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■                           </span>  14% |  ETA: 10s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■                  </span>  44% |  ETA:  6s</span></span>
-<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■         </span>  74% |  ETA:  3s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■                             </span>   5% |  ETA: 23s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■                       </span>  26% |  ETA: 12s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■                 </span>  48% |  ETA:  8s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■           </span>  67% |  ETA:  5s</span></span>
+<span><span class="co">#&gt;  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■     </span>  86% |  ETA:  2s</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 17 × 3</span></span></span>
 <span><span class="co">#&gt;    item_number item_name                                            metadata    </span></span>
 <span><span class="co">#&gt;          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      </span></span>
@@ -232,6 +234,36 @@ click the “Subscribe” button.</p>
 <span><span class="co">#&gt; 1 2022-11-15 12:48:00</span></span>
 <span><span class="co">#&gt; 2 2022-10-31 11:36:00</span></span>
 <span><span class="co">#&gt; 3 2022-11-15 11:57:00</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="working-with-specific-releases">Working with specific releases<a class="anchor" aria-label="anchor" href="#working-with-specific-releases"></a>
+</h3>
+<p>To download a specific release (rather than the latest), you need the
+release ID. Release IDs are found in the <code>id</code> field of each
+release:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get metadata for all releases (not just latest)</span></span>
+<span><span class="va">metadata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_item_metadata.html">get_item_metadata</a></span><span class="op">(</span><span class="fl">394</span>, latest_only <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Release IDs are in the `id` field of each release</span></span>
+<span><span class="va">metadata</span><span class="op">$</span><span class="va">releases</span> <span class="op">|&gt;</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="st">"id"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $CSDS_Provpredextract_1.6.6_20221115000001.zip</span></span>
+<span><span class="co">#&gt; [1] "CSDS_Provpredextract_1.6.6_20221115000001.zip"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $DMDSSCHEMAS_1.5.21_20200805000001</span></span>
+<span><span class="co">#&gt; [1] "DMDSSCHEMAS_1.5.21_20200805000001"</span></span>
+<span></span>
+<span><span class="co"># The same IDs are also used to name the releases list</span></span>
+<span><span class="va">metadata</span><span class="op">$</span><span class="va">releases</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "CSDS_Provpredextract_1.6.6_20221115000001.zip"</span></span>
+<span><span class="co">#&gt; [2] "DMDSSCHEMAS_1.5.21_20200805000001"</span></span>
+<span></span>
+<span><span class="co"># Use a specific release ID with download_item()</span></span>
+<span><span class="va">release_id</span> <span class="op">&lt;-</span> <span class="va">metadata</span><span class="op">$</span><span class="va">releases</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">id</span>  <span class="co"># Get ID of first release</span></span>
+<span><span class="fu"><a href="../reference/download_item.html">download_item</a></span><span class="op">(</span><span class="fl">394</span>, directory <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, download_file <span class="op">=</span> <span class="st">"checksum"</span>, release <span class="op">=</span> <span class="va">release_id</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ⠙ Downloading checksum file for TRUD item 394...</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> Successfully downloaded `trud_CSDS_Provpredextract_1.6.6_20221115000001.xml` …</span></span>
+<span><span class="co">#&gt; </span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

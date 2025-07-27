@@ -89,15 +89,23 @@ to. This is set to the current working directory by default.</p></dd>
 
 
 <dt id="arg-release">release<a class="anchor" aria-label="anchor" href="#arg-release"></a></dt>
-<dd><p>The name of a specific release ID to be downloaded (this can
-be ascertained using <code><a href="get_item_metadata.html">get_item_metadata()</a></code>). If <code>NULL</code> (default), then the
-latest item release will be downloaded.</p></dd>
+<dd><p>The release ID to be downloaded. Release IDs are found in the
+<code>id</code> field of each release from <code><a href="get_item_metadata.html">get_item_metadata()</a></code>. If <code>NULL</code> (default),
+the latest item release will be downloaded.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>The file path to the downloaded file, returned invisibly.</p>
     </div>
+    <div class="section level2">
+    <h2 id="working-with-specific-releases">Working with specific releases<a class="anchor" aria-label="anchor" href="#working-with-specific-releases"></a></h2>
+
+
+<p>To download a specific (non-latest) release:</p><ol><li><p>Use <code><a href="get_item_metadata.html">get_item_metadata()</a></code> to retrieve metadata for all releases</p></li>
+<li><p>The release IDs are stored under the <code>id</code> item for each release</p></li>
+<li><p>Pass the desired release ID to the <code>release</code> parameter of <code>download_item()</code></p></li>
+</ol></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
