@@ -13,7 +13,8 @@
 #'   release will be retrieved. By default this is set to `FALSE`.
 #'
 #' @returns A list containing item metadata, including release information that
-#'   can be used with [download_item()].
+#'   can be used with [download_item()]. Release IDs for specific downloads are
+#'   in the `id` field of each release.
 #' @export
 #' @seealso
 #' * [trud_items()] to find item numbers

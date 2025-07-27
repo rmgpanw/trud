@@ -15,7 +15,8 @@ release will be retrieved. By default this is set to \code{FALSE}.}
 }
 \value{
 A list containing item metadata, including release information that
-can be used with \code{\link[=download_item]{download_item()}}.
+can be used with \code{\link[=download_item]{download_item()}}. Release IDs for specific downloads are
+in the \code{id} field of each release.
 }
 \description{
 Sends a request to the release list endpoint, returning a list of metadata

@@ -8,6 +8,13 @@
 #' ```{r child = "man/rmd/subscription-required.Rmd"}
 #' ```
 #'
+#' @section Working with specific releases:
+#' To download a specific (non-latest) release:
+#'
+#' 1. Use [get_item_metadata()] to retrieve metadata for all releases
+#' 2. The release IDs are stored under the `id` item for each release
+#' 3. Pass the desired release ID to the `release` parameter of [download_item()]
+#'
 #' @param item An integer, the item to be downloaded. Get these from [trud_items()]
 #'   or [get_subscribed_metadata()].
 #' @param directory Path to the directory to which this item will be downloaded
@@ -17,9 +24,9 @@
 #'   - `"checksum"`
 #'   - `"signature"`
 #'   - `"publicKey"`
-#' @param release The name of a specific release ID to be downloaded (this can
-#'   be ascertained using [get_item_metadata()]). If `NULL` (default), then the
-#'   latest item release will be downloaded.
+#' @param release The release ID to be downloaded. Release IDs are found in the 
+#'   `id` field of each release from [get_item_metadata()]. If `NULL` (default), 
+#'   the latest item release will be downloaded.
 #'
 #' @returns The file path to the downloaded file, returned invisibly.
 #' @export

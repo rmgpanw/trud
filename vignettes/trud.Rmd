@@ -80,3 +80,22 @@ get_item_metadata(394) |>
 x <- download_item(394, directory = tempdir())
 unzip(x, list = TRUE)
 ```
+
+### Working with specific releases
+
+To download a specific release (rather than the latest), you need the release ID. Release IDs are found in the `id` field of each release:
+
+```{r specific-releases}
+# Get metadata for all releases (not just latest)
+metadata <- get_item_metadata(394, latest_only = FALSE)
+
+# Release IDs are in the `id` field of each release
+metadata$releases |> purrr::map("id")
+
+# The same IDs are also used to name the releases list
+metadata$releases |> names()
+
+# Use a specific release ID with download_item()
+release_id <- metadata$releases[[1]]$id  # Get ID of first release
+download_item(394, directory = tempdir(), download_file = "checksum", release = release_id)
+```

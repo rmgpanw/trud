@@ -21,9 +21,9 @@ to. This is set to the current working directory by default.}
 \item \code{"publicKey"}
 }}
 
-\item{release}{The name of a specific release ID to be downloaded (this can
-be ascertained using \code{\link[=get_item_metadata]{get_item_metadata()}}). If \code{NULL} (default), then the
-latest item release will be downloaded.}
+\item{release}{The release ID to be downloaded. Release IDs are found in the
+\code{id} field of each release from \code{\link[=get_item_metadata]{get_item_metadata()}}. If \code{NULL} (default),
+the latest item release will be downloaded.}
 }
 \value{
 The file path to the downloaded file, returned invisibly.
@@ -41,6 +41,16 @@ Simply having an API key is not sufficient. To see items you're already
 subscribed to, use \code{\link[=get_subscribed_metadata]{get_subscribed_metadata()}}. To browse all available
 items, use \code{\link[=trud_items]{trud_items()}}.
 }
+\section{Working with specific releases}{
+
+To download a specific (non-latest) release:
+\enumerate{
+\item Use \code{\link[=get_item_metadata]{get_item_metadata()}} to retrieve metadata for all releases
+\item The release IDs are stored under the \code{id} item for each release
+\item Pass the desired release ID to the \code{release} parameter of \code{\link[=download_item]{download_item()}}
+}
+}
+
 \examples{
 \dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Download Community Services Data Set pre-deadline extract XML Schema
