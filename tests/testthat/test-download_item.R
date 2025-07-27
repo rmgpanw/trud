@@ -89,7 +89,7 @@ test_that("download_item() downloads file and warns when file already exists. Re
           release = "item1",
           directory = temp_dir
         )),
-        archiveFileName_unique_path
+        normalizePath(archiveFileName_unique_path, mustWork = FALSE)
       )
     }
   )
