@@ -16,8 +16,9 @@ test_that("validate_arg_directory() throws error for invalid directory arguments
     "Argument `directory` must be a string"
   )
 
+  temp_dir <- withr::local_tempdir()
   expect_error(
-    validate_arg_directory(file.path(tempdir(), "invaliddirectory")),
+    validate_arg_directory(file.path(temp_dir, "invaliddirectory")),
     "Argument `directory` must be a valid file path."
   )
 })

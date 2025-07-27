@@ -26,9 +26,11 @@ test_that("download_item() throws errors for invalid release argument values", {
 })
 
 test_that("download_item() warns when attempting to download file that already exists locally", {
+  temp_dir <- withr::local_tempdir()
   archiveFileName <- "download_file.txt"
 
-  file.create(file.path(tempdir(), archiveFileName))
+  # Create the file in the temp directory
+  file.create(file.path(temp_dir, archiveFileName))
 
   with_mocked_bindings(
     get_item_metadata = function(...)
@@ -41,20 +43,24 @@ test_that("download_item() warns when attempting to download file that already e
         httpStatus = 200,
         message = "OK"
       ),
-    request_download_item = function(...) NULL,
+    request_download_item = function(url, file_path) {
+      # Return a proper httr2 response-like structure
+      structure(list(body = file_path), class = "httr2_response")
+    },
     get_trud_api_key = function(...) NULL,
     code = {
       expect_warning(
-        download_item(394, release = "item1", directory = tempdir()),
-        "already exists in directory"
+        download_item(394, release = "item1", directory = temp_dir),
+        "Skipping download"
       )
     }
   )
 })
 
 test_that("download_item() downloads file and warns when file already exists. Requires TRUD API key with subscription to item 394", {
+  temp_dir <- withr::local_tempdir()
   archiveFileName_unique <- basename(tempfile())
-  archiveFileName_unique_path <- file.path(tempdir(), archiveFileName_unique)
+  archiveFileName_unique_path <- file.path(temp_dir, archiveFileName_unique)
 
   with_mocked_bindings(
     get_trud_api_key = function(...) NULL,
@@ -71,15 +77,17 @@ test_that("download_item() downloads file and warns when file already exists. Re
         httpStatus = 200,
         message = "OK"
       ),
-    request_download_item = function(...)
-      list(body = archiveFileName_unique_path),
+    request_download_item = function(url, file_path) {
+      # Return a proper httr2 response-like structure
+      structure(list(body = file_path), class = "httr2_response")
+    },
     code = {
       expect_equal(
         # suppress warning raised by normalizePath() saying that file does not exist
         suppressWarnings(download_item(
           394,
           release = "item1",
-          directory = tempdir()
+          directory = temp_dir
         )),
         archiveFileName_unique_path
       )
@@ -91,8 +99,10 @@ test_that("download_item() downloads file and warns when file already exists. Re
   skip_if(condition = identical(Sys.getenv("TRUD_API_KEY"), ""))
   skip_if(condition = identical(Sys.getenv("PKG_CHECK"), "true")) # see pkgcheck.yaml
 
+  temp_dir <- withr::local_tempdir()
+
   x <- tryCatch(
-    download_item(394, directory = tempdir()),
+    download_item(394, directory = temp_dir),
     httr2_http_404 = \(cnd) "NOT_SUBSCRIBED"
   )
 
@@ -104,7 +114,7 @@ test_that("download_item() downloads file and warns when file already exists. Re
   expect_true(file.exists(x))
 
   expect_warning(
-    download_item(394, directory = tempdir()),
+    download_item(394, directory = temp_dir),
     "already exists in directory"
   )
 })
