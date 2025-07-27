@@ -69,3 +69,26 @@ test_that("trud_error_message() generates appropriate error messages for differe
     }
   )
 })
+
+test_that("req_user_agent_trud() uses default user agent when environment variable is not set", {
+  req <- httr2::request("https://example.com")
+  
+  # Temporarily unset the environment variable
+  withr::with_envvar(c("TRUD_USER_AGENT" = NA), {
+    result_req <- req_user_agent_trud(req)
+    expect_equal(
+      result_req$options$useragent,
+      "trud (http://github.com/rmgpanw/trud)"
+    )
+  })
+})
+
+test_that("req_user_agent_trud() uses custom user agent from environment variable", {
+  req <- httr2::request("https://example.com")
+  custom_agent <- "Custom Agent for Testing"
+  
+  withr::with_envvar(c("TRUD_USER_AGENT" = custom_agent), {
+    result_req <- req_user_agent_trud(req)
+    expect_equal(result_req$options$useragent, custom_agent)
+  })
+})

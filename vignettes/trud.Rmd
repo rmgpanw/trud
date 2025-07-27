@@ -30,6 +30,8 @@ Having installed `trud`, you will also need to:
 TRUD_API_KEY=e963cc518cc41500e1a8940a93ffc3c0915e2983
 ```
 
+> **Optional**: You can customise the user agent header used in API requests by setting the `TRUD_USER_AGENT` environment variable. This can be useful for CI/CD environments or organisational tracking.
+
 ## Understanding TRUD Subscriptions
 
 **Important**: NHS TRUD operates on a subscription-based model. Having an API key allows you to authenticate, but you must also subscribe to individual items through the NHS TRUD website before you can access them.

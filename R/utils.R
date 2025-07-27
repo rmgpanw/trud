@@ -155,8 +155,12 @@ validate_arg_directory <- function(directory, call = rlang::caller_env()) {
 #' @return An `httr2_request` object
 #' @noRd
 req_user_agent_trud <- function(req) {
-  req |>
-    httr2::req_user_agent("trud (http://github.com/rmgpanw/trud)")
+  user_agent_header <- Sys.getenv(
+    "TRUD_USER_AGENT",
+    unset = "trud (http://github.com/rmgpanw/trud)"
+  )
+
+  req |> httr2::req_user_agent(user_agent_header)
 }
 
 #' Configure error handling, retry logic, and rate limiting for TRUD API requests
