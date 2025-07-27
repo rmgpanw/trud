@@ -47,7 +47,7 @@ trud_items <- function() {
   )
 
   # Filter for items
-  df |>
+  result <- df |>
     dplyr::filter(stringr::str_detect(
       .data[["item_link"]],
       "trud/users/guest/filters/0/categories/1/items"
@@ -56,6 +56,24 @@ trud_items <- function() {
       !.data[["item_name"]] %in% c("Releases", "Licences", "Future releases")
     ) |>
     dplyr::select(dplyr::all_of(c("item_number", "item_name")))
+  
+  # Validate scraper is working
+  if (nrow(result) == 0) {
+    cli::cli_warn(c(
+      "!" = "No TRUD items found — page structure may have changed.",
+      "i" = "This may indicate changes to the NHS TRUD website that require package updates.",
+      "i" = "Please report this issue at: {.url https://github.com/rmgpanw/trud/issues}"
+    ))
+  } else if (nrow(result) < 10) {
+    cli::cli_warn(c(
+      "!" = "Unusually few TRUD items found ({nrow(result)} items) — page structure may have partially changed.",
+      "i" = "Expected to find many more items on the NHS TRUD website.",
+      "i" = "This may indicate parsing issues that require package updates.",
+      "i" = "Please report this issue at: {.url https://github.com/rmgpanw/trud/issues}"
+    ))
+  }
+  
+  result
 }
 
 #' To facilitate mocking in unit testing for [trud_items()]
