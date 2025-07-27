@@ -32,7 +32,7 @@ practice. NHS TRUD content supports key research areas like disease
 phenotyping, cohort selection, epidemiology, health services research,
 and the development of risk prediction models.
 
-trud enables seamless, programmatic retrieval and updating of NHS TRUD
+`trud` enables seamless, programmatic retrieval and updating of NHS TRUD
 release items, removing the need for manual downloads and reducing the
 risk of errors or version drift. This helps researchers maintain
 reproducible, up-to-date analyses — whether as part of ad-hoc studies or
@@ -80,8 +80,8 @@ library(trud)
 
 # See items you can currently access
 get_subscribed_metadata()
-#>  ■■■■■■■■                          22% |  ETA:  6s
-#>  ■■■■■■■■■■■■■■■■■■■■■■            68% |  ETA:  2s
+#>  ■■■■■■■■■■                        29% |  ETA:  4s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■      90% |  ETA:  0s
 #> # A tibble: 17 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      
@@ -142,7 +142,7 @@ file_path <- download_item(394, directory = tempdir())
 
 ## Available functionality
 
-The main functions provided by trud are:
+The main functions provided by `trud` are:
 
 - `get_subscribed_metadata()`: Shows items you can currently access
 - `trud_items()`: Lists all available items
@@ -154,8 +154,9 @@ started.
 
 ## Citing trud
 
-If you find trud useful, please consider citing it. Citation details are
-available [here](https://rmgpanw.github.io/trud/authors.html#citation).
+If you find `trud` useful, please consider citing it. Citation details
+are available
+[here](https://rmgpanw.github.io/trud/authors.html#citation).
 
 ## Community guidelines
 

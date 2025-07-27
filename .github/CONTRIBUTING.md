@@ -1,6 +1,6 @@
-# Contributing to trud
+# Contributing to `trud`
 
-This outlines how to propose a change to trud.
+This outlines how to propose a change to `trud`.
 For a detailed discussion on contributing to this and other packages emulating tidyverse style, please see the tidyverse [development contributing guide](https://rstd.io/tidy-contrib) and [code review principles](https://code-review.tidyverse.org/).
 
 ## Fixing typos
@@ -54,6 +54,6 @@ If you don't have subscriptions to these items, the relevant tests will be autom
 
 ## Code of Conduct
 
-Please note that the trud project is released with a
+Please note that the `trud` project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this
 project you agree to abide by its terms.

@@ -19,9 +19,9 @@ knitr::opts_chunk$set(
 library(trud)
 ```
 
-The [National Health Service (NHS) England Technology Reference data Update Distribution (TRUD)](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api) enables programmatic access to retrieve metadata for and download NHS TRUD release items. The trud package wraps this API, facilitating programmatic retrieval and updating of NHS TRUD resources:
+The [National Health Service (NHS) England Technology Reference data Update Distribution (TRUD)](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api) enables programmatic access to retrieve metadata for and download NHS TRUD release items. The `trud` package wraps this API, facilitating programmatic retrieval and updating of NHS TRUD resources:
 
-Having installed trud, you will also need to:
+Having installed `trud`, you will also need to:
 
 -   [Sign up for a free account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form) with NHS TRUD
 -   Set your API key (shown on your account information page) as an environmental variable named `TRUD_API_KEY`. The best way to do this is by placing your API key in a [`.Renviron` file](https://rstats.wtf/r-startup.html#renviron). For example, create or edit your project `.Renviron` file with `usethis::edit_r_environ()`, then populate as follows (replacing `e963cc518cc41500e1a8940a93ffc3c0915e2983` with your own API key):

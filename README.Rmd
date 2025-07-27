@@ -28,7 +28,7 @@ The goal of `trud` is to provide a convenient R interface to the [National Healt
 
 The NHS TRUD service provides essential reference files that underpin a wide range of electronic health record (EHR) areas, both in the UK and internationally. These files include clinical coding systems such as ICD, Read codes, prescription codes, and the SNOMED CT ontology, with regular updates to reflect new knowledge and changes in clinical practice. NHS TRUD content supports key research areas like disease phenotyping, cohort selection, epidemiology, health services research, and the development of risk prediction models.
 
-trud enables seamless, programmatic retrieval and updating of NHS TRUD release items, removing the need for manual downloads and reducing the risk of errors or version drift. This helps researchers maintain reproducible, up-to-date analyses — whether as part of ad-hoc studies or automated pipelines.
+`trud` enables seamless, programmatic retrieval and updating of NHS TRUD release items, removing the need for manual downloads and reducing the risk of errors or version drift. This helps researchers maintain reproducible, up-to-date analyses — whether as part of ad-hoc studies or automated pipelines.
 
 To learn more about NHS TRUD and its available resources, visit the [NHS TRUD website](https://isd.digital.nhs.uk/trud).
 
@@ -87,7 +87,7 @@ file_path <- download_item(394, directory = tempdir())
 
 ## Available functionality
 
-The main functions provided by trud are:
+The main functions provided by `trud` are:
 
 - `get_subscribed_metadata()`: Shows items you can currently access
 - `trud_items()`: Lists all available items
@@ -98,7 +98,7 @@ Please see `vignette("trud")` for further information and getting started.
 
 ## Citing trud
 
-If you find trud useful, please consider citing it. Citation details are available [here](https://rmgpanw.github.io/trud/authors.html#citation).
+If you find `trud` useful, please consider citing it. Citation details are available [here](https://rmgpanw.github.io/trud/authors.html#citation).
 
 ## Community guidelines
 
