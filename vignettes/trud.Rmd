@@ -24,7 +24,9 @@ The [National Health Service (NHS) England Technology Reference data Update Dist
 Having installed `trud`, you will also need to:
 
 -   [Sign up for a free account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form) with NHS TRUD
--   Set your API key (shown on your account information page) as an environmental variable named `TRUD_API_KEY`. The best way to do this is by placing your API key in a [`.Renviron` file](https://rstats.wtf/r-startup.html#renviron). For example, create or edit your project `.Renviron` file with `usethis::edit_r_environ()`, then populate as follows (replacing `e963cc518cc41500e1a8940a93ffc3c0915e2983` with your own API key):
+-   Set your API key (shown on your account information page) as an environmental variable named `TRUD_API_KEY`. The best way to do this is by placing your API key in a [`.Renviron` file](https://rstats.wtf/r-startup.html#renviron). For example, create or edit your project `.Renviron` file with `usethis::edit_r_environ()`, then populate as follows (replacing `e963cc518cc41500e1a8940a93ffc3c0915e2983` with your own API key):[^1]
+
+[^1]: You will also need to restart your R session to set any environmental variables that have been newly-added to your project `.Renviron` file.
 
 ```
 TRUD_API_KEY=e963cc518cc41500e1a8940a93ffc3c0915e2983

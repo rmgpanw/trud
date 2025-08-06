@@ -75,6 +75,14 @@ website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1).
 
 ### Recommended Workflow
 
+**Step 0:**: Set up your TRUD API key as an environmental variable named
+`TRUD_API_KEY`. For example, create or edit your project `.Renviron`
+file with `usethis::edit_r_environ()`, then populate as follows
+(replacing `e963cc518cc41500e1a8940a93ffc3c0915e2983` with your own API
+key):[^1]
+
+    TRUD_API_KEY=e963cc518cc41500e1a8940a93ffc3c0915e2983
+
 **Step 1**: Check what you’re already subscribed to:
 
 ``` r
@@ -82,7 +90,7 @@ library(trud)
 
 # See items you can currently access
 get_subscribed_metadata()
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■          77% |  ETA:  1s
+#>  ■■■■■■■■■■■■■■■■■                 52% |  ETA:  2s
 #> # A tibble: 17 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      
@@ -169,3 +177,7 @@ guidelines](https://rmgpanw.github.io/trud/CONTRIBUTING.html).
 Please note that this package is released with a [Contributor Code of
 Conduct](https://rmgpanw.github.io/trud/CODE_OF_CONDUCT.html). By
 contributing to this project, you agree to abide by its terms.
+
+[^1]: You will also need to restart your R session to set any
+    environmental variables that have been newly-added to your project
+    `.Renviron` file.
