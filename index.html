@@ -88,13 +88,15 @@
 <div class="section level3">
 <h3 id="recommended-workflow">Recommended Workflow<a class="anchor" aria-label="anchor" href="#recommended-workflow"></a>
 </h3>
+<p><strong>Step 0:</strong>: Set up your TRUD API key as an environmental variable named <code>TRUD_API_KEY</code>. For example, create or edit your project <code>.Renviron</code> file with <code>usethis::edit_r_environ()</code>, then populate as follows (replacing <code>e963cc518cc41500e1a8940a93ffc3c0915e2983</code> with your own API key):<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content="&lt;p&gt;You will also need to restart your R session to set any environmental variables that have been newly-added to your project &lt;code&gt;.Renviron&lt;/code&gt; file.&lt;/p&gt;"><sup>1</sup></a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>TRUD_API_KEY<span class="ot">=</span>e963cc518cc41500e1a8940a93ffc3c0915e2983</span></code></pre></div>
 <p><strong>Step 1</strong>: Check what you’re already subscribed to:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rmgpanw.github.io/trud/">trud</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># See items you can currently access</span></span>
 <span><span class="fu"><a href="reference/get_subscribed_metadata.html">get_subscribed_metadata</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■          77% |  ETA:  1s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■                 52% |  ETA:  2s</span></span>
 <span><span class="co">#&gt; # A tibble: 17 × 3</span></span>
 <span><span class="co">#&gt;    item_number item_name                                            metadata    </span></span>
 <span><span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;                                                &lt;list&gt;      </span></span>
@@ -116,7 +118,7 @@
 <span><span class="co">#&gt; 16          98 SNOMED CT UK Data Migration Workbench                &lt;named list&gt;</span></span>
 <span><span class="co">#&gt; 17        1799 SNOMED CT UK Monolith Edition, RF2: Snapshot         &lt;named list&gt;</span></span></code></pre></div>
 <p><strong>Step 2</strong>: Browse all available items (note: subscription required for access):</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># List all available TRUD items</span></span>
 <span><span class="fu"><a href="reference/trud_items.html">trud_items</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 73 × 2</span></span>
@@ -134,7 +136,7 @@
 <span><span class="co">#&gt; 10        1819 Emergency Care Data Set XML Schema                               </span></span>
 <span><span class="co">#&gt; # ℹ 63 more rows</span></span></code></pre></div>
 <p><strong>Step 3</strong>: Subscribe to additional items you need via the <a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1" class="external-link">NHS TRUD website</a>, then access them:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># After subscribing to an item (e.g., item 394), you can:</span></span>
 <span></span>
 <span><span class="co"># Get metadata</span></span>
@@ -172,6 +174,8 @@
 <p>Please note that this package is released with a <a href="https://rmgpanw.github.io/trud/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
+
+
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
