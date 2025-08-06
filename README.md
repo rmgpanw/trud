@@ -75,7 +75,7 @@ website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/categories/1).
 
 ### Recommended Workflow
 
-**Step 0:**: Set up your TRUD API key as an environmental variable named
+**Step 0**: Set up your TRUD API key as an environmental variable named
 `TRUD_API_KEY`. For example, create or edit your project `.Renviron`
 file with `usethis::edit_r_environ()`, then populate as follows
 (replacing `e963cc518cc41500e1a8940a93ffc3c0915e2983` with your own API
@@ -90,7 +90,7 @@ library(trud)
 
 # See items you can currently access
 get_subscribed_metadata()
-#>  ■■■■■■■■■■■■■■■■■                 52% |  ETA:  2s
+#>  ■■■■■■■■■■■■■■■■                  51% |  ETA:  2s
 #> # A tibble: 17 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      
