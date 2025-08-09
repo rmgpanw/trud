@@ -29,5 +29,11 @@ Authors:
   \item Chuin Ying Ung (\href{https://orcid.org/0000-0001-8487-4589}{ORCID})
 }
 
+Other contributors:
+\itemize{
+  \item Jon Clayden (\href{https://orcid.org/0000-0002-6608-0619}{ORCID}) [reviewer]
+  \item Alexandros Kouretsis [reviewer]
+}
+
 }
 \keyword{internal}

@@ -12,7 +12,14 @@ Authors@R: c(
     person("Abraham", "Olvera-Barrios", role = "aut",
            comment = c(ORCID = "0000-0002-3305-4465")),
     person("Chuin Ying", "Ung", role = "aut",
-           comment = c(ORCID = "0000-0001-8487-4589"))
+           comment = c(ORCID = "0000-0001-8487-4589")),
+    person(given = "Jon",
+           family = "Clayden",
+           role = c("rev"),
+           comment=c(ORCID="0000-0002-6608-0619")),
+    person(given = "Alexandros",
+           family = "Kouretsis",
+           role = c("rev"))
     )
 Description: Provides a convenient R interface to the 'National Health Service 
     NHS Technology Reference Update Distribution (TRUD) API', allowing users 
