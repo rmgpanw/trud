@@ -7,7 +7,7 @@ trud_items(), then subscribe through the NHS TRUD website."><meta property="og:d
 retrieving metadata for only items that the user is subscribed to. This is
 particularly useful for seeing what data you can download with download_item().
 If you need access to additional items, browse available options with
-trud_items(), then subscribe through the NHS TRUD website."><meta property="og:image" content="https://rmgpanw.github.io/trud/logo.png"></head><body>
+trud_items(), then subscribe through the NHS TRUD website."><meta property="og:image" content="https://docs.ropensci.org/trud/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -28,7 +28,7 @@ trud_items(), then subscribe through the NHS TRUD website."><meta property="og:i
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rmgpanw/trud/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ropensci/trud/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
 
 
@@ -37,7 +37,7 @@ trud_items(), then subscribe through the NHS TRUD website."><meta property="og:i
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get metadata for subscribed NHS TRUD items</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rmgpanw/trud/blob/main/R/get_subscribed_metadata.R" class="external-link"><code>R/get_subscribed_metadata.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/trud/blob/main/R/get_subscribed_metadata.R" class="external-link"><code>R/get_subscribed_metadata.R</code></a></small>
       <div class="d-none name"><code>get_subscribed_metadata.Rd</code></div>
     </div>
 
@@ -81,10 +81,10 @@ Use the <code>item_number</code> column values with <code><a href="download_item
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="co"># Get metadata for all subscribed items</span></span></span>
 <span class="r-in"><span>  <span class="va">subscribed</span> <span class="op">&lt;-</span> <span class="fu">get_subscribed_metadata</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■                         </span>  19% |  ETA: 11s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■                   </span>  41% |  ETA:  8s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■            </span>  63% |  ETA:  5s</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■     </span>  86% |  ETA:  2s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■                        </span>  22% |  ETA: 11s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■                  </span>  42% |  ETA:  8s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■            </span>  64% |  ETA:  5s</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■      </span>  85% |  ETA:  2s</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Show structure without exposing API keys in URLs</span></span></span>
 <span class="r-in"><span>  <span class="va">subscribed</span><span class="op">$</span><span class="va">metadata</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">|&gt;</span></span></span>

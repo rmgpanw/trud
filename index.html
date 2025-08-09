@@ -18,7 +18,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Query the NHS TRUD API">
 <meta name="description" content="Provides a convenient R interface to the National Health Service NHS Technology Reference Update Distribution (TRUD) API, allowing users to list available releases for their subscribed items, retrieve metadata, and download release files. For more information on the API, see &lt;https://isd.digital.nhs.uk/trud/users/guest/filters/0/api&gt;.">
 <meta property="og:description" content="Provides a convenient R interface to the National Health Service NHS Technology Reference Update Distribution (TRUD) API, allowing users to list available releases for their subscribed items, retrieve metadata, and download release files. For more information on the API, see &lt;https://isd.digital.nhs.uk/trud/users/guest/filters/0/api&gt;.">
-<meta property="og:image" content="https://rmgpanw.github.io/trud/logo.png">
+<meta property="og:image" content="https://docs.ropensci.org/trud/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -45,7 +45,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rmgpanw/trud/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ropensci/trud/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -71,10 +71,10 @@
 <p>You can install this package from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"trud"</span><span class="op">)</span></span></code></pre></div>
-<p>Or you can install the development version of <code>trud</code> from <a href="https://github.com/rmgpanw/trud" class="external-link">GitHub</a> with:</p>
+<p>Or you can install the development version of <code>trud</code> from <a href="https://github.com/ropensci/trud" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"rmgpanw/trud"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"ropensci/trud"</span><span class="op">)</span></span></code></pre></div>
 <p>You will also need to <a href="https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form" class="external-link">sign up for a free account</a> with NHS TRUD and set up your API key as described in <code><a href="articles/trud.html">vignette("trud")</a></code>.</p>
 </div>
 <div class="section level2">
@@ -92,11 +92,12 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>TRUD_API_KEY<span class="ot">=</span>e963cc518cc41500e1a8940a93ffc3c0915e2983</span></code></pre></div>
 <p><strong>Step 1</strong>: Check what you’re already subscribed to:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rmgpanw.github.io/trud/">trud</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/trud/">trud</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># See items you can currently access</span></span>
 <span><span class="fu"><a href="reference/get_subscribed_metadata.html">get_subscribed_metadata</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■                  51% |  ETA:  2s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■                         27% |  ETA:  4s</span></span>
+<span><span class="co">#&gt;  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  0s</span></span>
 <span><span class="co">#&gt; # A tibble: 17 × 3</span></span>
 <span><span class="co">#&gt;    item_number item_name                                            metadata    </span></span>
 <span><span class="co">#&gt;          &lt;int&gt; &lt;chr&gt;                                                &lt;list&gt;      </span></span>
@@ -165,13 +166,13 @@
 <div class="section level2">
 <h2 id="citing-trud">Citing trud<a class="anchor" aria-label="anchor" href="#citing-trud"></a>
 </h2>
-<p>If you find <code>trud</code> useful, please consider citing it. Citation details are available <a href="https://rmgpanw.github.io/trud/authors.html#citation">here</a>.</p>
+<p>If you find <code>trud</code> useful, please consider citing it. Citation details are available <a href="https://docs.ropensci.org/trud/authors.html#citation">here</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="community-guidelines">Community guidelines<a class="anchor" aria-label="anchor" href="#community-guidelines"></a>
 </h2>
-<p>Feedback, bug reports, and feature requests are welcome; file issues or seek support <a href="https://github.com/rmgpanw/trud/issues" class="external-link">here</a>. If you would like to contribute to the package, please see our <a href="https://rmgpanw.github.io/trud/CONTRIBUTING.html">contributing guidelines</a>.</p>
-<p>Please note that this package is released with a <a href="https://rmgpanw.github.io/trud/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Feedback, bug reports, and feature requests are welcome; file issues or seek support <a href="https://github.com/ropensci/trud/issues" class="external-link">here</a>. If you would like to contribute to the package, please see our <a href="https://docs.ropensci.org/trud/CONTRIBUTING.html">contributing guidelines</a>.</p>
+<p>Please note that this package is released with a <a href="https://docs.ropensci.org/trud/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
 
@@ -180,8 +181,8 @@
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li><a href="https://cloud.r-project.org/package=trud" class="external-link">View on CRAN</a></li>
-<li><a href="https://github.com/rmgpanw/trud/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/rmgpanw/trud/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/ropensci/trud/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/ropensci/trud/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -197,7 +198,6 @@
 <h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
-<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
 
@@ -221,9 +221,9 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml" class="external-link"><img src="https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a></li>
-<li><a href="https://app.codecov.io/gh/rmgpanw/trud?branch=main" class="external-link"><img src="https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/ropensci/trud/actions/workflows/pkgdown.yaml" class="external-link"><img src="https://github.com/ropensci/trud/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a></li>
+<li><a href="https://app.codecov.io/gh/ropensci/trud?branch=main" class="external-link"><img src="https://codecov.io/gh/ropensci/trud/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/ropensci/trud/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ropensci/trud/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://CRAN.R-project.org/package=trud" class="external-link"><img src="https://www.r-pkg.org/badges/version/trud" alt="CRAN status"></a></li>
 <li><a href="https://cran.r-project.org/package=trud" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/last-month/trud"></a></li>
 <li><a href="https://CRAN.R-project.org/package=trud" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/trud" alt="CRAN downloads"></a></li>
