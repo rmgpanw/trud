@@ -1,14 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# trud <a href="https://rmgpanw.github.io/trud/"><img src="man/figures/logo.png" align="right" height="138"/></a>
+# trud <a href="https://docs.ropensci.org/trud/"><img src="man/figures/logo.png" align="right" height="138"/></a>
 
 <!-- badges: start -->
 
-[![pkgdown](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml)
+[![pkgdown](https://github.com/ropensci/trud/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/ropensci/trud/actions/workflows/pkgdown.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/rmgpanw/trud/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rmgpanw/trud?branch=main)
-[![R-CMD-check](https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml)
+coverage](https://codecov.io/gh/ropensci/trud/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropensci/trud?branch=main)
+[![R-CMD-check](https://github.com/ropensci/trud/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/trud/actions/workflows/R-CMD-check.yaml)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/trud)](https://CRAN.R-project.org/package=trud)
 [![](https://cranlogs.r-pkg.org/badges/last-month/trud)](https://cran.r-project.org/package=trud)
@@ -52,11 +52,11 @@ install.packages("trud")
 ```
 
 Or you can install the development version of `trud` from
-[GitHub](https://github.com/rmgpanw/trud) with:
+[GitHub](https://github.com/ropensci/trud) with:
 
 ``` r
 # install.packages("pak")
-pak::pak("rmgpanw/trud")
+pak::pak("ropensci/trud")
 ```
 
 You will also need to [sign up for a free
@@ -90,7 +90,8 @@ library(trud)
 
 # See items you can currently access
 get_subscribed_metadata()
-#>  ■■■■■■■■■■■■■■■■                  51% |  ETA:  2s
+#>  ■■■■■■■■■                         27% |  ETA:  4s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  0s
 #> # A tibble: 17 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      
@@ -165,17 +166,17 @@ started.
 
 If you find `trud` useful, please consider citing it. Citation details
 are available
-[here](https://rmgpanw.github.io/trud/authors.html#citation).
+[here](https://docs.ropensci.org/trud/authors.html#citation).
 
 ## Community guidelines
 
 Feedback, bug reports, and feature requests are welcome; file issues or
-seek support [here](https://github.com/rmgpanw/trud/issues). If you
+seek support [here](https://github.com/ropensci/trud/issues). If you
 would like to contribute to the package, please see our [contributing
-guidelines](https://rmgpanw.github.io/trud/CONTRIBUTING.html).
+guidelines](https://docs.ropensci.org/trud/CONTRIBUTING.html).
 
 Please note that this package is released with a [Contributor Code of
-Conduct](https://rmgpanw.github.io/trud/CODE_OF_CONDUCT.html). By
+Conduct](https://docs.ropensci.org/trud/CODE_OF_CONDUCT.html). By
 contributing to this project, you agree to abide by its terms.
 
 [^1]: You will also need to restart your R session to set any

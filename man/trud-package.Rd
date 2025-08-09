@@ -13,9 +13,9 @@ Provides a convenient R interface to the 'National Health Service NHS Technology
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://rmgpanw.github.io/trud/}
-  \item \url{https://github.com/rmgpanw/trud}
-  \item Report bugs at \url{https://github.com/rmgpanw/trud/issues}
+  \item \url{https://docs.ropensci.org/trud/}
+  \item \url{https://github.com/ropensci/trud}
+  \item Report bugs at \url{https://github.com/ropensci/trud/issues}
 }
 
 }

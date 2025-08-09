@@ -62,14 +62,14 @@ trud_items <- function() {
     cli::cli_warn(c(
       "!" = "No TRUD items found - page structure may have changed.",
       "i" = "This may indicate changes to the NHS TRUD website that require package updates.",
-      "i" = "Please report this issue at: {.url https://github.com/rmgpanw/trud/issues}"
+      "i" = "Please report this issue at: {.url https://github.com/ropensci/trud/issues}"
     ))
   } else if (nrow(result) < 10) {
     cli::cli_warn(c(
       "!" = "Unusually few TRUD items found ({nrow(result)} items) - page structure may have partially changed.",
       "i" = "Expected to find many more items on the NHS TRUD website.",
       "i" = "This may indicate parsing issues that require package updates.",
-      "i" = "Please report this issue at: {.url https://github.com/rmgpanw/trud/issues}"
+      "i" = "Please report this issue at: {.url https://github.com/ropensci/trud/issues}"
     ))
   }
 

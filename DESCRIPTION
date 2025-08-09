@@ -33,9 +33,9 @@ Imports:
     rvest,
     stringr,
     tibble
-URL: https://rmgpanw.github.io/trud/,
-    https://github.com/rmgpanw/trud
-BugReports: https://github.com/rmgpanw/trud/issues
+URL: https://docs.ropensci.org/trud/,
+    https://github.com/ropensci/trud
+BugReports: https://github.com/ropensci/trud/issues
 Suggests: 
     knitr,
     rmarkdown,

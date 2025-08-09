@@ -79,7 +79,7 @@ test_that("req_user_agent_trud() uses default user agent when environment variab
     result_req <- req_user_agent_trud(req)
     expect_equal(
       result_req$options$useragent,
-      "trud (http://github.com/rmgpanw/trud)"
+      "trud (http://github.com/ropensci/trud)"
     )
   })
 })

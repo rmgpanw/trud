@@ -4,9 +4,9 @@
   "identifier": "trud",
   "description": "Provides a convenient R interface to the 'National Health Service NHS Technology Reference Update Distribution (TRUD) API', allowing users to list available releases for their subscribed items, retrieve metadata, and download release files. For more information on the API, see <https://isd.digital.nhs.uk/trud/users/guest/filters/0/api>.",
   "name": "trud: Query the 'NHS TRUD API'",
-  "relatedLink": ["https://rmgpanw.github.io/trud/", "https://CRAN.R-project.org/package=trud"],
-  "codeRepository": "https://github.com/rmgpanw/trud",
-  "issueTracker": "https://github.com/rmgpanw/trud/issues",
+  "relatedLink": ["https://docs.ropensci.org/trud/", "https://CRAN.R-project.org/package=trud"],
+  "codeRepository": "https://github.com/ropensci/trud",
+  "issueTracker": "https://github.com/ropensci/trud/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.1.0.9000",
   "programmingLanguage": {
@@ -199,9 +199,9 @@
     "SystemRequirements": null
   },
   "fileSize": "587.246KB",
-  "releaseNotes": "https://github.com/rmgpanw/trud/blob/master/NEWS.md",
-  "readme": "https://github.com/rmgpanw/trud/blob/main/README.md",
-  "contIntegration": ["https://github.com/rmgpanw/trud/actions/workflows/pkgdown.yaml", "https://app.codecov.io/gh/rmgpanw/trud?branch=main", "https://github.com/rmgpanw/trud/actions/workflows/R-CMD-check.yaml"],
+  "releaseNotes": "https://github.com/ropensci/trud/blob/master/NEWS.md",
+  "readme": "https://github.com/ropensci/trud/blob/main/README.md",
+  "contIntegration": ["https://github.com/ropensci/trud/actions/workflows/pkgdown.yaml", "https://app.codecov.io/gh/ropensci/trud?branch=main", "https://github.com/ropensci/trud/actions/workflows/R-CMD-check.yaml"],
   "developmentStatus": "https://www.repostatus.org/#active",
   "keywords": ["api-wrapper", "ehr", "icd", "nhs", "snomed-ct"]
 }
