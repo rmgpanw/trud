@@ -51,12 +51,18 @@ You can install this package from CRAN:
 install.packages("trud")
 ```
 
-Or you can install the development version of `trud` from
+Or you can install the development version of `trud` from either
 [GitHub](https://github.com/ropensci/trud) with:
 
 ``` r
 # install.packages("pak")
 pak::pak("ropensci/trud")
+```
+
+… or [R Universe](https://ropensci.r-universe.dev/builds) with:
+
+``` r
+install.packages("trud", repos = c('https://ropensci.r-universe.dev', 'https://cloud.r-project.org'))
 ```
 
 You will also need to [sign up for a free
@@ -90,8 +96,7 @@ library(trud)
 
 # See items you can currently access
 get_subscribed_metadata()
-#>  ■■■■■■■■■                         27% |  ETA:  4s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  0s
+#>  ■■■■■■■■■■■                       34% |  ETA:  3s
 #> # A tibble: 17 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      

@@ -41,11 +41,17 @@ You can install this package from CRAN:
 install.packages("trud")
 ```
 
-Or you can install the development version  of `trud` from [GitHub](https://github.com/ropensci/trud) with:
+Or you can install the development version  of `trud` from either [GitHub](https://github.com/ropensci/trud) with:
 
 ``` r
 # install.packages("pak")
 pak::pak("ropensci/trud")
+```
+
+... or [R Universe](https://ropensci.r-universe.dev/builds) with:
+
+``` r
+install.packages("trud", repos = c('https://ropensci.r-universe.dev', 'https://cloud.r-project.org'))
 ```
 
 You will also need to [sign up for a free account](https://isd.digital.nhs.uk/trud/users/guest/filters/0/account/form) with NHS TRUD and set up your API key as described in `vignette("trud")`.
