@@ -32,7 +32,7 @@ subscribed to, use \code{\link[=get_subscribed_metadata]{get_subscribed_metadata
 items, use \code{\link[=trud_items]{trud_items()}}.
 }
 \examples{
-\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true") & Sys.getenv("TRUD_API_KEY") == "") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Get metadata for Community Services Data Set pre-deadline extract XML Schema
 get_item_metadata(394) |>
   # Display structure without showing sensitive API keys in URLs

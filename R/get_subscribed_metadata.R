@@ -17,7 +17,7 @@
 #' * [get_item_metadata()] for detailed metadata on specific items
 #' * [download_item()] to download items you're subscribed to
 #'
-#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true")
+#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true") & Sys.getenv("TRUD_API_KEY") == ""
 #'   # Get metadata for all subscribed items
 #'   subscribed <- get_subscribed_metadata()
 #'

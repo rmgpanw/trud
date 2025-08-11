@@ -11,7 +11,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  eval = Sys.getenv("IN_PKGDOWN") == "true"
+  eval = Sys.getenv("IN_PKGDOWN") == "true" & Sys.getenv("TRUD_API_KEY") == ""
 )
 ```
 
