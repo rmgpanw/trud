@@ -1,4 +1,4 @@
-# trud (development version)
+# trud 0.2.0
 
 ## Major changes
 
