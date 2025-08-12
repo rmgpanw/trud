@@ -31,7 +31,7 @@ The NHS TRUD service provides essential reference files that underpin a wide ran
 
 `trud` enables seamless, programmatic retrieval and updating of NHS TRUD release items, removing the need for manual downloads and reducing the risk of errors or version drift. This helps researchers maintain reproducible, up-to-date analyses — whether as part of ad-hoc studies or automated pipelines.
 
-To learn more about NHS TRUD and its available resources, visit the [NHS TRUD website](https://isd.digital.nhs.uk/trud).
+To learn more about NHS TRUD and its available resources, visit the [NHS TRUD website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/home).
 
 ## Installation
 

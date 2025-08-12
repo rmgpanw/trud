@@ -41,7 +41,8 @@ reproducible, up-to-date analyses — whether as part of ad-hoc studies or
 automated pipelines.
 
 To learn more about NHS TRUD and its available resources, visit the [NHS
-TRUD website](https://isd.digital.nhs.uk/trud).
+TRUD
+website](https://isd.digital.nhs.uk/trud/users/guest/filters/0/home).
 
 ## Installation
 
@@ -96,8 +97,8 @@ library(trud)
 
 # See items you can currently access
 get_subscribed_metadata()
-#>  ■■■■■■■■■                         27% |  ETA:  4s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  1s
+#>  ■■■■■■■■■                         27% |  ETA:  3s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  0s
 #> # A tibble: 17 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      
