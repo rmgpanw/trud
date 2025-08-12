@@ -22,7 +22,7 @@ If you need access to additional items, browse available options with
 \code{\link[=trud_items]{trud_items()}}, then subscribe through the NHS TRUD website.
 }
 \examples{
-\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true") & Sys.getenv("TRUD_API_KEY") == "") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true") & Sys.getenv("TRUD_API_KEY") != "") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
   # Get metadata for all subscribed items
   subscribed <- get_subscribed_metadata()
 

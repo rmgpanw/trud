@@ -21,7 +21,7 @@
 #' * [get_subscribed_metadata()] to see items you can access
 #' * [download_item()] to download files using this metadata
 #'
-#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true") & Sys.getenv("TRUD_API_KEY") == ""
+#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true") & Sys.getenv("TRUD_API_KEY") != ""
 #' # Get metadata for Community Services Data Set pre-deadline extract XML Schema
 #' get_item_metadata(394) |>
 #'   # Display structure without showing sensitive API keys in URLs

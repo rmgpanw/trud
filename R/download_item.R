@@ -36,7 +36,7 @@
 #' * [get_subscribed_metadata()] to see items you can access
 #' * [get_item_metadata()] to explore available releases before downloading
 #'
-#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true") & Sys.getenv("TRUD_API_KEY") == ""
+#' @examplesIf identical(Sys.getenv("IN_PKGDOWN"), "true") & Sys.getenv("TRUD_API_KEY") != ""
 #' # Download Community Services Data Set pre-deadline extract XML Schema
 #' x <- download_item(394, directory = tempdir())
 #'

@@ -58,7 +58,7 @@ To download a specific (non-latest) release:
 }
 
 \examples{
-\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true") & Sys.getenv("TRUD_API_KEY") == "") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (identical(Sys.getenv("IN_PKGDOWN"), "true") & Sys.getenv("TRUD_API_KEY") != "") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Download Community Services Data Set pre-deadline extract XML Schema
 x <- download_item(394, directory = tempdir())
 
