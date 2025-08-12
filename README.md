@@ -96,7 +96,8 @@ library(trud)
 
 # See items you can currently access
 get_subscribed_metadata()
-#>  ■■■■■■■■■■■■■■■                   48% |  ETA:  2s
+#>  ■■■■■■■■■                         27% |  ETA:  4s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■       86% |  ETA:  1s
 #> # A tibble: 17 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      
@@ -181,8 +182,8 @@ would like to contribute to the package, please see our [contributing
 guidelines](https://docs.ropensci.org/trud/CONTRIBUTING.html).
 
 Please note that this package is released with a [Contributor Code of
-Conduct](https://docs.ropensci.org/trud/CODE_OF_CONDUCT.html). By
-contributing to this project, you agree to abide by its terms.
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
 
 [^1]: You will also need to restart your R session to set any
     environmental variables that have been newly-added to your project
