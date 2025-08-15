@@ -18,6 +18,7 @@ downloads](https://cranlogs.r-pkg.org/badges/grand-total/trud)](https://CRAN.R-p
 Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Status at rOpenSci Software Peer
 Review](https://badges.ropensci.org/705_status.svg)](https://github.com/ropensci/software-review/issues/705)
+[![status](https://joss.theoj.org/papers/810bf12b9b80b17cadc82397f5022154/status.svg)](https://joss.theoj.org/papers/810bf12b9b80b17cadc82397f5022154)
 <!-- badges: end -->
 
 The goal of `trud` is to provide a convenient R interface to the
@@ -97,8 +98,8 @@ library(trud)
 
 # See items you can currently access
 get_subscribed_metadata()
-#>  ■■■■■■■■■                         27% |  ETA:  3s
-#>  ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    96% |  ETA:  0s
+#>  ■■■■■■■■                          25% |  ETA:  4s
+#>  ■■■■■■■■■■■■■■■■■■■■■■■■          78% |  ETA:  1s
 #> # A tibble: 17 × 3
 #>    item_number item_name                                            metadata    
 #>          <int> <chr>                                                <list>      

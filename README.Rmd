@@ -23,6 +23,7 @@ knitr::opts_chunk$set(
 [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/trud)](https://CRAN.R-project.org/package=trud)
 [![Repo Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/705_status.svg)](https://github.com/ropensci/software-review/issues/705)
+[![status](https://joss.theoj.org/papers/810bf12b9b80b17cadc82397f5022154/status.svg)](https://joss.theoj.org/papers/810bf12b9b80b17cadc82397f5022154)
 <!-- badges: end -->
 
 The goal of `trud` is to provide a convenient R interface to the [National Health Service (NHS) England Technology Reference data Update Distribution (TRUD)](https://isd.digital.nhs.uk/trud/users/guest/filters/0/api).
