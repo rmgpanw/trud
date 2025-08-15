@@ -15,12 +15,12 @@ authors:
       surname: Warwick
     orcid: 0000-0002-0800-2890
     email: alasdair.warwick.19@ucl.ac.uk
-    affiliation: [ 1, 2 ]
+    affiliation: "1, 2"
   - name:
       given-names: Abraham
       surname: Olvera-Barrios
     orcid: 0000-0002-3305-4465
-    affiliation: [ 2, 3 ]
+    affiliation: "2, 3"
   - name:
       given-names: Chuin Ying
       surname: Ung
@@ -30,7 +30,7 @@ authors:
       given-names: Robert
       surname: Luben
     orcid: 0000-0002-5088-6343
-    affiliation: [ 2, 3 ]
+    affiliation: "2, 3"
 bibliography: paper.bib
 affiliations:
 - name: University College London Institute of Cardiovascular Science, London, UK
